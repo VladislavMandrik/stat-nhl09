@@ -1,0 +1,573 @@
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,MVD,3,13,0,1,1,0,8,46,1,0,0,0,1,0,0/2
+Away,SSK,0,22,0,0,1,0,13,28,2,0,0,0,1,1,1/1"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,FBK,2,13,0,1,1,0,8,46,1,0,0,0,1,0,0/2
+Away,TIK,1,¡,22,0,0,1,0,13,28,2,0,0,0,1,1,1/1"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,TIK,8,13,0,1,1,0,8,46,1,0,0,0,1,0,0/2
+Away,FBK,0,22,0,0,1,0,13,28,2,0,0,0,1,1,1/1"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,ASS,3,22,1,1,2,1,12,19,1,0,0,1,2,0,0/2
+Away,EVD,0,19,0,1,2,0,8,27,2,0,0,0,0,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,ASS,5,14,0,0,1,0,11,28,0,0,2,3,0,0,1/3
+Away,FBK,0,19,0,1,4,0,4,37,3,0,0,0,0,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,ASS,4,14,0,3,3,0,7,25,0,0,2,0,2,0,0/3
+Away,KAR,7,23,1,2,1,0,14,23,3,0,1,2,4,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,ASS,2,15,1,1,3,0,10,18,1,0,0,1,0,0,0/2
+Away,MVD,1,¡,27,0,4,2,0,8,37,2,0,1,0,0,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,ASS,1,18,0,3,1,0,9,24,2,0,0,0,1,0,1/1
+Away,TPS,2,32,0,1,9,0,10,44,1,0,1,1,0,0,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,ASS,6,15,1,4,4,0,16,19,2,0,1,2,3,0,1/1
+Away,VF,3,21,0,4,6,2,8,42,1,0,2,1,0,0,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,BIF,5,18,1,0,2,0,18,29,3,1,2,1,1,1,1/2
+Away,DIF,4,Œ“,10,0,0,1,0,11,29,2,0,1,1,2,0,0/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,BIF,2,20,0,1,5,0,14,23,3,0,0,1,1,0,0/2
+Away,DIF,0,12,0,1,1,0,7,35,2,0,0,0,0,0,0/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,BIF,3,25,1,2,1,0,16,28,2,0,1,0,1,0,0/1
+Away,FBK,2,¡,26,0,2,1,0,10,33,1,0,1,0,1,0,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,BIF,5,20,1,2,2,0,15,43,3,0,1,2,2,0,1/2
+Away,ILV,1,17,0,3,0,0,7,36,2,0,1,0,0,0,1/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,BIF,8,25,0,3,2,0,12,27,1,0,3,1,4,0,0/0
+Away,LHF,3,15,0,4,0,0,10,33,0,0,3,0,0,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,BIF,5,24,0,5,2,0,10,29,2,0,1,1,3,0,0/0
+Away,PEL,3,24,0,1,3,0,13,54,0,0,0,0,3,0,1/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,BIF,2,20,0,0,2,0,17,34,0,0,1,1,0,0,0/0
+Away,ROG,3,Œ“,32,0,0,6,0,7,36,0,0,1,0,1,1,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,BIF,1,14,0,2,0,0,13,27,2,0,1,0,0,0,0/1
+Away,TIK,8,15,0,5,0,0,3,9,1,3,5,3,0,0,1/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,BIF,0,20,0,0,4,0,14,23,2,0,0,0,0,0,0/0
+Away,TOG,10,23,0,5,5,2,9,20,0,0,3,4,3,0,2/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,BLU,5,22,0,1,4,1,11,34,3,0,1,3,1,0,0/1
+Away,EVD,0,18,0,0,1,0,10,25,1,0,0,0,0,0,0/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,BLU,5,17,0,1,6,2,12,22,0,0,0,2,3,0,1/4
+Away,LHF,2,10,0,0,1,0,9,40,4,0,0,1,1,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,DIF,2,21,0,2,2,0,20,36,4,0,0,2,0,0,0/0
+Away,EVD,3,¡,17,0,1,1,0,8,48,0,0,0,2,0,0,1/4
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,DIF,3,24,0,1,4,0,8,36,2,0,1,1,1,0,1/3
+Away,PEL,4,¡,20,0,1,2,1,13,71,3,0,1,2,0,0,1/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,EVD,0,15,0,1,1,0,5,21,1,0,0,0,0,0,0/1
+Away,ASS,4,19,1,3,2,0,11,29,1,0,1,3,0,0,1/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,EVD,0,10,0,0,1,0,9,28,1,0,0,0,0,0,0/3
+Away,BLU,7,34,2,2,4,0,15,33,3,0,2,1,4,0,1/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,EVD,2,20,0,1,1,0,17,19,0,0,0,0,2,0,0/2
+Away,DIF,4,25,1,1,1,0,6,20,2,0,1,1,2,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,EVD,2,18,0,1,1,0,5,18,2,0,1,1,0,0,0/0
+Away,ILV,1,25,0,0,1,0,11,26,0,0,0,1,0,0,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,EVD,1,5,0,0,0,0,8,25,2,0,0,0,1,0,0/0
+Away,KAR,6,34,0,1,10,2,12,23,0,0,1,3,2,0,2/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,EVD,1,11,0,0,1,0,13,26,3,0,0,0,1,0,0/3
+Away,LHC,3,20,0,0,3,1,8,35,3,0,2,0,1,0,1/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,EVD,0,17,0,2,1,0,11,21,0,0,0,0,0,0,0/1
+Away,LHF,3,28,0,0,1,0,11,38,1,0,0,2,1,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,EVD,0,24,0,1,3,0,15,27,1,0,0,0,0,0,0/0
+Away,MOD,3,18,0,2,4,0,3,33,0,0,1,1,1,0,1/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,EVD,1,20,0,0,3,0,10,27,2,0,0,0,1,0,0/2
+Away,MVD,2,26,0,2,2,0,12,39,2,0,2,0,0,0,1/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,EVD,2,16,0,2,1,0,10,20,0,0,0,1,0,0,0/2
+Away,PEL,1,¡,22,0,1,2,0,7,52,2,0,1,0,0,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,EVD,2,21,0,0,0,0,11,20,1,0,0,0,2,0,0/2
+Away,ROG,3,20,0,1,3,0,10,19,2,1,1,1,1,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,EVD,2,20,0,0,0,0,18,30,2,0,0,1,1,0,0/1
+Away,TIK,7,23,0,1,2,1,5,34,1,0,1,1,5,0,0/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,EVD,2,20,0,0,1,0,14,21,1,0,1,0,1,0,0/1
+Away,TOG,3,27,0,1,6,0,9,42,1,0,2,0,1,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,EVD,2,16,0,1,1,0,8,24,1,0,0,1,1,0,0/3
+Away,VF,6,19,2,3,6,2,13,32,3,0,1,3,2,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,FBK,5,20,0,4,2,1,7,22,1,0,2,1,2,0,1/2
+Away,BIF,1,18,0,2,2,0,10,26,2,0,0,1,0,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,FBK,3,11,0,0,1,0,8,35,1,0,1,1,1,0,1/1
+Away,DIF,2,16,0,4,2,0,10,27,1,0,0,1,1,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,FBK,1,14,0,1,2,0,5,42,3,0,1,0,0,0,0/1
+Away,DIF,6,19,1,3,3,0,12,28,1,0,2,0,4,0,1/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,FBK,1,16,0,0,0,0,9,37,1,0,0,1,0,0,0/2
+Away,KAR,6,33,1,1,4,1,15,26,2,0,1,3,2,0,1/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,FBK,0,13,0,0,0,0,6,23,0,0,0,0,0,0,0/0
+Away,LHC,3,24,0,3,3,0,9,36,0,0,0,2,1,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,FBK,3,22,0,0,0,0,12,33,2,0,1,0,2,0,0/1
+Away,LHF,1,13,0,0,5,0,4,34,1,0,0,0,1,0,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,FBK,2,21,0,1,3,0,7,11,0,0,2,0,0,0,0/0
+Away,MOD,1,12,0,0,2,0,2,19,0,0,0,1,0,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,FBK,3,23,0,1,0,0,12,33,1,0,0,0,3,0,0/2
+Away,MVD,1,22,1,1,0,0,7,34,2,0,1,0,0,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,FBK,0,13,0,2,3,0,8,33,2,0,0,0,0,0,0/2
+Away,NOV,6,25,0,1,9,1,13,32,2,0,3,1,2,0,1/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,FBK,2,22,0,3,0,0,9,32,0,0,0,2,0,0,0/3
+Away,PEL,3,¡,23,0,1,3,0,9,59,3,0,0,1,1,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,FBK,2,22,0,1,3,0,12,28,1,0,1,0,1,0,0/0
+Away,SAI,3,25,0,1,6,0,9,26,0,0,1,2,0,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,FBK,0,25,0,1,1,0,13,34,0,0,0,0,0,0,0/1
+Away,SSK,2,9,0,2,1,0,2,26,1,0,0,0,2,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,FBK,3,17,0,0,1,0,5,35,0,0,0,0,3,0,0/2
+Away,TOG,4,¡,26,0,1,5,1,13,33,2,0,1,2,0,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,FBK,1,15,0,1,2,0,3,34,1,0,1,0,0,0,0/2
+Away,TPS,3,30,0,1,10,1,17,41,2,0,0,0,3,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,ILV,9,30,1,2,2,0,19,43,1,0,2,1,6,0,2/2
+Away,BIF,3,17,0,2,2,0,10,31,2,0,1,1,1,0,1/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,ILV,4,24,0,1,0,0,18,19,0,0,2,2,0,0,1/2
+Away,EVD,2,18,0,2,1,0,8,24,2,0,0,0,2,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,ILV,3,20,0,0,0,0,11,20,0,0,1,1,1,0,2/3
+Away,JYP,7,36,0,3,7,2,17,38,3,0,3,4,0,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,ILV,0,18,0,0,0,0,14,33,1,0,0,0,0,0,0/2
+Away,LHC,3,28,1,3,5,1,9,27,2,0,2,1,0,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,ILV,0,12,0,1,0,0,13,28,1,0,0,0,0,0,0/1
+Away,LHF,3,24,0,3,4,0,6,35,1,0,1,2,0,0,1/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,ILV,0,19,0,0,1,0,12,31,2,0,0,0,0,0,0/1
+Away,MVD,2,29,0,2,5,0,6,39,1,0,1,0,1,0,1/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,ILV,0,1,0,0,0,0,1,5,0,0,0,0,0,0,0/0
+Away,NOV,2,4,0,1,2,2,2,2,0,0,2,0,0,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,ILV,1,16,0,4,0,0,13,18,0,0,1,0,0,0,0/2
+Away,PEL,8,24,0,1,2,2,10,52,2,0,2,4,2,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,ILV,1,9,0,1,0,0,7,28,1,0,0,1,0,0,0/2
+Away,ROG,2,27,0,2,5,0,11,24,2,0,0,1,1,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,ILV,2,22,1,3,0,0,9,27,1,1,1,1,0,0,0/1
+Away,SAI,3,27,1,1,4,0,9,40,1,0,0,2,1,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,ILV,1,14,1,0,4,0,16,15,2,0,0,0,1,0,0/1
+Away,TIK,4,22,0,3,0,0,5,36,1,0,1,2,1,0,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,ILV,3,19,0,2,0,0,14,36,1,0,0,1,2,0,1/3
+Away,TPS,7,31,2,3,12,1,14,69,3,0,3,2,2,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,ILV,7,24,0,4,1,0,13,31,0,5,3,2,2,0,1/2
+Away,VF,5,16,0,2,0,0,17,26,2,0,3,0,2,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,JYP,6,20,0,0,4,0,16,30,1,0,1,4,1,0,1/3
+Away,ILV,1,12,0,0,0,0,12,20,3,0,0,1,0,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,JYP,5,24,1,1,7,1,13,44,1,0,0,2,3,0,1/1
+Away,LHF,1,10,0,1,1,0,6,33,1,0,0,1,0,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,JYP,4,25,0,3,7,1,13,35,1,0,1,1,2,0,1/2
+Away,MOD,3,18,0,1,6,2,5,26,2,0,1,1,1,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,JYP,3,21,0,4,2,0,15,52,1,0,0,0,2,0,0/2
+Away,PEL,2,¡,18,0,2,1,0,9,56,2,0,0,0,2,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,JYP,0,16,0,2,0,0,9,43,1,0,0,0,0,0,0/1
+Away,TIK,3,11,0,3,0,0,8,32,1,0,1,1,1,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,KAR,3,23,0,0,2,0,11,32,0,0,2,0,1,0,0/2
+Away,ASS,4,Œ“,22,2,3,5,0,6,27,2,0,1,1,1,1,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,KAR,1,23,1,0,1,0,10,20,1,0,1,0,0,0,0/3
+Away,EVD,0,13,0,0,1,0,5,28,3,0,0,0,0,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,KAR,7,26,0,3,5,2,12,31,2,0,3,1,3,0,1/1
+Away,FBK,2,17,0,0,1,0,8,34,1,0,0,1,1,0,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,KAR,9,36,1,5,8,0,14,24,3,0,3,3,3,0,1/2
+Away,LHC,1,15,0,2,5,0,11,39,2,0,0,1,0,0,0/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,KAR,7,33,0,0,1,0,16,32,0,0,2,3,2,0,2/2
+Away,LHF,2,9,0,4,0,0,4,49,2,0,2,0,0,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,KAR,8,35,1,2,5,0,18,27,2,0,2,3,3,0,0/0
+Away,MOD,0,10,0,1,2,0,2,30,0,0,0,0,0,0,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,KAR,4,13,0,2,4,0,13,19,3,0,1,3,0,0,2/3
+Away,MVD,3,29,0,1,7,0,9,23,3,0,1,1,1,0,1/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,KAR,4,28,1,5,6,0,12,25,2,0,0,2,2,0,0/1
+Away,PEL,2,12,0,0,2,0,7,64,2,0,0,2,0,0,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,KAR,5,15,0,1,3,1,10,38,5,1,1,1,3,0,0/2
+Away,TPS,2,16,0,1,9,1,12,45,2,0,1,1,0,0,1/5
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,KAR,6,23,0,0,12,3,14,53,2,0,1,1,4,0,0/0
+Away,VF,3,14,0,2,2,0,7,31,0,0,0,3,0,0,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,LHC,5,16,0,5,6,0,14,31,0,0,1,2,2,0,0/1
+Away,EVD,1,18,0,1,0,0,5,28,1,0,1,0,0,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,LHC,4,17,0,1,1,0,12,27,3,0,2,1,1,0,0/0
+Away,FBK,3,18,0,1,1,0,12,44,0,0,2,1,0,0,0/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,LHC,5,19,1,6,1,0,13,33,2,0,2,2,1,0,1/1
+Away,ILV,2,17,0,1,0,0,10,27,1,0,1,0,1,0,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,LHC,2,28,0,5,6,0,18,32,3,0,1,0,0,1,0/3
+Away,LHF,1,¡,19,0,1,2,0,2,38,3,0,1,0,0,0,0/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,LHC,1,20,0,0,6,1,10,29,1,0,0,0,1,0,0/2
+Away,MVD,3,14,1,3,1,0,9,23,3,0,2,0,1,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,LHC,0,12,0,1,2,0,15,42,1,0,0,0,0,0,0/0
+Away,PEL,6,26,0,1,4,1,6,56,0,0,2,2,2,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,LHC,2,24,0,4,4,0,13,24,0,0,1,0,1,0,0/0
+Away,ROG,1,16,0,4,5,0,6,16,0,0,0,0,1,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,LHC,1,16,0,1,2,0,5,17,1,0,1,0,0,0,0/0
+Away,TPS,4,11,0,0,4,2,5,28,0,0,2,2,0,0,1/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,LHC,2,14,0,4,1,0,9,22,1,0,2,0,0,0,0/1
+Away,VF,6,33,0,1,9,0,9,22,1,0,2,1,3,0,1/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,LHF,2,15,0,1,0,0,8,26,0,0,2,0,0,0,0/2
+Away,BIF,4,17,0,4,0,0,14,30,2,0,2,2,0,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,LHF,2,17,0,2,0,0,8,33,2,0,0,0,2,0,0/0
+Away,BLU,5,24,0,8,5,1,12,33,0,0,2,1,2,0,1/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,LHF,4,18,0,2,0,0,11,49,2,0,0,1,3,0,0/1
+Away,EVD,2,18,0,0,1,0,9,33,1,0,0,1,1,0,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,LHF,3,20,0,4,3,0,15,28,1,0,0,2,0,0,0/1
+Away,FBK,2,¡,20,0,2,1,0,8,47,1,0,0,1,1,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,LHF,1,13,0,1,1,0,8,46,1,0,0,0,1,0,0/2
+Away,ILV,2,¡,22,0,0,1,0,13,28,2,0,0,0,1,1,1/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,LHF,0,6,0,0,0,0,7,47,1,0,0,0,0,0,0/1
+Away,JYP,2,29,0,2,6,0,10,35,1,0,0,1,1,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,LHF,1,11,0,0,2,0,8,41,3,0,1,0,0,0,0/1
+Away,KAR,7,33,1,2,2,0,13,26,1,0,4,2,1,0,2/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,LHF,1,14,0,0,2,0,7,41,2,0,1,0,0,0,0/0
+Away,LHC,4,23,0,2,6,1,15,29,0,0,1,1,2,0,1/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,LHF,3,24,0,3,2,0,13,40,2,0,2,1,0,0,1/2
+Away,MOD,4,¡,19,0,0,2,0,10,40,2,0,1,1,1,0,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,LHF,1,15,0,0,1,0,4,37,2,0,0,1,0,0,0/2
+Away,MVD,2,30,0,3,3,0,12,31,2,0,1,0,1,0,1/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,LHF,3,17,0,5,2,0,12,46,1,0,1,0,2,0,0/0
+Away,PEL,1,16,0,1,0,0,3,58,0,0,1,0,0,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,LHF,0,14,0,3,1,0,17,41,1,0,0,0,0,0,0/2
+Away,TIK,4,14,0,3,0,0,2,30,2,0,1,0,3,0,1/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,LHF,1,13,0,0,1,0,8,34,2,0,0,1,0,0,0/0
+Away,TOG,7,21,0,2,4,0,13,32,0,0,1,5,1,0,1/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,LHF,1,7,0,0,3,0,5,42,3,0,0,1,0,0,1/2
+Away,TPS,6,33,1,4,11,1,20,39,2,0,1,2,3,0,0/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,LHF,3,12,0,3,3,1,9,57,0,0,1,1,1,0,1/1
+Away,VF,8,35,0,3,10,1,17,46,1,0,3,4,1,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,MOD,3,10,0,1,3,1,8,31,1,0,0,3,0,0,0/1
+Away,EVD,6,29,1,1,4,0,19,24,1,1,2,2,2,0,1/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,MOD,2,18,0,0,4,0,7,21,0,0,1,0,1,0,0/1
+Away,FBK,4,19,0,1,3,0,9,37,1,0,1,0,3,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,MOD,1,7,0,0,2,0,8,23,1,0,0,0,1,0,0/0
+Away,JYP,5,38,0,3,8,0,10,28,0,0,0,3,2,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,MOD,0,7,0,1,1,0,3,29,1,0,0,0,0,0,0/1
+Away,KAR,9,32,0,0,6,1,17,27,1,0,4,3,2,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,MOD,2,17,0,2,3,0,11,42,1,0,0,2,0,0,0/1
+Away,LHF,3,Œ“,20,1,2,3,0,11,46,1,0,1,1,0,1,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,MOD,1,12,0,0,3,0,7,32,2,0,0,1,0,0,0/1
+Away,MVD,7,46,0,3,0,0,14,28,1,0,0,4,3,0,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,MOD,0,3,0,1,1,0,6,24,1,0,0,0,0,0,0/1
+Away,PEL,1,26,0,2,2,0,8,58,1,0,0,1,0,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,MOD,1,9,0,0,1,0,9,35,1,0,1,0,0,0,0/0
+Away,TIK,6,16,0,0,0,0,12,30,0,1,1,1,4,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,MOD,1,15,0,2,5,1,4,33,0,0,0,0,1,0,0/1
+Away,VF,6,35,0,0,7,1,11,39,1,0,4,1,1,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,MVD,4,16,1,2,1,0,12,32,2,0,2,0,2,0,0/0
+Away,ASS,1,13,0,1,1,0,4,24,0,0,0,1,0,0,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,MVD,3,17,0,1,2,0,15,28,1,0,1,2,0,0,0/2
+Away,DIF,4,17,0,1,1,0,7,32,2,0,1,1,2,0,1/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,MVD,2,28,2,2,4,0,13,40,6,0,1,0,1,0,0/3
+Away,EVD,1,13,0,1,2,0,6,32,3,0,1,0,0,0,0/6
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,MVD,4,17,0,1,1,0,11,46,4,0,1,1,1,0,1/3
+Away,FBK,3,¡,22,0,3,2,0,9,38,3,0,1,1,1,0,0/4
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,MVD,2,28,0,2,5,0,15,35,3,0,1,0,0,0,0/1
+Away,ILV,1,¡,19,0,0,1,0,7,31,1,0,1,0,0,0,0/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,MVD,1,15,0,1,1,0,9,29,3,0,0,1,0,0,0/0
+Away,KAR,5,21,0,2,6,1,8,33,0,1,1,1,3,0,0/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,MVD,1,30,0,1,2,0,12,18,0,0,0,1,0,0,1/2
+Away,LHC,4,22,0,2,1,0,9,31,2,0,0,1,3,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,MVD,4,47,1,3,7,0,19,22,3,1,1,2,1,0,0/1
+Away,LHF,0,6,0,1,1,0,8,39,1,0,0,0,0,0,0/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,MVD,2,28,1,1,2,0,15,37,5,0,0,0,1,0,0/0
+Away,MOD,1,¡,11,0,2,4,0,5,43,0,0,0,0,1,0,0/5
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,MVD,3,23,1,0,3,0,14,43,5,0,1,1,0,0,0/4
+Away,PEL,2,¡,20,0,1,6,1,9,57,5,0,1,0,1,0,1/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,MVD,3,27,0,1,3,0,13,29,3,0,1,0,1,1,0/0
+Away,ROG,2,Œ“,22,0,1,3,0,5,31,0,0,1,0,1,0,1/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,MVD,1,20,0,5,1,0,11,24,3,0,1,0,0,0,0/0
+Away,TIK,3,12,0,0,1,0,5,27,0,0,2,0,1,0,1/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,MVD,9,37,1,11,3,1,15,30,2,0,0,2,7,0,0/1
+Away,VF,3,23,0,1,6,0,9,49,1,0,1,1,1,0,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,NOV,2,15,0,0,7,2,10,28,1,0,0,1,1,0,1/2
+Away,FBK,0,14,0,3,1,0,4,32,2,0,0,0,0,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,NOV,11,40,2,2,9,5,18,26,3,0,5,2,4,0,0/0
+Away,ILV,2,18,0,1,0,0,11,24,0,0,0,1,1,0,1/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,NOV,4,32,2,1,5,1,17,20,1,0,1,0,3,0,0/1
+Away,PEL,0,9,0,0,1,0,7,68,1,0,0,0,0,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,PEL,1,24,0,1,2,0,12,54,1,0,1,0,0,0,1/1
+Away,BIF,5,14,1,1,1,0,8,32,1,0,1,4,0,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,PEL,1,20,0,1,3,0,16,61,2,0,0,0,1,0,0/1
+Away,DIF,2,Œ“,18,0,3,2,0,6,37,1,0,0,1,0,1,1/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,PEL,2,19,0,1,4,0,11,61,1,0,0,2,0,0,0/0
+Away,EVD,1,17,0,0,4,0,7,31,0,0,0,1,0,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,PEL,1,20,0,0,5,0,15,54,4,0,1,0,0,0,0/0
+Away,FBK,2,21,0,2,1,0,5,23,0,0,1,0,1,0,1/4
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,PEL,3,17,0,2,4,1,11,62,0,0,1,1,0,1,0/1
+Away,ILV,2,Œ“,28,0,3,2,0,14,26,1,0,0,1,1,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,PEL,2,17,0,1,2,0,9,70,1,1,0,1,1,0,0/0
+Away,JYP,4,28,0,2,2,1,16,33,0,0,2,1,1,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,PEL,2,14,0,3,1,0,11,43,2,0,0,0,2,0,0/0
+Away,KAR,6,25,0,2,9,3,13,36,0,0,2,2,2,0,1/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,PEL,1,24,1,4,1,0,12,47,3,0,1,0,0,0,0/2
+Away,LHC,3,14,0,4,2,0,9,44,2,0,1,1,1,0,0/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,PEL,2,13,0,1,1,0,12,67,3,0,1,0,1,0,0/1
+Away,LHF,3,13,0,2,1,0,7,37,1,0,0,1,2,0,2/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,PEL,4,36,0,1,2,0,19,52,0,0,1,1,1,0,1/2
+Away,MOD,3,¡,13,0,3,1,1,8,36,2,0,1,1,1,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,PEL,3,18,0,2,3,0,12,57,2,1,1,0,2,0,0/3
+Away,MVD,0,14,0,3,4,0,9,33,3,0,0,0,0,0,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,PEL,1,10,0,2,1,0,11,56,3,0,0,0,1,0,0/1
+Away,NOV,10,29,0,1,5,1,18,28,1,0,2,6,2,0,1/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,PEL,1,18,1,2,2,0,12,61,2,0,0,0,1,0,0/2
+Away,SAI,0,23,0,0,1,0,8,29,2,0,0,0,0,0,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,PEL,2,20,0,1,1,0,13,52,5,0,2,0,0,0,0/0
+Away,SSK,0,8,0,2,1,0,2,22,0,0,0,0,0,0,0/5
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,PEL,5,26,1,2,3,0,17,63,3,0,2,0,2,1,0/0
+Away,TIK,4,Œ“,10,0,2,0,0,7,35,0,1,2,1,1,0,2/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,PEL,0,14,0,2,2,0,10,53,3,0,0,0,0,0,0/5
+Away,TPS,4,24,1,5,1,0,17,69,5,0,1,2,1,0,0/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,PEL,3,12,1,3,3,0,8,60,3,0,0,1,2,0,0/0
+Away,VF,6,23,0,3,5,0,12,28,0,0,2,3,1,0,1/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,ROG,2,30,0,1,4,0,13,33,0,1,0,2,0,0,0/0
+Away,BIF,3,¡,23,0,3,3,0,7,30,0,0,0,1,1,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,ROG,1,21,0,0,2,0,16,28,2,0,0,0,1,0,1/3
+Away,EVD,5,19,2,3,1,0,8,25,3,0,1,1,3,0,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,ROG,2,18,0,1,1,0,7,29,0,0,1,1,0,0,0/0
+Away,ILV,3,30,0,1,0,0,13,24,0,0,0,2,1,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,ROG,1,20,0,2,3,0,7,24,1,0,1,0,0,0,0/2
+Away,LHC,0,18,0,0,2,0,10,40,2,0,0,0,0,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,ROG,1,20,0,1,4,1,12,28,2,0,1,0,0,0,0/5
+Away,MVD,4,27,0,3,3,0,10,29,5,0,3,1,0,0,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,ROG,2,19,0,1,3,0,10,25,1,0,1,0,1,0,1/3
+Away,VF,3,17,1,4,3,0,11,42,3,0,0,2,1,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,SAI,2,23,0,3,4,0,13,40,0,0,0,1,0,1,0/1
+Away,FBK,1,Œ“,18,0,2,2,0,6,22,1,0,1,0,0,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,SAI,5,23,0,7,3,0,14,27,1,0,1,1,3,0,0/2
+Away,ILV,2,17,1,2,1,1,11,23,2,0,0,2,0,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,SAI,0,13,0,4,1,0,8,30,3,0,0,0,0,0,0/2
+Away,PEL,1,25,0,2,3,0,8,47,2,0,1,0,0,0,0/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,SAI,6,28,2,5,1,0,20,32,2,0,0,3,3,0,1/1
+Away,TIK,1,6,0,1,0,0,6,39,1,0,1,0,0,0,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,SSK,0,7,0,1,0,0,8,22,2,0,0,0,0,0,0/1
+Away,FBK,7,25,0,3,1,0,15,44,1,0,2,1,4,0,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,SSK,1,9,0,1,0,0,9,22,1,0,1,0,0,0,0/1
+Away,MVD,3,29,0,1,6,0,10,44,1,0,1,0,2,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,SSK,0,9,0,0,0,0,7,21,0,0,0,0,0,0,0/2
+Away,PEL,6,28,0,1,1,0,10,68,2,0,2,0,4,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,TIK,5,14,0,3,2,1,10,37,2,0,2,0,3,0,1/2
+Away,BIF,1,18,0,7,1,0,14,35,2,0,0,1,0,0,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,TIK,3,6,0,1,0,0,6,29,1,0,0,0,3,0,1/1
+Away,DIF,2,17,0,3,0,0,12,41,1,0,1,0,1,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,TIK,6,16,1,3,2,0,11,28,1,0,1,3,2,0,1/2
+Away,EVD,4,18,0,2,2,0,14,39,2,0,1,2,1,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,TIK,6,28,0,6,3,0,11,32,0,0,2,2,2,0,0/1
+Away,ILV,0,17,0,1,3,0,7,18,1,0,0,0,0,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,TIK,5,16,0,5,1,0,7,44,0,0,1,3,1,0,0/2
+Away,JYP,4,19,1,1,2,0,18,35,2,0,2,1,1,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,TIK,2,11,0,3,0,0,7,32,2,0,2,0,0,0,1/3
+Away,LHF,1,14,0,0,2,0,10,48,3,0,0,1,0,0,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,TIK,4,15,0,1,0,0,13,25,1,1,1,2,1,0,0/3
+Away,MOD,0,13,0,1,3,0,4,52,3,0,0,0,0,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,TIK,4,13,0,3,1,0,7,26,0,0,1,2,1,0,0/2
+Away,PEL,2,11,0,0,2,0,11,47,2,1,0,0,2,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,TIK,3,12,1,8,0,0,5,21,1,0,1,2,0,0,0/2
+Away,SAI,1,22,0,0,1,0,11,32,2,0,0,0,1,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,TIK,3,13,0,2,1,0,4,22,0,0,0,1,2,0,2/4
+Away,TPS,4,25,0,1,4,0,15,68,4,0,0,2,2,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,TIK,3,13,0,7,1,0,5,38,3,1,1,2,0,0,0/4
+Away,VF,5,29,0,4,2,0,22,32,4,0,0,2,3,0,1/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,TOG,3,33,0,1,6,0,11,21,0,0,0,3,0,0,0/1
+Away,BIF,4,10,1,2,0,0,7,28,1,0,4,0,0,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,TOG,6,26,2,2,9,1,10,29,1,0,1,5,0,0,1/3
+Away,EVD,0,17,0,0,0,0,12,35,3,0,0,0,0,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,TOG,5,27,0,2,6,3,13,24,1,0,0,4,1,0,1/1
+Away,FBK,2,22,0,0,0,0,7,34,1,0,1,0,1,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,TOG,7,32,0,2,4,1,14,25,0,0,2,2,3,0,2/2
+Away,LHF,1,9,0,0,1,0,7,37,2,0,1,0,0,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,TPS,5,23,2,1,7,1,16,46,3,0,1,1,3,0,0/2
+Away,ASS,2,11,0,1,3,1,11,22,2,0,1,1,0,0,1/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,TPS,5,32,2,6,8,0,18,48,4,0,1,1,3,0,0/1
+Away,FBK,2,16,0,1,2,0,6,23,1,0,0,1,1,0,1/4
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,TPS,2,30,0,2,10,2,6,57,2,0,1,0,1,0,0/3
+Away,ILV,1,8,0,2,1,0,11,26,3,0,1,0,0,0,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,TPS,2,15,1,1,4,0,9,35,2,0,0,0,2,0,0/1
+Away,KAR,3,Œ“,14,1,0,1,0,7,18,1,0,0,1,1,1,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,TPS,4,30,1,1,9,1,7,33,2,0,0,3,1,0,0/1
+Away,LHC,2,9,0,1,2,0,6,42,1,0,0,0,2,0,1/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,TPS,4,24,0,3,5,1,23,42,3,0,1,2,0,1,2/5
+Away,LHF,3,Œ“,17,0,3,0,0,8,50,5,0,1,0,2,0,1/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,TPS,8,30,1,3,2,1,19,53,2,0,3,4,1,0,1/2
+Away,PEL,2,15,1,1,1,0,10,52,3,0,0,1,1,0,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,TPS,3,20,0,1,6,1,22,49,2,0,0,1,2,0,1/1
+Away,TIK,1,8,0,4,0,0,2,35,1,0,1,0,0,0,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,TPS,5,28,0,6,5,1,15,55,2,0,1,2,2,0,0/0
+Away,VF,4,16,0,1,2,0,9,22,0,0,2,0,2,0,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,VF,5,35,1,2,4,0,15,22,1,0,1,2,2,0,1/2
+Away,ASS,1,17,0,6,1,1,6,30,2,0,0,0,1,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,VF,2,26,0,3,5,0,11,22,0,0,0,2,0,0,0/1
+Away,EVD,1,17,0,2,3,0,9,33,1,0,0,0,1,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,VF,2,18,0,1,3,0,11,40,2,0,1,1,0,0,0/2
+Away,KAR,10,35,2,3,14,3,23,21,2,0,4,1,5,0,2/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,VF,6,32,1,5,3,0,17,39,2,0,1,1,4,0,1/3
+Away,LHC,1,16,0,3,1,0,13,30,3,0,1,0,0,0,0/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,VF,3,27,0,4,2,0,13,48,5,0,0,2,0,1,0/0
+Away,LHF,2,Œ“,19,0,4,1,0,3,42,0,0,0,2,0,0,0/5
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,VF,8,45,1,5,10,2,20,36,3,0,1,3,4,0,1/1
+Away,MOD,1,17,1,1,5,0,3,44,1,0,0,1,0,0,0/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,VF,7,32,2,9,1,0,16,32,2,0,0,3,4,0,1/2
+Away,PEL,2,18,1,4,1,0,9,53,2,1,1,0,1,0,1/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,VF,4,34,0,2,8,0,11,46,1,0,2,2,0,0,0/2
+Away,ROG,1,20,0,3,2,0,9,23,2,0,0,1,0,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,VF,2,14,0,1,1,1,15,29,5,0,1,1,0,0,0/0
+Away,SAI,3,31,0,4,5,0,11,17,0,0,0,1,2,0,1/5
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,VF,4,34,0,0,6,0,15,25,1,0,1,2,1,0,0/1
+Away,TIK,1,6,0,4,0,0,7,40,1,0,0,0,1,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,VF,1,27,0,1,3,1,9,20,0,0,1,0,0,0,0/1
+Away,TPS,3,17,0,5,3,1,9,52,1,1,1,1,1,0,0/0
