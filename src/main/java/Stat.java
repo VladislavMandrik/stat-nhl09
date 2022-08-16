@@ -10,7 +10,7 @@ public class Stat {
     public static void main(String[] args) throws IOException {
 
         try (PrintWriter printWriter = new PrintWriter(new FileWriter(CHECK_TXT))) {
-            File dir = new File("D:/Замена жесткого/ВХЛ/playerstat");
+            File dir = new File("D:/Замена жесткого/тест/плей");
             for (File file : dir.listFiles()) {
                 Scanner scanner = new Scanner(new FileInputStream(file)).useDelimiter("\\A");
                 if (scanner.hasNext()) {
@@ -199,6 +199,10 @@ public class Stat {
             words[1] = "Ермак(IIp9n1k)";
         } else if (Objects.equals(words[1], "SSK")) {
             words[1] = "ХК Рязань(YarLoc)";
+        } else if (Objects.equals(words[1], "SAI")) {
+            words[1] = "Торос(DALI)";
+        } else if (Objects.equals(words[1], "IFK")) {
+            words[1] = "Зауралье(Stinggy)";
         }
     }
 
@@ -274,11 +278,11 @@ public class Stat {
 
         Map<String, List<Object>> dataTable = new HashMap<>();
 
-        for (Map.Entry<String, Integer> item : shotsAg.entrySet()) {
+        for (Map.Entry<String, Integer> item : games.entrySet()) {
             dataTable.put(item.getKey(), new ArrayList<>(List.of(item.getValue())));
         }
 
-        for (Map.Entry<String, Integer> item : goalsAg.entrySet()) {
+        for (Map.Entry<String, Integer> item : shotsAg.entrySet()) {
             if (dataTable.containsKey(item.getKey())) {
                 dataTable.computeIfAbsent(item.getKey(), k -> new ArrayList<>()).add(item.getValue());
             } else {
@@ -287,7 +291,7 @@ public class Stat {
             }
         }
 
-        for (Map.Entry<String, Integer> item : games.entrySet()) {
+        for (Map.Entry<String, Integer> item : goalsAg.entrySet()) {
             if (dataTable.containsKey(item.getKey())) {
                 dataTable.computeIfAbsent(item.getKey(), k -> new ArrayList<>()).add(item.getValue());
             }
@@ -314,16 +318,24 @@ public class Stat {
 
         Map<String, List<Integer>> dataTable = new HashMap<>();
 
-        for (Map.Entry<String, Integer> item : assists.entrySet()) {
+        for (Map.Entry<String, Integer> item : games.entrySet()) {
+            dataTable.put(item.getKey(), new ArrayList<>(List.of(item.getValue())));
             if (!goals.containsKey(item.getKey())) {
                 goals.put(item.getKey(), 0);
+            }
+            if (!points.containsKey(item.getKey())) {
+                points.put(item.getKey(), 0);
+            }
+            if (!assists.containsKey(item.getKey())) {
+                assists.put(item.getKey(), 0);
             }
         }
 
         for (Map.Entry<String, Integer> item : goals.entrySet()) {
-            dataTable.put(item.getKey(), new ArrayList<>(List.of(item.getValue())));
-            if (!assists.containsKey(item.getKey())) {
-                assists.put(item.getKey(), 0);
+            if (dataTable.containsKey(item.getKey())) {
+                dataTable.computeIfAbsent(item.getKey(), k -> new ArrayList<>()).add(item.getValue());
+            } else {
+                dataTable.computeIfAbsent(item.getKey(), k -> new ArrayList<>()).add(item.getValue());
             }
         }
 
@@ -331,7 +343,6 @@ public class Stat {
             if (dataTable.containsKey(item.getKey())) {
                 dataTable.computeIfAbsent(item.getKey(), k -> new ArrayList<>()).add(item.getValue());
             } else {
-                dataTable.computeIfAbsent(item.getKey(), k -> new ArrayList<>()).add(0);
                 dataTable.computeIfAbsent(item.getKey(), k -> new ArrayList<>()).add(item.getValue());
             }
         }
@@ -340,12 +351,6 @@ public class Stat {
             if (dataTable.containsKey(item.getKey())) {
                 dataTable.computeIfAbsent(item.getKey(), k -> new ArrayList<>()).add(item.getValue());
             } else {
-                dataTable.computeIfAbsent(item.getKey(), k -> new ArrayList<>()).add(item.getValue());
-            }
-        }
-
-        for (Map.Entry<String, Integer> item : games.entrySet()) {
-            if (dataTable.containsKey(item.getKey())) {
                 dataTable.computeIfAbsent(item.getKey(), k -> new ArrayList<>()).add(item.getValue());
             }
         }

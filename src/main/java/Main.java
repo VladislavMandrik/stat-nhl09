@@ -1,10 +1,11 @@
 import java.io.*;
 import java.nio.file.*;
+import java.text.DecimalFormat;
 import java.util.*;
 
 public class Main {
 
-    private static final String PATH = "D:/Замена жесткого/ВХЛ/teamstat";
+    private static final String PATH = "D:/Замена жесткого/тест/тим";
     private static final String FULLTEAMSTAT_TXT = "fullteamstat.txt";
     private static final String CALENDAR = "calendarVHL.txt";
 
@@ -45,8 +46,13 @@ public class Main {
         Map<String, Integer> games = new TreeMap<>();
         Map<String, List<String>> finalCalendar = new TreeMap<>();
         Map<String, Integer> count3 = new TreeMap<>();
+        Map<String, Integer> loses = new TreeMap<>();
+        Map<String, Integer> losesOT = new TreeMap<>();
+        Map<String, Integer> OTShots = new TreeMap<>();
+        Map<String, Integer> OTGoals = new TreeMap<>();
 
         BufferedReader readTeamstatForCalendar = new BufferedReader(new FileReader(FULLTEAMSTAT_TXT));
+        BufferedReader readTeamstatForTeamstat = new BufferedReader(new FileReader(FULLTEAMSTAT_TXT));
         BufferedReader readDataForCalendar = new BufferedReader(new FileReader("data.txt"));
         createCalendar(readTeamstatForCalendar, readDataForCalendar, data);
 
@@ -55,11 +61,15 @@ public class Main {
         BufferedReader CalendarReader = new BufferedReader(new FileReader(CALENDAR));
 
         Map<String, List<Integer>> firstParam = createMapTable(
-                createListWinAndMapGameTable(tableWithout, plus2, plus1, games, finalCalendar, points, readCalendarForTable),
-                createMapWinsAndPointsTable(tableWithout, plus2, plus1, count3, points),
+                createListWinAndMapGameTable(tableWithout, plus2, plus1, games, finalCalendar, points, loses, readCalendarForTable),
+                createMapWinsAndPointsTable(tableWithout, plus2, plus1, count3, losesOT, points),
+                losesOT,
+                loses,
                 createMapGoalsScoredTable(goalsScored, CalendarReader),
                 createMapGoalsMissingTable(missingGoals, readCalendarForMissGoal),
                 points);
+
+        createTeamstat(OTShots, OTGoals, readTeamstatForTeamstat);
 
         new JTableExamples(hashMapToTwoDimensionalArray(firstParam));
     }
@@ -163,11 +173,13 @@ public class Main {
             words[1] = "ХК Рязань(YarLoc)";
         } else if (Objects.equals(words[1], "SAI")) {
             words[1] = "Торос(DALI)";
+        } else if (Objects.equals(words[1], "IFK")) {
+            words[1] = "Зауралье(Stinggy)";
         }
     }
 
     private static Map<String, Integer> createListWinAndMapGameTable
-            (List<String> tableWithout, List<String> tableWith, List<String> plus1, Map<String, Integer> games, Map<String, List<String>> finalCalendar, Map<String, Integer> points, BufferedReader
+            (List<String> tableWithout, List<String> tableWith, List<String> plus1, Map<String, Integer> games, Map<String, List<String>> finalCalendar, Map<String, Integer> points, Map<String, Integer> loses, BufferedReader
                     reader) throws IOException {
         String c;
 
@@ -240,9 +252,19 @@ public class Main {
                 tableWith.add(words[2]);
                 plus1.add(words[0]);
             }
+
+            if (Integer.parseInt(words[1]) > Integer.parseInt(words[3]) && Objects.equals(words[4], " ") && !loses.containsKey(words[2])) {
+                loses.put(words[2], 1);
+            } else if (Integer.parseInt(words[1]) > Integer.parseInt(words[3]) && Objects.equals(words[4], " ") && loses.containsKey(words[2])) {
+                loses.put(words[2], loses.get(words[2]) + 1);
+            } else if (Integer.parseInt(words[1]) < Integer.parseInt(words[3]) && Objects.equals(words[4], " ") && !loses.containsKey(words[0])) {
+                loses.put(words[0], 1);
+            } else if (Integer.parseInt(words[1]) < Integer.parseInt(words[3]) && Objects.equals(words[4], " ") && loses.containsKey(words[0])) {
+                loses.put(words[0], loses.get(words[0]) + 1);
+            }
         }
 
-        try (PrintWriter writer = new PrintWriter("finalCalendarVHL.txt")) {
+        try (PrintWriter writer = new PrintWriter("D:/Замена жесткого/finalCalendarVHL.txt")) {
             List<String> s;
             for (Map.Entry<String, List<String>> map : finalCalendar.entrySet()) {
                 s = map.getValue();
@@ -260,14 +282,20 @@ public class Main {
                 }
                 writer.write("\n\n");
             }
+//            for (Map.Entry<String, Integer> map : loses.entrySet()) {
+//                System.out.println("Key: " + map.getKey() + " Value: " + map.getValue());
+//            }
         }
         return games;
     }
 
     private static Map<String, List<Integer>> createMapTable(Map<String, Integer> game,
                                                              Map<String, Integer> win,
+                                                             Map<String, Integer> losesOT,
+                                                             Map<String, Integer> loses,
                                                              Map<String, Integer> goalSc,
-                                                             Map<String, Integer> mapGoalsMissingTable, Map<String, Integer> points) {
+                                                             Map<String, Integer> mapGoalsMissingTable,
+                                                             Map<String, Integer> points) {
 
         Map<String, List<Integer>> dataTable = new HashMap<>();
 
@@ -276,9 +304,33 @@ public class Main {
             if (!win.containsKey(item.getKey())) {
                 win.put(item.getKey(), 0);
             }
+            if (!loses.containsKey(item.getKey())) {
+                loses.put(item.getKey(), 0);
+            }
+            if (!losesOT.containsKey(item.getKey())) {
+                losesOT.put(item.getKey(), 0);
+            }
         }
 
         for (Map.Entry<String, Integer> item : win.entrySet()) {
+            if (dataTable.containsKey(item.getKey())) {
+                dataTable.computeIfAbsent(item.getKey(), k -> new ArrayList<>()).add(item.getValue());
+            } else {
+                dataTable.computeIfAbsent(item.getKey(), k -> new ArrayList<>()).add(0);
+                dataTable.computeIfAbsent(item.getKey(), k -> new ArrayList<>()).add(item.getValue());
+            }
+        }
+
+        for (Map.Entry<String, Integer> item : losesOT.entrySet()) {
+            if (dataTable.containsKey(item.getKey())) {
+                dataTable.computeIfAbsent(item.getKey(), k -> new ArrayList<>()).add(item.getValue());
+            } else {
+                dataTable.computeIfAbsent(item.getKey(), k -> new ArrayList<>()).add(0);
+                dataTable.computeIfAbsent(item.getKey(), k -> new ArrayList<>()).add(item.getValue());
+            }
+        }
+
+        for (Map.Entry<String, Integer> item : loses.entrySet()) {
             if (dataTable.containsKey(item.getKey())) {
                 dataTable.computeIfAbsent(item.getKey(), k -> new ArrayList<>()).add(item.getValue());
             } else {
@@ -313,9 +365,9 @@ public class Main {
 
 //            VHL
 
-        dataTable.computeIfAbsent("Динамо МО(Trusha)", k -> new ArrayList<>(Collections.nCopies(5, 0)));
-        dataTable.computeIfAbsent("Торос(FUNTIK)", k -> new ArrayList<>(Collections.nCopies(5, 0)));
-        dataTable.computeIfAbsent("Южный Урал(Champion1)", k -> new ArrayList<>(Collections.nCopies(5, 0)));
+        dataTable.computeIfAbsent("Динамо МО(Trusha)", k -> new ArrayList<>(Collections.nCopies(7, 0)));
+        dataTable.computeIfAbsent("Торос(FUNTIK)", k -> new ArrayList<>(Collections.nCopies(7, 0)));
+        dataTable.computeIfAbsent("Южный Урал(Champion1)", k -> new ArrayList<>(Collections.nCopies(7, 0)));
 
 
 //        for (Map.Entry<String, List<Integer>> map : dataTable.entrySet()) {
@@ -326,7 +378,8 @@ public class Main {
     }
 
     private static Map<String, Integer> createMapWinsAndPointsTable
-            (List<String> without, List<String> plus2, List<String> plus1, Map<String, Integer> wins, Map<String, Integer> points) {
+            (List<String> without, List<String> plus2, List<String> plus1, Map<String, Integer> wins,
+             Map<String, Integer> losesOT, Map<String, Integer> points) {
         for (String s : without) {
             if (!wins.containsKey(s)) {
                 wins.put(s, 1);
@@ -339,9 +392,11 @@ public class Main {
 
         for (String s : plus2) {
             if (!wins.containsKey(s)) {
+                wins.put(s, 1);
                 points.put(s, 2);
             } else {
                 points.put(s, points.get(s) + 2);
+                wins.put(s, wins.get(s) + 1);
             }
         }
 
@@ -350,6 +405,12 @@ public class Main {
                 points.put(s, 1);
             } else {
                 points.put(s, points.get(s) + 1);
+            }
+
+            if (!losesOT.containsKey(s)) {
+                losesOT.put(s, 1);
+            } else {
+                losesOT.put(s, losesOT.get(s) + 1);
             }
         }
 
@@ -360,7 +421,8 @@ public class Main {
         return wins;
     }
 
-    private static Map<String, Integer> createMapGoalsScoredTable(Map<String, Integer> m, BufferedReader reader) throws
+    private static Map<String, Integer> createMapGoalsScoredTable(Map<String, Integer> m, BufferedReader
+            reader) throws
             IOException {
         String c;
 
@@ -385,7 +447,8 @@ public class Main {
         return m;
     }
 
-    private static Map<String, Integer> createMapGoalsMissingTable(Map<String, Integer> m, BufferedReader reader) throws
+    private static Map<String, Integer> createMapGoalsMissingTable(Map<String, Integer> m, BufferedReader
+            reader) throws
             IOException {
         String c;
 
@@ -412,7 +475,7 @@ public class Main {
 
     private static Object[][] hashMapToTwoDimensionalArray(Map<String, List<Integer>> count) {
 
-        Object[][] result = new Object[count.size()][6];
+        Object[][] result = new Object[count.size()][8];
         Object[] keys = count.keySet().toArray(new Object[0]);
 
         List<Integer> s;
@@ -427,11 +490,98 @@ public class Main {
             result[i][3] = String.valueOf(s.get(2));
             result[i][4] = String.valueOf(s.get(3));
             result[i][5] = String.valueOf(s.get(4));
+            result[i][6] = String.valueOf(s.get(5));
+            result[i][7] = String.valueOf(s.get(6));
             i++;
         }
 
 //        System.out.println(Arrays.deepToString(result));
 
         return result;
+    }
+
+    private static void createTeamstat(Map<String, Integer> OTS, Map<String, Integer> OTG, BufferedReader reader) throws IOException {
+        String c;
+
+        while ((c = reader.readLine()) != null) {
+            String[] words = c.split(",");
+
+            createFullTeamName(words);
+
+            if (!OTS.containsKey(words[1]) && checkInt(words[6]) && checkInt(words[3])) {
+                OTS.put(words[1], Integer.valueOf(words[6]));
+                OTG.put(words[1], Integer.valueOf(words[7]));
+            } else if (OTS.containsKey(words[1]) && checkInt(words[6]) && checkInt(words[3])) {
+                OTS.put(words[1], OTS.get(words[1]) + Integer.parseInt(words[6]));
+                OTG.put(words[1], OTG.get(words[1]) + Integer.parseInt(words[7]));
+            } else if (!OTS.containsKey(words[1]) && checkInt(words[6]) && !checkInt(words[3])) {
+                OTS.put(words[1], Integer.valueOf(words[7]));
+                OTG.put(words[1], Integer.valueOf(words[8]));
+            } else if (OTS.containsKey(words[1]) && checkInt(words[6]) && !checkInt(words[3])) {
+                OTS.put(words[1], OTS.get(words[1]) + Integer.parseInt(words[7]));
+                OTG.put(words[1], OTG.get(words[1]) + Integer.parseInt(words[8]));
+            }
+        }
+
+        Map<String, List<Object>> dataTeamstat = new HashMap<>();
+        Map<String, String> OTGPercentage = new HashMap<>();
+
+        for (Map.Entry<String, Integer> item : OTS.entrySet()) {
+            dataTeamstat.put(item.getKey(), new ArrayList<>(List.of(item.getValue())));
+        }
+
+        for (Map.Entry<String, Integer> item : OTG.entrySet()) {
+            if (dataTeamstat.containsKey(item.getKey())) {
+                dataTeamstat.computeIfAbsent(item.getKey(), k -> new ArrayList<>()).add(item.getValue());
+            } else {
+                dataTeamstat.computeIfAbsent(item.getKey(), k -> new ArrayList<>()).add(item.getValue());
+            }
+        }
+
+        for (Map.Entry<String, Integer> map : OTG.entrySet()) {
+            if (OTG.get(map.getKey()) != 0) {
+                if (OTS.containsKey(map.getKey())) {
+                    Double i = Double.valueOf(OTG.get(map.getKey()));
+                    Double j = Double.valueOf(OTS.get(map.getKey()));
+                    String formattedDouble = new DecimalFormat("#0.0").format((100 * i) / (j));
+                    OTGPercentage.put(map.getKey(), formattedDouble);
+                }
+            } else {
+                OTGPercentage.put(map.getKey(), "0");
+            }
+
+        }
+
+        for (Map.Entry<String, String> item : OTGPercentage.entrySet()) {
+            if (dataTeamstat.containsKey(item.getKey())) {
+                dataTeamstat.computeIfAbsent(item.getKey(), k -> new ArrayList<>()).add(item.getValue());
+            } else {
+                dataTeamstat.computeIfAbsent(item.getKey(), k -> new ArrayList<>()).add(item.getValue());
+            }
+        }
+
+        for (Map.Entry<String, List<Object>> item : dataTeamstat.entrySet()) {
+            System.out.println(item);
+        }
+
+        String[] columnNames = {"Команда", "OTS", "OTG", "%OTG"};
+
+        List<Object> list;
+
+        try (PrintWriter writer = new PrintWriter("D:/Замена жесткого/OTG.csv")) {
+            for (String s : columnNames) {
+                writer.write(s + ";");
+            }
+            writer.write("\n");
+            for (Map.Entry<String, List<Object>> item : dataTeamstat.entrySet()) {
+                writer.write(item.getKey() + "; ");
+                list = item.getValue();
+                for (Object o : list) {
+                    writer.write(o + ";");
+                }
+
+                writer.write("\n");
+            }
+        }
     }
 }

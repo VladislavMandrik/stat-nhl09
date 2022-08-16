@@ -4,9 +4,12 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.*;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.Arrays;
 
 public class JTableForStat {
-    JTableForStat(Object[][] o) {
+    JTableForStat(Object[][] o) throws FileNotFoundException {
         // Frame initialization
 
         JFrame frame = new JFrame();
@@ -15,434 +18,57 @@ public class JTableForStat {
         frame.setTitle("JTable Example");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        for (Object[] objects : o) {  //идём по строкам
-            System.out.print("{\"");
-            for (int j = 0; j < 5; j++) {//идём по столбцам
-                System.out.print(objects[j]); //вывод элемента
-                if (j == 0) {
-                    System.out.print("\"");
-                }
-                System.out.print(", ");
-            }
-            System.out.print("},\n");
-        }
-        System.out.println("\n\n\n");
+//        for (Object[] objects : o) {  //идём по строкам
+//            System.out.print("{\"");
+//            for (int j = 0; j < 5; j++) {//идём по столбцам
+//                System.out.print(objects[j]); //вывод элемента
+//                if (j == 0) {
+//                    System.out.print("\"");
+//                }
+//                System.out.print(", ");
+//            }
+//            System.out.print("},\n");
+//        }
+//        System.out.println("\n\n\n");
         // Data to be displayed in the JTable
         Object[][] data =
                 {
-                        {"Tunik Vladislav (Ростов(Darlove))", 1, 3, 4, 24, },
-                        {"Shestakov Sergei (Cокол(FORWARDS))", 2, 4, 6, 27, },
-                        {"Zhuk Artyom (СКА-Нева(Pablo))", 6, 6, 12, 19, },
-                        {"Vilkov Anton (Cокол(FORWARDS))", 4, 3, 7, 27, },
-                        {"Leontyev Vladislav (Горняк(Kulyash28))", 0, 4, 4, 11, },
-                        {"Voropayev Vladislav (Молот-Прикамье(Deverter))", 0, 1, 1, 18, },
-                        {"Ibatullin Ruslan (Металлург(Maxer))", 1, 2, 3, 3, },
-                        {"Dzhioshvili Maxim (Динамо СПб(AK46))", 14, 10, 24, 20, },
-                        {"Gorechishnikov Maxim (Ермак(IIp9n1k))", 0, 2, 2, 4, },
-                        {"Kapotov Anton (Молот-Прикамье(Deverter))", 0, 1, 1, 4, },
-                        {"Popov Platon (Cокол(FORWARDS))", 5, 1, 6, 27, },
-                        {"Chusovitin Nikita (Югра(Maksik17))", 0, 1, 1, 22, },
-                        {"Streltsov Vasily (Молот-Прикамье(Deverter))", 4, 5, 9, 22, },
-                        {"Vorobyov Artyom (Ермак(IIp9n1k))", 1, 2, 3, 4, },
-                        {"Brinkman Arseny (СКА-Нева(Pablo))", 0, 3, 3, 19, },
-                        {"Berestennikov Ilya (Ермак(IIp9n1k))", 4, 1, 5, 4, },
-                        {"Seleznyov Yakov (Дизель(matey))", 1, 4, 5, 20, },
-                        {"Solovyov Yevgeny (Ермак(IIp9n1k))", 1, 2, 3, 4, },
-                        {"Yerdakov Daniil (Металлург(Maxer))", 0, 1, 1, 3, },
-                        {"Sumin Alexander (Нефтяник(Ilyuxa))", 0, 3, 3, 6, },
-                        {"Andreyev Savva (Ростов(Darlove))", 3, 3, 6, 24, },
-                        {"Minayev Yelisei (Ростов(Darlove))", 0, 4, 4, 24, },
-                        {"Kostenko Dmitry (Лада(ASTAF))", 1, 3, 4, 4, },
-                        {"Chernov Artyom (Динамо СПб(AK46))", 8, 3, 11, 20, },
-                        {"Komissarov Lev (Звезда(NINTENDO))", 1, 4, 5, 12, },
-                        {"Smirnov Kirill (Химик(Muscovite))", 1, 0, 1, 12, },
-                        {"Zharkov Daniil (Динамо СПб(AK46))", 7, 7, 14, 20, },
-                        {"Akishin Dmitry (Рубин(NO PASSARAN))", 2, 7, 9, 16, },
-                        {"Chiglintsev Alexander (Буран(Gagarin))", 1, 2, 3, 9, },
-                        {"Polyakov Nikolai (СКА-Нева(Pablo))", 2, 0, 2, 19, },
-                        {"Fazylzyanov Kamil (Барс(TRAKTOR))", 2, 3, 5, 16, },
-                        {"Remov Alexander (Молот-Прикамье(Deverter))", 2, 4, 6, 22, },
-                        {"Mansurov Demid (Челмет(TRAKTORIST))", 4, 7, 11, 18, },
-                        {"Li Nikita (Дизель(matey))", 6, 2, 8, 20, },
-                        {"Chibrikov Nikita (СКА-Нева(Pablo))", 4, 5, 9, 19, },
-                        {"Matushkin Maksim (СКА-Нева(Pablo))", 1, 5, 6, 19, },
-                        {"Kulda Edgars (Металлург(Maxer))", 2, 1, 3, 3, },
-                        {"Zdunov Pavel (Дизель(matey))", 3, 4, 7, 20, },
-                        {"Valeyev Ildar (Химик(Muscovite))", 0, 2, 2, 12, },
-                        {"Voloshin German (Ермак(IIp9n1k))", 4, 0, 4, 4, },
-                        {"Zhukenov Dmitry (Горняк(Kulyash28))", 2, 2, 4, 11, },
-                        {"Ushnev Nikita (Динамо СПб(AK46))", 1, 5, 6, 20, },
-                        {"Kolmykov Maxim (Дизель(matey))", 1, 3, 4, 15, },
-                        {"Bychkov Roman (Буран(Gagarin))", 2, 4, 6, 9, },
-                        {"Afonasyevsky Semyon (Звезда(NINTENDO))", 0, 1, 1, 12, },
-                        {"Kudashev Danil (Ростов(Darlove))", 0, 3, 3, 24, },
-                        {"Yeliseyev Taras (Cокол(FORWARDS))", 1, 3, 4, 15, },
-                        {"Kanitsky Yevgeny (Звезда(NINTENDO))", 0, 1, 1, 12, },
-                        {"Ostrovsky Stepan (Горняк(Kulyash28))", 0, 3, 3, 11, },
-                        {"Arsenyuk Dmitry (Дизель(matey))", 2, 8, 10, 20, },
-                        {"Taratunin Timur (Югра(Maksik17))", 3, 5, 8, 22, },
-                        {"Barulin Vladislav (Звезда(NINTENDO))", 1, 3, 4, 12, },
-                        {"Babenko Yegor (Рубин(NO PASSARAN))", 4, 11, 15, 16, },
-                        {"Sorokin Yevgeny (Химик(Muscovite))", 2, 3, 5, 12, },
-                        {"Groshev Yevgeny (ЦСК ВВС(pROxORd))", 5, 7, 12, 28, },
-                        {"Sorokin Alexander (Нефтяник(Ilyuxa))", 0, 2, 2, 6, },
-                        {"Glovatsky Anton (Cокол(FORWARDS))", 5, 10, 15, 27, },
-                        {"Martynov Andrei (Ростов(Darlove))", 3, 2, 5, 24, },
-                        {"Glazkov Ivan (Лада(ASTAF))", 2, 0, 2, 4, },
-                        {"Islyamov Nadir (Лада(ASTAF))", 0, 1, 1, 4, },
-                        {"Grigorenko Yevgeny (Лада(ASTAF))", 2, 1, 3, 4, },
-                        {"Maslov Kirill (Металлург(Maxer))", 0, 2, 2, 3, },
-                        {"Grachyov German (Горняк(Kulyash28))", 6, 6, 12, 11, },
-                        {"Prokhorov Artyom (Молот-Прикамье(Deverter))", 3, 1, 4, 22, },
-                        {"Kruchinin Alexei (Динамо СПб(AK46))", 5, 4, 9, 20, },
-                        {"Maximov Andrei (Молот-Прикамье(Deverter))", 0, 3, 3, 22, },
-                        {"Averin Nikolai (Барс(TRAKTOR))", 0, 2, 2, 16, },
-                        {"Tyutnev Pavel (Буран(Gagarin))", 1, 1, 2, 9, },
-                        {"Sevostyanov Alexander (Горняк(Kulyash28))", 0, 2, 2, 11, },
-                        {"Delnov Alexander (ХК Тамбов(Arcanys))", 4, 11, 15, 16, },
-                        {"Kuznetsov Ivan (ХК Тамбов(Arcanys))", 0, 3, 3, 16, },
-                        {"Voronin Artyom (Югра(Maksik17))", 6, 5, 11, 22, },
-                        {"Knyazev Artemy (Барс(TRAKTOR))", 0, 4, 4, 16, },
-                        {"Barabanov Vladimir (Динамо СПб(AK46))", 6, 1, 7, 20, },
-                        {"Gimbatov Akhmed (Динамо СПб(AK46))", 6, 6, 12, 20, },
-                        {"Medvedev Pavel V. (Химик(Muscovite))", 2, 0, 2, 12, },
-                        {"Popov Yegor (Рубин(NO PASSARAN))", 7, 7, 14, 16, },
-                        {"Desyatkov Pavel (ЦСК ВВС(pROxORd))", 0, 3, 3, 24, },
-                        {"Lukichyov Anton (Буран(Gagarin))", 0, 4, 4, 9, },
-                        {"Lyapustin Denis (Нефтяник(Ilyuxa))", 1, 2, 3, 6, },
-                        {"Podshendyalov Artyom (Буран(Gagarin))", 1, 0, 1, 9, },
-                        {"Lazarev Maxim (ЦСК ВВС(pROxORd))", 1, 0, 1, 12, },
-                        {"Sukhov Semyon (ХК Тамбов(Arcanys))", 0, 3, 3, 16, },
-                        {"Nikolenko Leonid (ЦСК ВВС(pROxORd))", 4, 3, 7, 28, },
-                        {"Belyakov Fyodor (Югра(Maksik17))", 1, 2, 3, 22, },
-                        {"Sleptsov Alexei (ЦСК ВВС(pROxORd))", 0, 1, 1, 16, },
-                        {"Sinyavsky Pavel (Cокол(FORWARDS))", 4, 1, 5, 13, },
-                        {"Nazarevich Ilya (СКА-Нева(Pablo))", 0, 4, 4, 19, },
-                        {"Kurashov Daniil (Ростов(Darlove))", 1, 6, 7, 24, },
-                        {"Agapov Alexander (Дизель(matey))", 0, 3, 3, 5, },
-                        {"Solopanov Nikita (Звезда(NINTENDO))", 0, 5, 5, 12, },
-                        {"Kalmykov Daniil (Ермак(IIp9n1k))", 2, 1, 3, 4, },
-                        {"Kozlov Mikhail (Дизель(matey))", 0, 2, 2, 5, },
-                        {"Yemelyanov Nikita (Дизель(matey))", 0, 3, 3, 15, },
-                        {"Galiaskarov Emil (Барс(TRAKTOR))", 6, 1, 7, 16, },
-                        {"Grishakov Andrei (Горняк(Kulyash28))", 1, 2, 3, 11, },
-                        {"Yasinsky Pyotr (Челмет(TRAKTORIST))", 2, 2, 4, 18, },
-                        {"Valeyev Artyom (Барс(TRAKTOR))", 2, 1, 3, 16, },
-                        {"Baranov Yegor (Горняк(Kulyash28))", 2, 2, 4, 11, },
-                        {"Freyer Filipp (Ермак(IIp9n1k))", 0, 1, 1, 4, },
-                        {"Korotkov Vladimir (Cокол(FORWARDS))", 9, 2, 11, 27, },
-                        {"Myakinin Vasily (Ростов(Darlove))", 6, 7, 13, 24, },
-                        {"Baranov Venyamin (Динамо СПб(AK46))", 1, 3, 4, 20, },
-                        {"Tatalin Roman (Химик(Muscovite))", 0, 1, 1, 12, },
-                        {"Ivanov Ivan S. (Молот-Прикамье(Deverter))", 5, 2, 7, 22, },
-                        {"Toluzakov Filipp (Лада(ASTAF))", 3, 3, 6, 4, },
-                        {"Sidlyarov Dmitry (Динамо СПб(AK46))", 5, 6, 11, 20, },
-                        {"Savelyev Anton (Cокол(FORWARDS))", 2, 7, 9, 27, },
-                        {"Shilin Oleg (Cокол(FORWARDS))", 0, 2, 2, 27, },
-                        {"Molodtsov Dmitry (Молот-Прикамье(Deverter))", 0, 4, 4, 22, },
-                        {"Barinov Daniil (ХК Тамбов(Arcanys))", 0, 9, 9, 16, },
-                        {"Ivashov Roman (Горняк(Kulyash28))", 3, 1, 4, 11, },
-                        {"Makarov Danil (Буран(Gagarin))", 1, 3, 4, 9, },
-                        {"Yushkov Maxim (Ермак(IIp9n1k))", 2, 2, 4, 4, },
-                        {"Kizimov Semyon (Лада(ASTAF))", 1, 0, 1, 4, },
-                        {"Lugovyak Semyon (Звезда(NINTENDO))", 0, 1, 1, 12, },
-                        {"Voyevodin Danil (СКА-Нева(Pablo))", 6, 9, 15, 19, },
-                        {"Valuisky Semyon (ЦСК ВВС(pROxORd))", 0, 1, 1, 28, },
-                        {"Pestushko Maxim (Барс(TRAKTOR))", 1, 4, 5, 16, },
-                        {"Akmaldinov Alexander (Югра(Maksik17))", 8, 4, 12, 22, },
-                        {"Chemerikin Roman (Рубин(NO PASSARAN))", 6, 9, 15, 16, },
-                        {"Kirillov Alexei (Югра(Maksik17))", 1, 5, 6, 22, },
-                        {"Rakhimullin Damir (Металлург(Maxer))", 0, 2, 2, 3, },
-                        {"Tsyganov Denis (Химик(Muscovite))", 2, 0, 2, 12, },
-                        {"Bain Maxim (Химик(Muscovite))", 2, 4, 6, 12, },
-                        {"Bochkov Ilya (Cокол(FORWARDS))", 0, 4, 4, 27, },
-                        {"Voronin Nikita (Рубин(NO PASSARAN))", 6, 5, 11, 16, },
-                        {"Shvaryov Artyom (Челмет(TRAKTORIST))", 5, 6, 11, 18, },
-                        {"Sergeyenko Georgy (ХК Рязань(YarLoc))", 0, 1, 1, 5, },
-                        {"Ustinsky Igor (Молот-Прикамье(Deverter))", 0, 3, 3, 22, },
-                        {"Denezhkin Maxim (Буран(Gagarin))", 4, 3, 7, 9, },
-                        {"Tkachenko Pavel (ХК Тамбов(Arcanys))", 10, 6, 16, 16, },
-                        {"Sinyagin Denis (Динамо СПб(AK46))", 0, 4, 4, 20, },
-                        {"Sukhanov Andrei (Дизель(matey))", 0, 1, 1, 20, },
-                        {"Boltanov Artur (Нефтяник(Ilyuxa))", 2, 3, 5, 6, },
-                        {"Kolychev Yevgeny (ЦСК ВВС(pROxORd))", 1, 1, 2, 16, },
-                        {"Kozlov Mikhail (СКА-Нева(Pablo))", 0, 3, 3, 19, },
-                        {"Kulagin Alexander I. (Динамо СПб(AK46))", 4, 6, 10, 20, },
-                        {"Galimov Bulat (Буран(Gagarin))", 3, 2, 5, 9, },
-                        {"Alyoshin Yegor (ХК Рязань(YarLoc))", 2, 0, 2, 5, },
-                        {"Arkalov Ilya (Химик(Muscovite))", 2, 3, 5, 12, },
-                        {"Semyonov Danil (ЦСК ВВС(pROxORd))", 1, 5, 6, 28, },
-                        {"Litvinov Andrei (ХК Рязань(YarLoc))", 0, 1, 1, 5, },
-                        {"Antipov Pavel (Ростов(Darlove))", 2, 1, 3, 24, },
-                        {"Molkov Nikolai (ХК Тамбов(Arcanys))", 0, 6, 6, 16, },
-                        {"Akhmetzyanov Rishat (ЦСК ВВС(pROxORd))", 4, 4, 8, 28, },
-                        {"Antipov Artyom (Югра(Maksik17))", 2, 6, 8, 22, },
-                        {"Tsvetkov Yegor (Горняк(Kulyash28))", 0, 4, 4, 11, },
-                        {"Luchevnikov Konstantin (Барс(TRAKTOR))", 0, 4, 4, 16, },
-                        {"Setdikov Nikita (Горняк(Kulyash28))", 3, 2, 5, 11, },
-                        {"Yatsenko Ivan (Буран(Gagarin))", 2, 1, 3, 9, },
-                        {"Polyakov Valery (Металлург(Maxer))", 2, 1, 3, 3, },
-                        {"Noskov Dmitry (Горняк(Kulyash28))", 2, 2, 4, 11, },
-                        {"Kolganov Ilya (Cокол(FORWARDS))", 0, 2, 2, 27, },
-                        {"Gritsyuk Arseny (Металлург(Maxer))", 0, 2, 2, 3, },
-                        {"Nasybullin Daniel (Нефтяник(Ilyuxa))", 2, 4, 6, 6, },
-                        {"Plastinin Viktor (ХК Рязань(YarLoc))", 1, 0, 1, 5, },
-                        {"Lavrinenko Leonid (Челмет(TRAKTORIST))", 0, 8, 8, 18, },
-                        {"Mitrofanov Alexei (Рубин(NO PASSARAN))", 8, 10, 18, 16, },
-                        {"Mishchenko Grigory (Cокол(FORWARDS))", 6, 3, 9, 27, },
-                        {"Kremzer Kirill (Динамо СПб(AK46))", 2, 3, 5, 20, },
-                        {"Kostin Denis (Дизель(matey))", 0, 1, 1, 20, },
-                        {"Streltsov Alexander (Молот-Прикамье(Deverter))", 2, 1, 3, 18, },
-                        {"Lapshin Ivan (Ермак(IIp9n1k))", 2, 1, 3, 4, },
-                        {"Gizdatullin Artur (Cокол(FORWARDS))", 2, 4, 6, 14, },
-                        {"Lukin Konstantin (Челмет(TRAKTORIST))", 6, 10, 16, 18, },
-                        {"Bobylyov Vladimir (Челмет(TRAKTORIST))", 9, 8, 17, 18, },
-                        {"Koshurnikov Kirill (Челмет(TRAKTORIST))", 4, 4, 8, 18, },
-                        {"Kropachyov Vitaly (Ростов(Darlove))", 0, 7, 7, 24, },
-                        {"Gizatullin Danil (Нефтяник(Ilyuxa))", 2, 2, 4, 6, },
-                        {"Zabavin Konstantin (Ростов(Darlove))", 1, 4, 5, 24, },
-                        {"Kuznetsov Vladimir (Горняк(Kulyash28))", 4, 3, 7, 11, },
-                        {"Avramenko Ilya (Химик(Muscovite))", 1, 3, 4, 12, },
-                        {"Chupin Dmitry (Челмет(TRAKTORIST))", 2, 6, 8, 18, },
-                        {"Rasulov Artyom (ХК Тамбов(Arcanys))", 8, 3, 11, 16, },
-                        {"Fateyev Yegor (Челмет(TRAKTORIST))", 2, 9, 11, 18, },
-                        {"Podzins Zigurds (Дизель(matey))", 0, 3, 3, 20, },
-                        {"Sokolov Konstantin (ХК Тамбов(Arcanys))", 9, 8, 17, 16, },
-                        {"Chetverikov Daniil (Барс(TRAKTOR))", 2, 7, 9, 16, },
-                        {"Ogirchuk Daniil (СКА-Нева(Pablo))", 2, 2, 4, 19, },
-                        {"Gubin Oleg (Химик(Muscovite))", 1, 0, 1, 12, },
-                        {"Krutov Kirill (Барс(TRAKTOR))", 1, 4, 5, 16, },
-                        {"Knyazev Alexei (Cокол(FORWARDS))", 5, 6, 11, 27, },
-                        {"Zhilov Vasily (ХК Тамбов(Arcanys))", 1, 10, 11, 16, },
-                        {"Ivanov Semyon (Рубин(NO PASSARAN))", 6, 9, 15, 16, },
-                        {"Yakovlev Yegor A. (Металлург(Maxer))", 2, 1, 3, 3, },
-                        {"Valentsov Vladislav (СКА-Нева(Pablo))", 1, 3, 4, 19, },
-                        {"Kalashnikov Stanislav (Молот-Прикамье(Deverter))", 1, 5, 6, 22, },
-                        {"Ukolov Ivan (Cокол(FORWARDS))", 3, 1, 4, 24, },
-                        {"Manin Yegor (Буран(Gagarin))", 3, 2, 5, 9, },
-                        {"Alshevsky Yaroslav (Нефтяник(Ilyuxa))", 1, 1, 2, 6, },
-                        {"Busarov Georgy (Рубин(NO PASSARAN))", 14, 12, 26, 16, },
-                        {"Davydov Ilya (Ростов(Darlove))", 2, 4, 6, 24, },
-                        {"Ignashin Denis (Ермак(IIp9n1k))", 1, 2, 3, 4, },
-                        {"Shikun Alexander (Ермак(IIp9n1k))", 0, 4, 4, 4, },
-                        {"Yazkov Nikita (Челмет(TRAKTORIST))", 3, 4, 7, 18, },
-                        {"Kazakov Maxim D. (ХК Тамбов(Arcanys))", 8, 8, 16, 16, },
-                        {"Popov Dmitry A. (Буран(Gagarin))", 4, 0, 4, 9, },
-                        {"Kravchenko Vadim (Рубин(NO PASSARAN))", 5, 4, 9, 16, },
-                        {"Mikhailov Nikita (ЦСК ВВС(pROxORd))", 2, 5, 7, 28, },
-                        {"Baskov Alexei (ЦСК ВВС(pROxORd))", 5, 7, 12, 28, },
-                        {"Gordin Alexander (СКА-Нева(Pablo))", 3, 5, 8, 19, },
-                        {"Svintsitsky Nikita (Лада(ASTAF))", 2, 3, 5, 4, },
-                        {"Zakharov Ilya (Горняк(Kulyash28))", 0, 3, 3, 11, },
-                        {"Zyuzyakin Maxim (ХК Тамбов(Arcanys))", 4, 4, 8, 16, },
-                        {"Yepishin Mikhail (Динамо СПб(AK46))", 2, 9, 11, 20, },
-                        {"Valitsky Isaak (ХК Рязань(YarLoc))", 0, 1, 1, 5, },
-                        {"Penkovsky Artyom (Ростов(Darlove))", 4, 7, 11, 24, },
-                        {"Timiryov Alexander (Дизель(matey))", 6, 3, 9, 20, },
-                        {"Veryovkin Maxim (Югра(Maksik17))", 1, 11, 12, 22, },
-                        {"Rymarev Yevgeny (Югра(Maksik17))", 4, 2, 6, 22, },
-                        {"Khlopotov Vadim (Рубин(NO PASSARAN))", 9, 13, 22, 16, },
-                        {"Petrov Dmitry (Лада(ASTAF))", 1, 1, 2, 4, },
-                        {"Nikolayev Dmitry (СКА-Нева(Pablo))", 0, 1, 1, 19, },
-                        {"Skobelev Vyacheslav (Молот-Прикамье(Deverter))", 1, 3, 4, 22, },
-                        {"Derbenyov Alexander (Горняк(Kulyash28))", 5, 4, 9, 11, },
-                        {"Tyutchev Daniil (Cокол(FORWARDS))", 7, 3, 10, 27, },
-                        {"Ziazov Airat (Лада(ASTAF))", 2, 2, 4, 4, },
-                        {"Kozlovsky Yuri (Химик(Muscovite))", 1, 2, 3, 12, },
-                        {"Makeyev Nikita (Звезда(NINTENDO))", 0, 2, 2, 12, },
-                        {"Petrikov Yevgeny (Ростов(Darlove))", 0, 1, 1, 24, },
-                        {"Mnikhovich Andrei (Югра(Maksik17))", 1, 1, 2, 22, },
-                        {"Artyomov Artyom (Лада(ASTAF))", 1, 0, 1, 4, },
-                        {"Demidov Andrei (Буран(Gagarin))", 2, 2, 4, 9, },
-                        {"Mnatsyan David (Молот-Прикамье(Deverter))", 2, 2, 4, 22, },
-                        {"Antonov Anton (Дизель(matey))", 0, 1, 1, 15, },
-                        {"Makarenko Pavel (ХК Тамбов(Arcanys))", 6, 5, 11, 16, },
-                        {"Davydov Denis (Рубин(NO PASSARAN))", 4, 13, 17, 16, },
-                        {"Brovkin Artur (Барс(TRAKTOR))", 6, 3, 9, 16, },
-                        {"Naumov Vladislav (Югра(Maksik17))", 2, 3, 5, 22, },
-                        {"Slepets Kirill (Нефтяник(Ilyuxa))", 3, 1, 4, 6, },
-                        {"Gavrus Artur (Динамо СПб(AK46))", 6, 10, 16, 20, },
-                        {"Shafigullin Rinat (ЦСК ВВС(pROxORd))", 2, 5, 7, 28, },
-                        {"Khapov Maxim (Барс(TRAKTOR))", 4, 8, 12, 16, },
-                        {"Teryayev Sergei (Металлург(Maxer))", 0, 4, 4, 3, },
-                        {"Komaristy Alexander (Динамо СПб(AK46))", 10, 9, 19, 20, },
-                        {"Tagirov Kirill (Химик(Muscovite))", 1, 1, 2, 12, },
-                        {"Yanchevsky Mark (Нефтяник(Ilyuxa))", 1, 3, 4, 6, },
-                        {"Axyonov Arkady (Ростов(Darlove))", 5, 1, 6, 24, },
-                        {"Denezhkin Alexander (Буран(Gagarin))", 1, 3, 4, 9, },
-                        {"Maximov Kirill (Звезда(NINTENDO))", 2, 0, 2, 12, },
-                        {"Korenkov Ivan (ЦСК ВВС(pROxORd))", 1, 1, 2, 16, },
-                        {"Kovalyov Anton (ХК Тамбов(Arcanys))", 6, 3, 9, 16, },
-                        {"Sushinsky Ivan (Горняк(Kulyash28))", 0, 3, 3, 11, },
-                        {"Tsyganov Dmitry (Cокол(FORWARDS))", 3, 10, 13, 27, },
-                        {"Nechayev Artyom (Динамо СПб(AK46))", 10, 12, 22, 20, },
-                        {"Sokhatsky Vladimir (Югра(Maksik17))", 0, 1, 1, 22, },
-                        {"Chmykhov Artyom (Звезда(NINTENDO))", 1, 3, 4, 12, },
-                        {"Lypkan Mark (Металлург(Maxer))", 0, 2, 2, 3, },
-                        {"Volodin Pavel (Дизель(matey))", 1, 4, 5, 20, },
-                        {"Lebedev Yegor (Cокол(FORWARDS))", 0, 1, 1, 12, },
-                        {"Boichuk Dmitry (ХК Тамбов(Arcanys))", 5, 10, 15, 16, },
-                        {"Lomako Oleg (Металлург(Maxer))", 2, 1, 3, 3, },
-                        {"Medvedev Pavel S. (Cокол(FORWARDS))", 1, 2, 3, 27, },
-                        {"Peshekhonov Vladimir (Нефтяник(Ilyuxa))", 2, 4, 6, 6, },
-                        {"Yastrebkov Vselovod (Барс(TRAKTOR))", 4, 5, 9, 16, },
-                        {"Jansons Eduards (Металлург(Maxer))", 0, 1, 1, 3, },
-                        {"Korostelyov Nikita (Звезда(NINTENDO))", 4, 0, 4, 12, },
-                        {"Filin Yegor (Звезда(NINTENDO))", 0, 1, 1, 12, },
-                        {"Puchkov Yegor (Cокол(FORWARDS))", 0, 5, 5, 27, },
-                        {"Ovechkin Dmitry (СКА-Нева(Pablo))", 3, 2, 5, 19, },
-                        {"Nikitin Vadim (Нефтяник(Ilyuxa))", 0, 1, 1, 6, },
-                        {"Prokhorov Alexei (Ростов(Darlove))", 5, 5, 10, 24, },
-                        {"Vorobyov Dmitry (Молот-Прикамье(Deverter))", 2, 7, 9, 22, },
-                        {"Stepanenko Alexander (ЦСК ВВС(pROxORd))", 3, 3, 6, 28, },
-                        {"Berdyukov Georgy (Рубин(NO PASSARAN))", 1, 4, 5, 16, },
-                        {"Fast Konstantin (Рубин(NO PASSARAN))", 1, 7, 8, 16, },
-                        {"Vladimirov Nikolai (Лада(ASTAF))", 1, 2, 3, 4, },
-                        {"Macejko Miroslav (Дизель(matey))", 0, 3, 3, 20, },
-                        {"Popov Danila (Дизель(matey))", 3, 4, 7, 20, },
-                        {"Mingachyov Takhir (Звезда(NINTENDO))", 3, 3, 6, 12, },
-                        {"Zenchikov Igor (Молот-Прикамье(Deverter))", 3, 3, 6, 22, },
-                        {"Gimbatov Magomed (СКА-Нева(Pablo))", 6, 3, 9, 19, },
-                        {"Marushev Maxim (Барс(TRAKTOR))", 8, 4, 12, 16, },
-                        {"Khamidullin Dinar (Нефтяник(Ilyuxa))", 0, 2, 2, 6, },
-                        {"Ibragimov Marsel (Звезда(NINTENDO))", 0, 2, 2, 12, },
-                        {"Murzin Airat (Дизель(matey))", 2, 0, 2, 5, },
-                        {"Yelizarov Anatoly (Динамо СПб(AK46))", 0, 15, 15, 20, },
-                        {"Mizyurin Maxim (Ермак(IIp9n1k))", 0, 4, 4, 4, },
-                        {"Kitsyn Maxim (Металлург(Maxer))", 0, 2, 2, 3, },
-                        {"Fazleyev Radel (Нефтяник(Ilyuxa))", 0, 1, 1, 6, },
-                        {"Stalnov Donat (Дизель(matey))", 2, 3, 5, 20, },
-                        {"Dervuk Ilya (Химик(Muscovite))", 0, 1, 1, 12, },
-                        {"Miftakhov Amir (Барс(TRAKTOR))", 0, 3, 3, 16, },
-                        {"Ignatushkin Igor (ЦСК ВВС(pROxORd))", 4, 6, 10, 28, },
-                        {"Pavlyukov Ilya (Химик(Muscovite))", 0, 1, 1, 12, },
-                        {"Orlov Yevgeny A. (Ростов(Darlove))", 3, 5, 8, 24, },
-                        {"Dyuryagin Denis (Металлург(Maxer))", 1, 2, 3, 3, },
-                        {"Markov Artyom (Молот-Прикамье(Deverter))", 3, 1, 4, 22, },
-                        {"Opalyov Roman (Ростов(Darlove))", 2, 2, 4, 24, },
-                        {"Gavrilenko Konstantin (Молот-Прикамье(Deverter))", 0, 4, 4, 18, },
-                        {"Gross Vladislav (Горняк(Kulyash28))", 0, 2, 2, 11, },
-                        {"Mironov Ilya (Буран(Gagarin))", 0, 1, 1, 9, },
-                        {"Fishchenko Ivan (Югра(Maksik17))", 6, 2, 8, 22, },
-                        {"Korinevsky Maxim (ХК Рязань(YarLoc))", 0, 1, 1, 5, },
-                        {"Ryzhkov Maxim (Югра(Maksik17))", 6, 8, 14, 22, },
-                        {"Mityakin Yevgeny (Горняк(Kulyash28))", 2, 5, 7, 11, },
-                        {"Tyanulin Artur (Лада(ASTAF))", 1, 3, 4, 4, },
-                        {"Fedotov Alexander (Рубин(NO PASSARAN))", 2, 4, 6, 16, },
-                        {"Nabiullin Bulat (ЦСК ВВС(pROxORd))", 5, 5, 10, 28, },
-                        {"Lapin Sergei (Звезда(NINTENDO))", 7, 0, 7, 12, },
-                        {"Bogdanov Nikita (Динамо СПб(AK46))", 0, 1, 1, 20, },
-                        {"Borisenkov Alexander (Дизель(matey))", 4, 2, 6, 20, },
-                        {"Yachmenyov Denis (Рубин(NO PASSARAN))", 3, 6, 9, 16, },
-                        {"Patrikeyev Mikhail (Дизель(matey))", 0, 3, 3, 5, },
-                        {"Kaletnik Vladislav (Ермак(IIp9n1k))", 2, 1, 3, 4, },
-                        {"Kirpichnikov Alexander (Челмет(TRAKTORIST))", 2, 1, 3, 18, },
-                        {"Yerokhin Arseny (Лада(ASTAF))", 0, 2, 2, 4, },
-                        {"Berlyov Anton (Югра(Maksik17))", 2, 2, 4, 22, },
-                        {"Gavrilenko Ivan (Металлург(Maxer))", 1, 2, 3, 3, },
-                        {"Shubin Alexei (Дизель(matey))", 3, 4, 7, 20, },
-                        {"Afanasyev Maxim (Буран(Gagarin))", 0, 1, 1, 9, },
-                        {"Pervov Anton (Химик(Muscovite))", 0, 2, 2, 12, },
-                        {"Shiafotdinov Kamil (Нефтяник(Ilyuxa))", 2, 3, 5, 6, },
-                        {"Zaseda Matvei (Cокол(FORWARDS))", 4, 2, 6, 27, },
-                        {"Pilipenko Kirill (Югра(Maksik17))", 3, 2, 5, 22, },
-                        {"Mukhin Dmitry (Химик(Muscovite))", 1, 2, 3, 12, },
-                        {"Sheshin Dmitry (Челмет(TRAKTORIST))", 2, 8, 10, 18, },
-                        {"Yemets Ivan (Барс(TRAKTOR))", 1, 3, 4, 16, },
-                        {"Bulatov Adel (Барс(TRAKTOR))", 5, 4, 9, 16, },
-                        {"Shevchenko Alexander (Металлург(Maxer))", 2, 1, 3, 3, },
-                        {"Svechkov Fyodor (Лада(ASTAF))", 2, 2, 4, 4, },
-                        {"Puzanov Alexei (ЦСК ВВС(pROxORd))", 0, 1, 1, 2, },
-                        {"Antonosvsky Ivan (ХК Тамбов(Arcanys))", 1, 3, 4, 16, },
-                        {"Shiryayev Ivan (Челмет(TRAKTORIST))", 6, 10, 16, 18, },
-                        {"Stepanov Yegor (Челмет(TRAKTORIST))", 9, 6, 15, 18, },
-                        {"Razumnyak Valentin (Химик(Muscovite))", 1, 1, 2, 12, },
-                        {"Salakhov Maxim (Нефтяник(Ilyuxa))", 0, 5, 5, 6, },
-                        {"Voroshilo Artyom (Дизель(matey))", 5, 4, 9, 20, },
-                        {"Perevozchikov Denis (Буран(Gagarin))", 0, 2, 2, 9, },
-                        {"Sarvarov Artur (ЦСК ВВС(pROxORd))", 3, 4, 7, 28, },
-                        {"Churkin Andrei (Югра(Maksik17))", 3, 1, 4, 22, },
-                        {"Ugolnikov Igor (Нефтяник(Ilyuxa))", 3, 0, 3, 6, },
-                        {"Tsitsyura Vladislav (СКА-Нева(Pablo))", 4, 3, 7, 19, },
-                        {"Andriyanov Anton (Дизель(matey))", 4, 2, 6, 20, },
-                        {"Klimov Leonid (Звезда(NINTENDO))", 1, 0, 1, 12, },
-                        {"Yaremchuk Alexander (Металлург(Maxer))", 0, 2, 2, 3, },
-                        {"Kanukhin Nikita (Ермак(IIp9n1k))", 2, 1, 3, 4, },
-                        {"Khovanov Alexander (Барс(TRAKTOR))", 3, 4, 7, 16, },
-                        {"Artamkin Alexei (Рубин(NO PASSARAN))", 0, 4, 4, 16, },
-                        {"Byakin Mikhail (ЦСК ВВС(pROxORd))", 0, 4, 4, 28, },
-                        {"Kazakov Maxim A. (Молот-Прикамье(Deverter))", 5, 2, 7, 18, },
-                        {"Makhanovsky Pavel (Югра(Maksik17))", 3, 2, 5, 22, },
-                        {"Beloglazov Vladimir (ЦСК ВВС(pROxORd))", 0, 2, 2, 10, },
-                        {"Lukoshin Pavel (Ермак(IIp9n1k))", 0, 2, 2, 4, },
-                        {"Nazarevich Anton (Динамо СПб(AK46))", 4, 5, 9, 20, },
-                        {"Konozov Albert (СКА-Нева(Pablo))", 0, 3, 3, 19, },
-                        {"Loktev Alexander (Металлург(Maxer))", 4, 2, 6, 3, },
-                        {"Mironov Andrei (Дизель(matey))", 0, 3, 3, 15, },
-                        {"Nazarov Mikhail (Горняк(Kulyash28))", 1, 4, 5, 11, },
-                        {"Chernyuk Konstantin (ЦСК ВВС(pROxORd))", 0, 7, 7, 28, },
-                        {"Fatkullin Timur (Нефтяник(Ilyuxa))", 0, 4, 4, 6, },
-                        {"Tertyshny Nikita (Югра(Maksik17))", 3, 3, 6, 22, },
-                        {"Karlin Ruslan (Челмет(TRAKTORIST))", 11, 9, 20, 18, },
-                        {"Alshevsky Stanislav (Нефтяник(Ilyuxa))", 2, 2, 4, 6, },
-                        {"Gusev Maxim (Молот-Прикамье(Deverter))", 1, 1, 2, 4, },
-                        {"Dolgopyatov Nikita (Звезда(NINTENDO))", 1, 1, 2, 12, },
-                        {"Goloshchapov Kirill (Звезда(NINTENDO))", 0, 2, 2, 12, },
-                        {"Belozyorov Andrei Al. (Лада(ASTAF))", 1, 2, 3, 4, },
-                        {"Bulatov Timur (Лада(ASTAF))", 1, 1, 2, 4, },
-                        {"Teslenko Vitaly (Ермак(IIp9n1k))", 1, 0, 1, 4, },
-                        {"Yerofeyev Andrei (Челмет(TRAKTORIST))", 6, 3, 9, 18, },
-                        {"Khatsei Arseny (Ермак(IIp9n1k))", 0, 2, 2, 4, },
-                        {"Vasin Ivan (Динамо СПб(AK46))", 1, 3, 4, 20, },
-                        {"Kara Vladislav (Молот-Прикамье(Deverter))", 3, 3, 6, 18, },
-                        {"Popov Nikita (ХК Тамбов(Arcanys))", 0, 5, 5, 16, },
-                        {"Savunov Danil (СКА-Нева(Pablo))", 4, 1, 5, 19, },
-                        {"Silayev Ivan (Звезда(NINTENDO))", 0, 4, 4, 12, },
-                        {"Kuvardin Savely (Барс(TRAKTOR))", 4, 3, 7, 16, },
-                        {"Kosorenkov Ivan (СКА-Нева(Pablo))", 3, 2, 5, 19, },
-                        {"Krivosheyev Roman (ХК Тамбов(Arcanys))", 1, 6, 7, 16, },
-                        {"Lyutov Dmitry (Рубин(NO PASSARAN))", 2, 3, 5, 16, },
-                        {"Shchegolkov Vadim (Ростов(Darlove))", 6, 7, 13, 24, },
-                        {"Basisty Kirill (Ермак(IIp9n1k))", 0, 1, 1, 4, },
-                        {"Shaikhulov Ruslan (ХК Тамбов(Arcanys))", 4, 5, 9, 16, },
-                        {"Gromov Dmitry (Химик(Muscovite))", 0, 1, 1, 12, },
-                        {"Buivan Semyon (Челмет(TRAKTORIST))", 0, 7, 7, 18, },
-                        {"Bodrov Evgeny (Лада(ASTAF))", 1, 2, 3, 4, },
-                        {"Pylayev Artyom (Рубин(NO PASSARAN))", 6, 10, 16, 16, },
-                        {"Zorin Vladislav (Ростов(Darlove))", 2, 3, 5, 24, },
-                        {"Babintsev Gleb (Челмет(TRAKTORIST))", 0, 4, 4, 18, },
-                        {"Shekhovtsov Yegor (СКА-Нева(Pablo))", 1, 3, 4, 19, },
-                        {"Mokin Nikita (Рубин(NO PASSARAN))", 7, 7, 14, 16, },
-                        {"Volkov Konstantin L. (Югра(Maksik17))", 0, 1, 1, 22, },
-                        {"Sizov Anton (Молот-Прикамье(Deverter))", 1, 3, 4, 22, },
-                        {"Zheleznov Oleg (Барс(TRAKTOR))", 1, 4, 5, 16, },
-                        {"Ivanov Ilya (Буран(Gagarin))", 2, 1, 3, 9, },
-                        {"Shchemerov Alexander (Горняк(Kulyash28))", 1, 2, 3, 11, },
-                        {"Klochkov Alexei (ХК Тамбов(Arcanys))", 4, 7, 11, 16, },
-                        {"Mokin Mikhail (Нефтяник(Ilyuxa))", 5, 2, 7, 6, },
+                        {"Klochkov Alexei (ХК Тамбов(Arcanys))", 5, 7, 12, 23,},
+                        {"Mokin Mikhail (Нефтяник(Ilyuxa))", 5, 2, 7, 10,},
                 };
 
         // Column Names
-        String[] columnNames = {"Игрок(команда)", "Г", "П", "Очк", "И"};
+        String[] columnNames = {"Игрок(команда)", "И", "Г", "П", "Очк"};
+
+        try (PrintWriter writer = new PrintWriter("D:/Замена жесткого/testSTAT.csv")) {
+            writer.write(Arrays.toString(columnNames) + "\n");
+            for (Object[] objects : o) {  //идём по строкам
+                for (int j = 0; j < 5; j++) {//идём по столбцам
+                    writer.write(String.valueOf(objects[j])); //вывод элемента
+                    writer.write(", ");
+                }
+                writer.write("\n");
+            }
+        }
 
         TableModel model = new DefaultTableModel(data, columnNames) {
-            public Class getColumnClass(int column) {
-                Class returnValue;
-                if ((column >= 0) && (column < getColumnCount())) {
-                    returnValue = getValueAt(0, column).getClass();
-                } else {
-                    returnValue = Object.class;
-                }
-                return returnValue;
-            }
+//            public Class getColumnClass(int column) {
+//                Class returnValue;
+//                if ((column >= 0) && (column < getColumnCount())) {
+//                    returnValue = getValueAt(0, column).getClass();
+//                } else {
+//                    returnValue = Object.class;
+//                }
+//                return returnValue;
+//            }
         };
         // Initializing the JTable
         JTable table = new JTable(model);
-        table.getColumnModel().getColumn(0).setCellRenderer(new CustomRenderer());
-        table.getColumnModel().getColumn(1).setCellRenderer(new CustomRenderer());
-        table.getColumnModel().getColumn(2).setCellRenderer(new CustomRenderer());
-        table.getColumnModel().getColumn(3).setCellRenderer(new CustomRenderer());
-        table.getColumnModel().getColumn(4).setCellRenderer(new CustomRenderer());
+//        table.getColumnModel().getColumn(0).setCellRenderer(new CustomRenderer());
+//        table.getColumnModel().getColumn(1).setCellRenderer(new CustomRenderer());
+//        table.getColumnModel().getColumn(2).setCellRenderer(new CustomRenderer());
+//        table.getColumnModel().getColumn(3).setCellRenderer(new CustomRenderer());
+//        table.getColumnModel().getColumn(4).setCellRenderer(new CustomRenderer());
         RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(
                 model);
         table.setRowSorter(sorter);
@@ -454,18 +80,18 @@ public class JTableForStat {
         frame.setVisible(true);
     }
 
-    class CustomRenderer extends DefaultTableCellRenderer {
-        private static final long serialVersionUID = 6703872492730589499L;
-
-        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-            Component cellComponent = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-
-            if (row >= 0 && row <= 15) {
-                cellComponent.setBackground(Color.YELLOW);
-            } else {
-                cellComponent.setBackground(Color.CYAN);
-            }
-            return cellComponent;
-        }
-    }
+//    class CustomRenderer extends DefaultTableCellRenderer {
+//        private static final long serialVersionUID = 6703872492730589499L;
+//
+//        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+//            Component cellComponent = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+//
+//            if (row >= 0 && row <= 15) {
+//                cellComponent.setBackground(Color.YELLOW);
+//            } else {
+//                cellComponent.setBackground(Color.CYAN);
+//            }
+//            return cellComponent;
+//        }
+//    }
 }

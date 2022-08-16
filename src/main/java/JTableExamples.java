@@ -18,18 +18,18 @@ public class JTableExamples {
         frame.setTitle("JTable Example");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        for (Object[] objects : o) {  //идём по строкам
-            System.out.print("{\"");
-            for (int j = 0; j < 6; j++) {//идём по столбцам
-                System.out.print(objects[j]); //вывод элемента
-                if (j == 0) {
-                    System.out.print("\"");
-                }
-                System.out.print(", ");
-
-            }
-            System.out.print("},\n");
-        }
+//        for (Object[] objects : o) {  //идём по строкам
+//            System.out.print("{\"");
+//            for (int j = 0; j < 6; j++) {//идём по столбцам
+//                System.out.print(objects[j]); //вывод элемента
+//                if (j == 0) {
+//                    System.out.print("\"");
+//                }
+//                System.out.print(", ");
+//
+//            }
+//            System.out.print("},\n");
+//        }
 
         // Data to be displayed in the JTable
         Object[][] data =
@@ -59,12 +59,12 @@ public class JTableExamples {
                 };
 
         // Column Names
-        String[] columnNames = {"Команда", "И", "В", "ШЗ", "ШП", "О"};
+        String[] columnNames = {"Команда", "И", "В", "ОТ/Б", "П", "ШЗ", "ШП", "О"};
 
         try (PrintWriter writer = new PrintWriter("D:/Замена жесткого/test.csv")) {
             writer.write(Arrays.toString(columnNames) + "\n");
             for (Object[] objects : o) {  //идём по строкам
-                for (int j = 0; j < 6; j++) {//идём по столбцам
+                for (int j = 0; j < 8; j++) {//идём по столбцам
                     writer.write(String.valueOf(objects[j])); //вывод элемента
                     writer.write(", ");
                 }
@@ -72,24 +72,24 @@ public class JTableExamples {
             }
         }
         TableModel model = new DefaultTableModel(data, columnNames) {
-            public Class getColumnClass(int column) {
-                Class returnValue;
-                if ((column >= 0) && (column < getColumnCount())) {
-                    returnValue = getValueAt(0, column).getClass();
-                } else {
-                    returnValue = Object.class;
-                }
-                return returnValue;
-            }
+//            public Class getColumnClass(int column) {
+//                Class returnValue;
+//                if ((column >= 0) && (column < getColumnCount())) {
+//                    returnValue = getValueAt(0, column).getClass();
+//                } else {
+//                    returnValue = Object.class;
+//                }
+//                return returnValue;
+//            }
         };
         // Initializing the JTable
         JTable table = new JTable(model);
-        table.getColumnModel().getColumn(0).setCellRenderer(new CustomRenderer());
-        table.getColumnModel().getColumn(1).setCellRenderer(new CustomRenderer());
-        table.getColumnModel().getColumn(2).setCellRenderer(new CustomRenderer());
-        table.getColumnModel().getColumn(3).setCellRenderer(new CustomRenderer());
-        table.getColumnModel().getColumn(4).setCellRenderer(new CustomRenderer());
-        table.getColumnModel().getColumn(5).setCellRenderer(new CustomRenderer());
+//        table.getColumnModel().getColumn(0).setCellRenderer(new CustomRenderer());
+//        table.getColumnModel().getColumn(1).setCellRenderer(new CustomRenderer());
+//        table.getColumnModel().getColumn(2).setCellRenderer(new CustomRenderer());
+//        table.getColumnModel().getColumn(3).setCellRenderer(new CustomRenderer());
+//        table.getColumnModel().getColumn(4).setCellRenderer(new CustomRenderer());
+//        table.getColumnModel().getColumn(5).setCellRenderer(new CustomRenderer());
         RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(
                 model);
         table.setRowSorter(sorter);
@@ -101,18 +101,18 @@ public class JTableExamples {
         frame.setVisible(true);
     }
 
-    class CustomRenderer extends DefaultTableCellRenderer {
-        private static final long serialVersionUID = 6703872492730589499L;
-
-        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-            Component cellComponent = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-
-            if (row >= 0 && row <= 15) {
-                cellComponent.setBackground(Color.YELLOW);
-            } else {
-                cellComponent.setBackground(Color.CYAN);
-            }
-            return cellComponent;
-        }
-    }
+//    class CustomRenderer extends DefaultTableCellRenderer {
+//        private static final long serialVersionUID = 6703872492730589499L;
+//
+//        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+//            Component cellComponent = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+//
+//            if (row >= 0 && row <= 15) {
+//                cellComponent.setBackground(Color.YELLOW);
+//            } else {
+//                cellComponent.setBackground(Color.CYAN);
+//            }
+//            return cellComponent;
+//        }
+//    }
 }
