@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to the application!!!</title>
+    <link href="css/table_style.css" rel="stylesheet">
+</head>
+<body>
+<h1>Welcome to the Spring MVC application</h1>
+<form>
+<table class="table_sort">
+    <script src="js/sorter.js"></script>
+    <thead>
+    <tr>
+        <th>Team</th>
+        <th>GP</th>
+        <th>W</th>
+        <th>L</th>
+        <th>OT</th>
+        <th>GF</th>
+        <th>GA</th>
+        <th>PTS</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="standing : ${standings}">
+        <td th:text="${standing.getTeam()}"></td>
+        <td th:text="${standing.getGames()}"></td>
+        <td th:text="${standing.getWins()}"></td>
+        <td th:text="${standing.getLoses()}"></td>
+        <td th:text="${standing.getLosesOT()}"></td>
+        <td th:text="${standing.getGoalsScored()}"></td>
+        <td th:text="${standing.getMissingGoals()}"></td>
+        <td th:text="${standing.getPoints()}"></td>
+    </tr>
+    </tbody>
+</table>
+</form>
+</body>
+</html>
