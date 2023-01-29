@@ -13,7 +13,7 @@ import java.util.*;
 @Service
 public class StandingsServiceImpl implements StandingsService {
 
-    private final StandingsRepository statsRepository;
+    private final StandingsRepository standingsRepository;
     private static final String PATH = "D:/KHL ECHL/teamstat";
     private static final String FULLTEAMSTAT_TXT = "fullteamstat.txt";
     private static final String CALENDAR = "calendar.txt";
@@ -23,7 +23,7 @@ public class StandingsServiceImpl implements StandingsService {
         getFileNames();
         getDataFromFiles();
         createCalendar();
-        statsRepository.saveAll(createMapGameTable());
+        standingsRepository.saveAll(createMapGameTable());
     }
 
     public void getFileNames() {

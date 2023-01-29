@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stats</title>
+    <link href="/css/table_style.css" rel="stylesheet">
+</head>
+<body>
+<h1>Look stats</h1>
+<form>
+    <table class="table_sort">
+        <script src="/js/sorter.js"></script>
+        <thead>
+        <tr>
+            <th>Player</th>
+            <th>Games</th>
+            <th>Goals</th>
+            <th>Assists</th>
+            <th>Points</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="stat : ${stats}">
+            <td th:text="${stat.getPlayer()}"></td>
+            <td th:text="${stat.getGames()}"></td>
+            <td th:text="${stat.getGoals()}"></td>
+            <td th:text="${stat.getAssists()}"></td>
+            <td th:text="${stat.getPoints()}"></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>

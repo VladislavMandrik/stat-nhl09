@@ -11,18 +11,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class StandingsControllerImpl implements StandingsController {
 
-    private final StandingsServiceImpl statService;
-    private final StandingsRepository statsRepository;
+    private final StandingsServiceImpl standingsService;
+    private final StandingsRepository standingsRepository;
 
     @GetMapping("/create")
-    public String createStats() {
-        statService.createStandings();
+    public String createStandings() {
+        standingsService.createStandings();
         return "table-created_page";
     }
 
     @GetMapping("/standings")
     public String standings(Model model) {
-        model.addAttribute("standings", statsRepository.findAll());
+        model.addAttribute("standings", standingsRepository.findAll());
         return "standings_page";
     }
 }
