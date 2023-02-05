@@ -8,12 +8,13 @@
         .table_sort {
             border-collapse: collapse;
             counter-reset: schetchik;
-            width: 35%;
         }
 
         .table_sort th {
-            color: #ffebcd;
-            background: #008b8b;
+            color:
+                    #ffebcd;
+            background:
+                    #008b8b;
             cursor: pointer;
         }
 
@@ -45,57 +46,25 @@
         .table_sort tbody tr:nth-child(-n+1):before {
             content: "1";
         }
-
-        .table_sort tbody tr:nth-child(-n+1):before {
-            width: 0.01%
-        }
-
-        .table_sort tr td:nth-child(1) {
-            width: 12%
-        }
-
-        .table_sort tr td:nth-child(2) {
-            width: 4%
-        }
-
-        .table_sort tr td:nth-child(3) {
-            width: 4%
-        }
-
-        .table_sort tr td:nth-child(4) {
-            width: 4%
-        }
-
-        .table_sort tr td:nth-child(5) {
-            width: 4%
-        }
-
-        .table_sort tr td:nth-child(6) {
-            width: 4%
-        }
     </style>
 </head>
-<h1>Look stats</h1>
+<h1>Look team stats</h1>
 <table class="table_sort">
     <script src="/js/sorter.js"></script>
     <thead>
     <tr>
-        <th>Player</th>
-        <th>Games</th>
-        <th>Goals</th>
-        <th>Assists</th>
-        <th>Points</th>
-        <th>PPG</th>
+        <th>Team</th>
+        <th>OT shots</th>
+        <th>OT goals</th>
+        <th>OT%</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="stat : ${stats}">
-        <td th:text="${stat.getPlayer()}"></td>
-        <td th:text="${stat.getGames()}"></td>
-        <td th:text="${stat.getGoals()}"></td>
-        <td th:text="${stat.getAssists()}"></td>
-        <td th:text="${stat.getPoints()}"></td>
-        <td th:text="${stat.getPPG()}"></td>
+    <tr th:each="stat : ${teamStats}">
+        <td th:text="${stat.getTeam()}"></td>
+        <td th:text="${stat.getOnetimerShots()}"></td>
+        <td th:text="${stat.getOnetimerGoals()}"></td>
+        <td th:text="${stat.getOnetimerGoalsPercentage()}"></td>
     </tr>
     </tbody>
 </table>

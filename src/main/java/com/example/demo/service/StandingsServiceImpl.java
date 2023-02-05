@@ -14,10 +14,10 @@ import java.util.*;
 public class StandingsServiceImpl implements StandingsService {
 
     private final StandingsRepository standingsRepository;
-    private static final String PATH = "D:/KHL ECHL/teamstat";
-    private static final String FULLTEAMSTAT_TXT = "fullteamstat.txt";
-    private static final String CALENDAR = "calendar.txt";
-    private static final String DATA = "data.txt";
+    private final String PATH = "D:/NHL Retro ECHL/teamstat";
+    private final String FULLTEAMSTAT_TXT = "fullteamstat.txt";
+    private final String CALENDAR = "calendar.txt";
+    private final String DATA = "data.txt";
 
     public void createStandings() {
         getFileNames();

@@ -8,12 +8,13 @@
         .table_sort {
             border-collapse: collapse;
             counter-reset: schetchik;
-            width: 35%;
         }
 
         .table_sort th {
-            color: #ffebcd;
-            background: #008b8b;
+            color:
+                    #ffebcd;
+            background:
+                    #008b8b;
             cursor: pointer;
         }
 
@@ -45,57 +46,29 @@
         .table_sort tbody tr:nth-child(-n+1):before {
             content: "1";
         }
-
-        .table_sort tbody tr:nth-child(-n+1):before {
-            width: 0.01%
-        }
-
-        .table_sort tr td:nth-child(1) {
-            width: 12%
-        }
-
-        .table_sort tr td:nth-child(2) {
-            width: 4%
-        }
-
-        .table_sort tr td:nth-child(3) {
-            width: 4%
-        }
-
-        .table_sort tr td:nth-child(4) {
-            width: 4%
-        }
-
-        .table_sort tr td:nth-child(5) {
-            width: 4%
-        }
-
-        .table_sort tr td:nth-child(6) {
-            width: 4%
-        }
     </style>
 </head>
-<h1>Look stats</h1>
+<h1>Look goalie stats</h1>
 <table class="table_sort">
     <script src="/js/sorter.js"></script>
     <thead>
     <tr>
         <th>Player</th>
         <th>Games</th>
-        <th>Goals</th>
-        <th>Assists</th>
-        <th>Points</th>
-        <th>PPG</th>
+        <th>SA</th>
+        <th>GA</th>
+        <th>Sv%</th>
+        <th>GAA</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="stat : ${stats}">
+    <tr th:each="stat : ${goalieStats}">
         <td th:text="${stat.getPlayer()}"></td>
         <td th:text="${stat.getGames()}"></td>
-        <td th:text="${stat.getGoals()}"></td>
-        <td th:text="${stat.getAssists()}"></td>
-        <td th:text="${stat.getPoints()}"></td>
-        <td th:text="${stat.getPPG()}"></td>
+        <td th:text="${stat.getShotsAgainst()}"></td>
+        <td th:text="${stat.getGoalsAgainst()}"></td>
+        <td th:text="${stat.getSavePercentage()}"></td>
+        <td th:text="${stat.getGAA()}"></td>
     </tr>
     </tbody>
 </table>

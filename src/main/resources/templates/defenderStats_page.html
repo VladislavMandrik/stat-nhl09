@@ -12,8 +12,10 @@
         }
 
         .table_sort th {
-            color: #ffebcd;
-            background: #008b8b;
+            color:
+                    #ffebcd;
+            background:
+                    #008b8b;
             cursor: pointer;
         }
 
@@ -75,7 +77,7 @@
         }
     </style>
 </head>
-<h1>Look stats</h1>
+<h1>Look defenders stats</h1>
 <table class="table_sort">
     <script src="/js/sorter.js"></script>
     <thead>
@@ -89,7 +91,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="stat : ${stats}">
+    <tr th:each="stat : ${defenders}">
         <td th:text="${stat.getPlayer()}"></td>
         <td th:text="${stat.getGames()}"></td>
         <td th:text="${stat.getGoals()}"></td>
