@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Stats</title>
+    <title>Defender stats</title>
     <link href="/css/table_style.css" rel="stylesheet">
     <style>
         .table_sort {
@@ -75,6 +75,10 @@
         .table_sort tr td:nth-child(6) {
             width: 4%
         }
+
+        .table_sort tr td:nth-child(7) {
+            width: 4%
+        }
     </style>
 </head>
 <h1>Look defenders stats</h1>
@@ -88,6 +92,7 @@
         <th>Assists</th>
         <th>Points</th>
         <th>PPG</th>
+        <th>+/-</th>
     </tr>
     </thead>
     <tbody>
@@ -98,6 +103,7 @@
         <td th:text="${stat.getAssists()}"></td>
         <td th:text="${stat.getPoints()}"></td>
         <td th:text="${stat.getPPG()}"></td>
+        <td th:text="${stat.getPlusMinus()}"></td>
     </tr>
     </tbody>
 </table>

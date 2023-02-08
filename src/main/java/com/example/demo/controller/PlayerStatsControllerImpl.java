@@ -17,7 +17,6 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
     private final StatsServiceImpl statsService;
     private final PlayerStatsRepository statsRepository;
     private final GoalieStatsRepository goalieStatsRepository;
-    private final TeamStatsRepository teamStatsRepository;
     private final DefensemanStatsRepository defensemanStatsRepository;
 
     @GetMapping("/create")
@@ -35,15 +34,8 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
     @GetMapping("/goalie")
     public String goalie(Model model) {
         model.addAttribute("goalieStats",
-                goalieStatsRepository.findGoalieStatsByGamesBetween(10, 100));
+                goalieStatsRepository.findGoalieStatsByGamesBetween(0, 100));
         return "goalieStats_page";
-    }
-
-    @GetMapping("/team")
-    public String team(Model model) {
-        model.addAttribute("teamStats",
-                teamStatsRepository.findAll());
-        return "teamStats_page";
     }
 
     @GetMapping("/defenders")

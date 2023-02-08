@@ -19,9 +19,10 @@ public class GoalieStats {
     private String savePercentage;
     private String GAA;
     private Double TOI;
+    private Integer assists;
 
     public GoalieStats(String player, Integer games, Integer shotsAgainst, Integer goalsAgainst,
-                       String savePercentage, String GAA, Double TOI) {
+                       String savePercentage, String GAA, Double TOI, Integer assists) {
         this.player = player;
         this.games = games;
         this.shotsAgainst = shotsAgainst;
@@ -29,6 +30,7 @@ public class GoalieStats {
         this.savePercentage = savePercentage;
         this.GAA = GAA;
         this.TOI = TOI;
+        this.assists = assists;
     }
 }
 

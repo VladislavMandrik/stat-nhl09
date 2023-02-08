@@ -16,11 +16,18 @@ public class TeamStats {
     private Integer onetimerShots;
     private Integer onetimerGoals;
     private String onetimerGoalsPercentage;
+    private Integer games;
+    private String OTPG;
+    private String OTGPG;
 
-    public TeamStats(String team, Integer onetimerShots, Integer onetimerGoals, String onetimerGoalsPercentage) {
+    public TeamStats(String team, Integer onetimerShots, Integer onetimerGoals, String onetimerGoalsPercentage,
+                     Integer games, String OTPG, String OTGPG) {
         this.team = team;
         this.onetimerShots = onetimerShots;
         this.onetimerGoals = onetimerGoals;
         this.onetimerGoalsPercentage = onetimerGoalsPercentage;
+        this.games = games;
+        this.OTPG = OTPG;
+        this.OTGPG = OTGPG;
     }
 }

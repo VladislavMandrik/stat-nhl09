@@ -8,4 +8,7 @@ public interface StandingsController {
     String createStandings();
 
     String standings(Model model);
+
+    String teamstats(Model model);
+
 }

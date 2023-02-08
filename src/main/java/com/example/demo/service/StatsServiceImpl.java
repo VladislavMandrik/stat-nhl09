@@ -3,11 +3,9 @@ package com.example.demo.service;
 import com.example.demo.model.DefensemanStats;
 import com.example.demo.model.GoalieStats;
 import com.example.demo.model.PlayerStats;
-import com.example.demo.model.TeamStats;
 import com.example.demo.repository.DefensemanStatsRepository;
 import com.example.demo.repository.GoalieStatsRepository;
 import com.example.demo.repository.PlayerStatsRepository;
-import com.example.demo.repository.TeamStatsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,15 +18,11 @@ import java.util.*;
 public class StatsServiceImpl implements StatsService {
     private final PlayerStatsRepository statsRepository;
     private final GoalieStatsRepository goalieStatsRepository;
-    private final TeamStatsRepository teamStatsRepository;
     private final DefensemanStatsRepository defensemanStatsRepository;
 
-
     private final String PATHPLAYERSTAT = "D:/KHL ECHL/playerstat";
-    private final String PATHTEAMSTAT = "D:/KHL ECHL/teamstat";
     private final String PATHDEFENSEMANS = "D:/KHL ECHL/Defenseman";
     private final String FULLPLAYERSTAT_TXT = "fullplayerstat.txt";
-    private final String FULLTEAMSTAT_TXT = "fullteamstat.txt";
     private final String FULLDEFENSEMANS_TXT = "fulldefensemans.txt";
     private final int GOALS = 4;
     private final int ASSISTS = 5;
@@ -36,11 +30,9 @@ public class StatsServiceImpl implements StatsService {
     public void createStats() {
         List<PlayerStats> list = new ArrayList<>();
         List<GoalieStats> listGoalie = new ArrayList<>();
-        List<TeamStats> listTeam = new ArrayList<>();
         List<DefensemanStats> defensemansList = new ArrayList<>();
 
         getFullStats();
-        getFullTeamstats();
         getFullDefensemans();
 
         List<String> goals = createStatsForTable(GOALS);
@@ -51,6 +43,7 @@ public class StatsServiceImpl implements StatsService {
         Map<String, Integer> points = new TreeMap<>();
         Map<String, String> PPG = new TreeMap<>();
         Map<String, String> defensemans = new TreeMap<>();
+        Map<String, Integer> plusMinus = new TreeMap<>();
 
         Map<String, Integer> goalieGames = new TreeMap<>();
         Map<String, Integer> shotsAgainst = new TreeMap<>();
@@ -58,55 +51,32 @@ public class StatsServiceImpl implements StatsService {
         Map<String, String> savePercentage = new TreeMap<>();
         Map<String, String> GAA = new TreeMap<>();
         Map<String, Double> TOI = new TreeMap<>();
+        Map<String, Integer> goalieAssists = new TreeMap<>();
 
-        Map<String, Integer> OTShots = new TreeMap<>();
-        Map<String, Integer> OTGoals = new TreeMap<>();
-        Map<String, String> OTGPercentage = new TreeMap<>();
-
-        createGamesMap(gamesMap);
+        createGamesAndPlusMinusMap(gamesMap, plusMinus);
         createMapFromList(goals, goalsMap);
         createMapFromList(assists, assistsMap);
         createMapFromList(createPoints(goals, assists), points);
         createPPG(gamesMap, points, PPG);
 
-        createGoalieStats(goalieGames, shotsAgainst, goalsAgainst, savePercentage, GAA, TOI);
-        createTeamstat(OTShots, OTGoals, OTGPercentage);
-
         gamesMap.forEach((player, games) ->
                 list.add(new PlayerStats(player, games, goalsMap.get(player), assistsMap.get(player),
-                        points.get(player), PPG.get(player))));
+                        points.get(player), PPG.get(player), plusMinus.get(player))));
         statsRepository.saveAll(replaceNullOnZero(list));
 
         createDefensemans(defensemans, list, defensemansList);
-        System.out.println("cssdcsdcsdcsdcsdcdscsdcsdcsdcsdcsdc" + defensemansList);
         defensemanStatsRepository.saveAll(defensemansList);
 
+        createGoalieStats(goalieGames, shotsAgainst, goalsAgainst, savePercentage, GAA, TOI, goalieAssists);
         goalieGames.forEach((player, games) ->
                 listGoalie.add(new GoalieStats(player, games, shotsAgainst.get(player), goalsAgainst.get(player),
-                        savePercentage.get(player), GAA.get(player), TOI.get(player))));
+                        savePercentage.get(player), GAA.get(player), TOI.get(player), goalieAssists.get(player))));
         goalieStatsRepository.saveAll(listGoalie);
-
-        OTShots.forEach((team, shots) -> listTeam.add(new TeamStats(team, shots, OTGoals.get(team), OTGPercentage.get(team))));
-        teamStatsRepository.saveAll(listTeam);
     }
 
     private void getFullStats() {
         try (PrintWriter printWriter = new PrintWriter(new FileWriter(FULLPLAYERSTAT_TXT))) {
             File dir = new File(PATHPLAYERSTAT);
-            for (File file : dir.listFiles()) {
-                Scanner scanner = new Scanner(new FileInputStream(file)).useDelimiter("\\A");
-                if (scanner.hasNext()) {
-                    printWriter.write(scanner.next());
-                }
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private void getFullTeamstats() {
-        try (PrintWriter printWriter = new PrintWriter(new FileWriter(FULLTEAMSTAT_TXT))) {
-            File dir = new File(PATHTEAMSTAT);
             for (File file : dir.listFiles()) {
                 Scanner scanner = new Scanner(new FileInputStream(file)).useDelimiter("\\A");
                 if (scanner.hasNext()) {
@@ -207,7 +177,7 @@ public class StatsServiceImpl implements StatsService {
         }
     }
 
-    private void createGamesMap(Map<String, Integer> gamesMap) {
+    private void createGamesAndPlusMinusMap(Map<String, Integer> gamesMap, Map<String, Integer> plusMinus) {
 
         try {
             BufferedReader reader = new BufferedReader(new FileReader(FULLPLAYERSTAT_TXT));
@@ -222,6 +192,17 @@ public class StatsServiceImpl implements StatsService {
                     gamesMap.put(words[0] + " (" + words[1] + ")", 1);
                 } else if (gamesMap.containsKey(words[0] + " (" + words[1] + ")") && !Objects.equals(words[0], "Player Name")) {
                     gamesMap.put(words[0] + " (" + words[1] + ")", gamesMap.get(words[0] + " (" + words[1] + ")") + 1);
+                }
+
+                if (!Objects.equals(words[2], "Goalie")) {
+
+                    if (!plusMinus.containsKey(words[0] + " (" + words[1] + ")") && !Objects.equals(words[0], "Player Name")) {
+                        plusMinus.put(words[0] + " (" + words[1] + ")", Integer.valueOf(words[7]));
+                    } else if (plusMinus.containsKey(words[0] + " (" + words[1] + ")") && !Objects.equals(words[0], "Player Name")) {
+                        plusMinus.put(words[0] + " (" + words[1] + ")", plusMinus.get(words[0] + " (" + words[1] + ")") + Integer.parseInt(words[7]));
+                    }
+                } else {
+                    plusMinus.put(words[0] + " (" + words[1] + ")", -1000);
                 }
             }
         } catch (IOException e) {
@@ -316,7 +297,7 @@ public class StatsServiceImpl implements StatsService {
 
     private void createGoalieStats(Map<String, Integer> games, Map<String, Integer> shotsAgainst,
                                    Map<String, Integer> goalsAgainst, Map<String, String> savePercentage,
-                                   Map<String, String> GAA, Map<String, Double> TOI) {
+                                   Map<String, String> GAA, Map<String, Double> TOI, Map<String, Integer> goalieAssist) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(FULLPLAYERSTAT_TXT));
 
@@ -373,60 +354,11 @@ public class StatsServiceImpl implements StatsService {
                 String createGAA = new DecimalFormat("#0.00").format((60 * j) / m);
                 GAA.put(map.getKey(), createGAA);
             }
+
+            List<PlayerStats> goalieAssistsList = statsRepository.findPlayerStatsByPlusMinusIs("-1000");
+            goalieAssistsList.forEach(playerStats -> goalieAssist.put(playerStats.getPlayer(), playerStats.getAssists()));
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }
-    }
-
-    private void createTeamstat(Map<String, Integer> OTS, Map<String, Integer> OTG, Map<String, String> OTGPercentage) {
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(FULLTEAMSTAT_TXT));
-
-            String c;
-            while ((c = reader.readLine()) != null) {
-                String[] words = c.split(",");
-
-                createFullTeamName(words);
-
-                if (!OTS.containsKey(words[1]) && checkInt(words[6]) && checkInt(words[3])) {
-                    OTS.put(words[1], Integer.valueOf(words[6]));
-                    OTG.put(words[1], Integer.valueOf(words[7]));
-                } else if (OTS.containsKey(words[1]) && checkInt(words[6]) && checkInt(words[3])) {
-                    OTS.put(words[1], OTS.get(words[1]) + Integer.parseInt(words[6]));
-                    OTG.put(words[1], OTG.get(words[1]) + Integer.parseInt(words[7]));
-                } else if (!OTS.containsKey(words[1]) && checkInt(words[6]) && !checkInt(words[3])) {
-                    OTS.put(words[1], Integer.valueOf(words[7]));
-                    OTG.put(words[1], Integer.valueOf(words[8]));
-                } else if (OTS.containsKey(words[1]) && checkInt(words[6]) && !checkInt(words[3])) {
-                    OTS.put(words[1], OTS.get(words[1]) + Integer.parseInt(words[7]));
-                    OTG.put(words[1], OTG.get(words[1]) + Integer.parseInt(words[8]));
-                }
-            }
-
-            for (Map.Entry<String, Integer> map : OTG.entrySet()) {
-                if (OTG.get(map.getKey()) != 0) {
-                    if (OTS.containsKey(map.getKey())) {
-                        Double i = Double.valueOf(OTG.get(map.getKey()));
-                        Double j = Double.valueOf(OTS.get(map.getKey()));
-                        String formattedDouble = new DecimalFormat("#0.0").format((100 * i) / (j));
-                        OTGPercentage.put(map.getKey(), formattedDouble);
-                    }
-                } else {
-                    OTGPercentage.put(map.getKey(), "0");
-                }
-
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private boolean checkInt(String s) throws NumberFormatException {
-        try {
-            Integer.parseInt(s);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
         }
     }
 
@@ -492,7 +424,7 @@ public class StatsServiceImpl implements StatsService {
             list.forEach(playerStats -> {
                 if (defensemans.containsKey(playerStats.getPlayer())) {
                     defensemansList.add(new DefensemanStats(playerStats.getPlayer(), playerStats.getGames(),
-                            playerStats.getGoals(), playerStats.getAssists(), playerStats.getPoints(), playerStats.getPPG()));
+                            playerStats.getGoals(), playerStats.getAssists(), playerStats.getPoints(), playerStats.getPPG(), playerStats.getPlusMinus()));
                 }
             });
         } catch (IOException e) {

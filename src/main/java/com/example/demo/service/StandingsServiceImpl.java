@@ -1,12 +1,15 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Standings;
+import com.example.demo.model.TeamStats;
 import com.example.demo.repository.StandingsRepository;
+import com.example.demo.repository.TeamStatsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.nio.file.*;
+import java.text.DecimalFormat;
 import java.util.*;
 
 @RequiredArgsConstructor
@@ -14,16 +17,48 @@ import java.util.*;
 public class StandingsServiceImpl implements StandingsService {
 
     private final StandingsRepository standingsRepository;
-    private final String PATH = "D:/NHL Retro ECHL/teamstat";
+    private final TeamStatsRepository teamStatsRepository;
+    private final String PATH = "D:/KHL ECHL/teamstat";
     private final String FULLTEAMSTAT_TXT = "fullteamstat.txt";
     private final String CALENDAR = "calendar.txt";
     private final String DATA = "data.txt";
 
     public void createStandings() {
+        List<Standings> list = new ArrayList<>();
+        List<String> tableWithout = new ArrayList<>();
+        List<String> tableWith = new ArrayList<>();
+        List<String> plus1 = new ArrayList<>();
+        List<TeamStats> listTeam = new ArrayList<>();
+
+        Map<String, Integer> games = new TreeMap<>();
+        Map<String, Integer> points = new TreeMap<>();
+        Map<String, Integer> loses = new TreeMap<>();
+        Map<String, Integer> wins = new TreeMap<>();
+        Map<String, Integer> losesOT = new TreeMap<>();
+        Map<String, Integer> goalsScored = new TreeMap<>();
+        Map<String, Integer> goalsMissing = new TreeMap<>();
+
+        Map<String, Integer> OTShots = new TreeMap<>();
+        Map<String, Integer> OTGoals = new TreeMap<>();
+        Map<String, String> OTGPercentage = new TreeMap<>();
+        Map<String, String> OTPG = new TreeMap<>();
+        Map<String, String> OTGPG = new TreeMap<>();
+
         getFileNames();
         getDataFromFiles();
         createCalendar();
-        standingsRepository.saveAll(createMapGameTable());
+        createMapGameTable(games, points, goalsScored, goalsMissing, loses, tableWithout, tableWith, plus1,
+                wins, losesOT);
+
+        games.forEach((team, game) -> list.add(
+                new Standings(team, game, wins.get(team), loses.get(team), losesOT.get(team),
+                        goalsScored.get(team), goalsMissing.get(team), points.get(team))));
+        standingsRepository.saveAll(list);
+
+        createTeamstat(OTShots, OTGoals, OTGPercentage, games, OTPG, OTGPG);
+        OTShots.forEach((team, shots) -> listTeam.add(new TeamStats(team, shots, OTGoals.get(team),
+                OTGPercentage.get(team), games.get(team), OTPG.get(team), OTGPG.get(team))));
+        teamStatsRepository.saveAll(listTeam);
     }
 
     public void getFileNames() {
@@ -73,7 +108,7 @@ public class StandingsServiceImpl implements StandingsService {
 //            for (String s : words) {
 //                System.out.println(s);
 
-//            createFullTeamName(words);
+                createFullTeamName(words);
 
                 if (checkInt(words[2]) && !Objects.equals(words[3], "Á") && !Objects.equals(words[3], "ÎÒ")) {
                     gamesData.add(words[1] + "," + Integer.parseInt(words[2]) + ",");
@@ -109,19 +144,11 @@ public class StandingsServiceImpl implements StandingsService {
         }
     }
 
-    public List<Standings> createMapGameTable() {
-        Map<String, Integer> games = new TreeMap<>();
-        Map<String, Integer> points = new TreeMap<>();
+    public void createMapGameTable(Map<String, Integer> games, Map<String, Integer> points, Map<String, Integer> goalsScored,
+                                   Map<String, Integer> goalsMissing, Map<String, Integer> loses,
+                                   List<String> tableWithout, List<String> tableWith, List<String> plus1,
+                                   Map<String, Integer> wins, Map<String, Integer> losesOT) {
         Map<String, List<String>> finalCalendar = new TreeMap<>();
-        Map<String, Integer> loses = new TreeMap<>();
-        Map<String, Integer> wins = new TreeMap<>();
-        Map<String, Integer> losesOT = new TreeMap<>();
-        Map<String, Integer> goalsScored = new TreeMap<>();
-        Map<String, Integer> goalsMissing = new TreeMap<>();
-        List<Standings> list = new ArrayList<>();
-        List<String> tableWithout = new ArrayList<>();
-        List<String> tableWith = new ArrayList<>();
-        List<String> plus1 = new ArrayList<>();
 
         try {
             BufferedReader reader = new BufferedReader(new FileReader(CALENDAR));
@@ -130,6 +157,8 @@ public class StandingsServiceImpl implements StandingsService {
 
             while ((c = reader.readLine()) != null) {
                 String[] words = c.split(",");
+
+                createFullTeamName(words);
 
                 createGamesAndFinalCalendar(games, points, finalCalendar, words);
                 createScoredAndMissingGoals(goalsScored, goalsMissing, words);
@@ -205,10 +234,6 @@ public class StandingsServiceImpl implements StandingsService {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        games.forEach((team, game) -> list.add(
-                new Standings(team, game, wins.get(team), loses.get(team), losesOT.get(team),
-                        goalsScored.get(team), goalsMissing.get(team), points.get(team))));
-        return list;
     }
 
     private void createWinsLosesLosesOTPoints(Map<String, Integer> loses, List<String> tableWithout, List<String> tableWith, List<String> plus1, String[] words) {
@@ -329,6 +354,113 @@ public class StandingsServiceImpl implements StandingsService {
             return true;
         } catch (NumberFormatException e) {
             return false;
+        }
+    }
+
+    private void createFullTeamName(String[] words) {
+        if (Objects.equals(words[1], "CYK")) {
+            words[1] = "Трактор";
+        } else if (Objects.equals(words[1], "DYN")) {
+            words[1] = "Динамо Москва";
+        } else if (Objects.equals(words[1], "MAG")) {
+            words[1] = "Металлург Мг";
+        } else if (Objects.equals(words[1], "AVG")) {
+            words[1] = "Авангард";
+        } else if (Objects.equals(words[1], "CSK")) {
+            words[1] = "ЦСКА";
+        } else if (Objects.equals(words[1], "SKA")) {
+            words[1] = "СКА";
+        } else if (Objects.equals(words[1], "SPK")) {
+            words[1] = "Сочи";
+        } else if (Objects.equals(words[1], "AMK")) {
+            words[1] = "Амур";
+        } else if (Objects.equals(words[1], "MAN")) {
+            words[1] = "Динамо Минск";
+        } else if (Objects.equals(words[1], "NVG")) {
+            words[1] = "Торпедо";
+        } else if (Objects.equals(words[1], "SVL")) {
+            words[1] = "Северсталь";
+        } else if (Objects.equals(words[1], "FRL")) {
+            words[1] = "Адмирал";
+        } else if (Objects.equals(words[1], "YAR")) {
+            words[1] = "Локомотив";
+        } else if (Objects.equals(words[1], "DEG")) {
+            words[1] = "Куньлунь";
+        } else if (Objects.equals(words[1], "KEV")) {
+            words[1] = "Барыс";
+        } else if (Objects.equals(words[1], "ABK")) {
+            words[1] = "Ак Барс";
+        } else if (Objects.equals(words[1], "KHM")) {
+            words[1] = "Спартак";
+        } else if (Objects.equals(words[1], "SVT")) {
+            words[1] = "Салават Юлаев";
+        } else if (Objects.equals(words[1], "CKV")) {
+            words[1] = "Витязь";
+        } else if (Objects.equals(words[1], "ING")) {
+            words[1] = "Автомобилист";
+        } else if (Objects.equals(words[1], "NIZ")) {
+            words[1] = "Нефтехимик";
+        } else if (Objects.equals(words[1], "SIB")) {
+            words[1] = "Сибирь";
+        }
+    }
+
+    private void createTeamstat(Map<String, Integer> OTS, Map<String, Integer> OTG, Map<String,
+            String> OTGPercentage, Map<String, Integer> games, Map<String, String> OTPG, Map<String, String> OTGPG) {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(FULLTEAMSTAT_TXT));
+
+            String c;
+            while ((c = reader.readLine()) != null) {
+                String[] words = c.split(",");
+
+                createFullTeamName(words);
+
+                if (!OTS.containsKey(words[1]) && checkInt(words[6]) && checkInt(words[3])) {
+                    OTS.put(words[1], Integer.valueOf(words[6]));
+                    OTG.put(words[1], Integer.valueOf(words[7]));
+                } else if (OTS.containsKey(words[1]) && checkInt(words[6]) && checkInt(words[3])) {
+                    OTS.put(words[1], OTS.get(words[1]) + Integer.parseInt(words[6]));
+                    OTG.put(words[1], OTG.get(words[1]) + Integer.parseInt(words[7]));
+                } else if (!OTS.containsKey(words[1]) && checkInt(words[6]) && !checkInt(words[3])) {
+                    OTS.put(words[1], Integer.valueOf(words[7]));
+                    OTG.put(words[1], Integer.valueOf(words[8]));
+                } else if (OTS.containsKey(words[1]) && checkInt(words[6]) && !checkInt(words[3])) {
+                    OTS.put(words[1], OTS.get(words[1]) + Integer.parseInt(words[7]));
+                    OTG.put(words[1], OTG.get(words[1]) + Integer.parseInt(words[8]));
+                }
+            }
+
+            for (Map.Entry<String, Integer> map : OTG.entrySet()) {
+                if (OTG.get(map.getKey()) != 0) {
+                    if (OTS.containsKey(map.getKey())) {
+                        Double i = Double.valueOf(OTG.get(map.getKey()));
+                        Double j = Double.valueOf(OTS.get(map.getKey()));
+                        String formattedDouble = new DecimalFormat("#0.0").format((100 * i) / (j));
+                        OTGPercentage.put(map.getKey(), formattedDouble);
+
+                        String createOTGPG = new DecimalFormat("#0.0").format(i / Double.valueOf(games.get(map.getKey())));
+                        OTGPG.put(map.getKey(), createOTGPG);
+                    }
+                } else {
+                    OTGPercentage.put(map.getKey(), "0");
+                    OTGPG.put(map.getKey(), "0");
+                }
+            }
+
+            for (Map.Entry<String, Integer> map : OTS.entrySet()) {
+                if (OTS.get(map.getKey()) != 0) {
+                    if (games.containsKey(map.getKey())) {
+                        String formattedDouble = new DecimalFormat("#0.0")
+                                .format(Double.valueOf(OTS.get(map.getKey())) / Double.valueOf(games.get(map.getKey())));
+                        OTPG.put(map.getKey(), formattedDouble);
+                    }
+                } else {
+                    OTPG.put(map.getKey(), "0");
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }
