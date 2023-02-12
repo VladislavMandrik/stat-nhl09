@@ -41,7 +41,9 @@ CREATE TABLE IF NOT EXISTS team_stats
     onetimer_goals_percentage CHARACTER VARYING(100),
     games                     INTEGER,
     OTPG                      CHARACTER VARYING(100),
-    OTGPG                     CHARACTER VARYING(100)
+    OTGPG                     CHARACTER VARYING(100),
+    power_play                CHARACTER VARYING(100),
+    penalty_kill              CHARACTER VARYING(100)
 );
 
 CREATE TABLE IF NOT EXISTS defenseman_stats

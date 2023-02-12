@@ -20,7 +20,7 @@ public class StatsServiceImpl implements StatsService {
     private final GoalieStatsRepository goalieStatsRepository;
     private final DefensemanStatsRepository defensemanStatsRepository;
 
-    private final String PATHPLAYERSTAT = "D:/KHL ECHL/playerstat";
+    private final String PATHPLAYERSTAT = "D:/KHL ECHL/Play Off/playerstat";
     private final String PATHDEFENSEMANS = "D:/KHL ECHL/Defenseman";
     private final String FULLPLAYERSTAT_TXT = "fullplayerstat.txt";
     private final String FULLDEFENSEMANS_TXT = "fulldefensemans.txt";
@@ -273,6 +273,10 @@ public class StatsServiceImpl implements StatsService {
             words[1] = "Нефтехимик";
         } else if (Objects.equals(words[1], "SIB")) {
             words[1] = "Сибирь";
+        } else if (Objects.equals(words[1], "BEL")) {
+            words[1] = "BLR";
+        } else if (Objects.equals(words[1], "SLV")) {
+            words[1] = "SVK";
         }
     }
 
@@ -414,6 +418,10 @@ public class StatsServiceImpl implements StatsService {
                     words[6] = "Нефтехимик";
                 } else if (Objects.equals(words[6], "SIB")) {
                     words[6] = "Сибирь";
+                } else if (Objects.equals(words[6], "BEL")) {
+                    words[6] = "BLR";
+                } else if (Objects.equals(words[6], "SLV")) {
+                    words[6] = "SVK";
                 }
 
                 if (!defensemans.containsKey(words[2] + " " + words[1] + " (" + words[6] + ")") && !Objects.equals(words[1], "F. Name")) {

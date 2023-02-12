@@ -2,14 +2,6 @@
     border-collapse: collapse;
 }
 
-.table_sort th {
-    color:
-            #ffebcd;
-    background:
-            #008b8b;
-    cursor: pointer;
-}
-
 .table_sort td,
 .table_sort th {
     width: 150px;

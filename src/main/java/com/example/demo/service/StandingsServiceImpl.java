@@ -18,7 +18,7 @@ public class StandingsServiceImpl implements StandingsService {
 
     private final StandingsRepository standingsRepository;
     private final TeamStatsRepository teamStatsRepository;
-    private final String PATH = "D:/KHL ECHL/teamstat";
+    private final String PATH = "D:/KHL ECHL/Play Off/teamstat";
     private final String FULLTEAMSTAT_TXT = "fullteamstat.txt";
     private final String CALENDAR = "calendar.txt";
     private final String DATA = "data.txt";
@@ -43,6 +43,12 @@ public class StandingsServiceImpl implements StandingsService {
         Map<String, String> OTGPercentage = new TreeMap<>();
         Map<String, String> OTPG = new TreeMap<>();
         Map<String, String> OTGPG = new TreeMap<>();
+        Map<String, Integer> attempt = new TreeMap<>();
+        Map<String, Integer> implemented = new TreeMap<>();
+        Map<String, String> powerPlay = new TreeMap<>();
+        Map<String, Integer> PKRivalAttempts = new TreeMap<>();
+        Map<String, Integer> PKRivalGoals = new TreeMap<>();
+        Map<String, String> penaltyKill = new TreeMap<>();
 
         getFileNames();
         getDataFromFiles();
@@ -55,9 +61,12 @@ public class StandingsServiceImpl implements StandingsService {
                         goalsScored.get(team), goalsMissing.get(team), points.get(team))));
         standingsRepository.saveAll(list);
 
-        createTeamstat(OTShots, OTGoals, OTGPercentage, games, OTPG, OTGPG);
+        createTeamstat(OTShots, OTGoals, OTGPercentage, games, OTPG, OTGPG, attempt, implemented, powerPlay, PKRivalAttempts,
+                PKRivalGoals, penaltyKill);
+
         OTShots.forEach((team, shots) -> listTeam.add(new TeamStats(team, shots, OTGoals.get(team),
-                OTGPercentage.get(team), games.get(team), OTPG.get(team), OTGPG.get(team))));
+                OTGPercentage.get(team), games.get(team), OTPG.get(team), OTGPG.get(team), powerPlay.get(team),
+                penaltyKill.get(team))));
         teamStatsRepository.saveAll(listTeam);
     }
 
@@ -402,11 +411,22 @@ public class StandingsServiceImpl implements StandingsService {
             words[1] = "Нефтехимик";
         } else if (Objects.equals(words[1], "SIB")) {
             words[1] = "Сибирь";
+        } else if (Objects.equals(words[1], "BEL")) {
+            words[1] = "BLR";
+        } else if (Objects.equals(words[1], "SLV")) {
+            words[1] = "SVK";
         }
     }
 
     private void createTeamstat(Map<String, Integer> OTS, Map<String, Integer> OTG, Map<String,
-            String> OTGPercentage, Map<String, Integer> games, Map<String, String> OTPG, Map<String, String> OTGPG) {
+            String> OTGPercentage, Map<String, Integer> games, Map<String, String> OTPG, Map<String, String> OTGPG,
+                                Map<String, Integer> attempt, Map<String, Integer> implemented,
+                                Map<String, String> powerPlay, Map<String, Integer> PKAtt,
+                                Map<String, Integer> PKG, Map<String, String> penaltyKill) {
+
+        Map<String, String> PK = new TreeMap<>();
+        Map<String, String> PP = new TreeMap<>();
+
         try {
             BufferedReader reader = new BufferedReader(new FileReader(FULLTEAMSTAT_TXT));
 
@@ -461,6 +481,161 @@ public class StandingsServiceImpl implements StandingsService {
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+
+        createPKAndPP(attempt, implemented, PKAtt, PKG, PK, PP, powerPlay, penaltyKill);
+    }
+
+    private void createPKAndPP(Map<String, Integer> attempt, Map<String, Integer> implemented, Map<String, Integer> PKAtt, Map<String, Integer> PKG,
+                               Map<String, String> PK, Map<String, String> PP, Map<String, String> powerPlay,
+                               Map<String, String> penaltyKill) {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(FULLTEAMSTAT_TXT));
+            List<String> list = new ArrayList<>();
+
+            String c;
+            int count = 0;
+            while ((c = reader.readLine()) != null) {
+                String[] words = c.split(",");
+
+                if (count == 0) {
+                    count += 1;
+                } else if (count == 1 && !attempt.containsKey(words[1])) {
+                    attempt.put(words[1], Integer.valueOf(String.valueOf(words[16].charAt(2))));
+                    implemented.put(words[1], Integer.valueOf(String.valueOf(words[16].charAt(0))));
+                    list.add(0, words[1] + words[16]);
+                    count += 1;
+                } else if (count == 2 && !attempt.containsKey(words[1])) {
+                    attempt.put(words[1], Integer.valueOf(String.valueOf(words[16].charAt(2))));
+                    implemented.put(words[1], Integer.valueOf(String.valueOf(words[16].charAt(0))));
+                    list.add(1, list.get(0) + words[1] + words[16]);
+
+                    createPK(PKAtt, PKG, list, words);
+
+                    list.clear();
+                    count = 0;
+                } else if (count == 1 && attempt.containsKey(words[1])) {
+                    attempt.put(words[1], attempt.get(words[1]) + Integer.valueOf(String.valueOf(words[16].charAt(2))));
+                    implemented.put(words[1], implemented.get(words[1]) + Integer.valueOf(String.valueOf(words[16].charAt(0))));
+                    list.add(0, words[1] + words[16]);
+                    count += 1;
+                } else if (count == 2 && attempt.containsKey(words[1])) {
+                    attempt.put(words[1], attempt.get(words[1]) + Integer.valueOf(String.valueOf(words[16].charAt(2))));
+                    implemented.put(words[1], implemented.get(words[1]) + Integer.valueOf(String.valueOf(words[16].charAt(0))));
+                    list.add(1, list.get(0) + words[1] + words[16]);
+
+                    createPK(PKAtt, PKG, list, words);
+
+                    list.clear();
+                    count = 0;
+                }
+
+                for (Map.Entry<String, Integer> map : attempt.entrySet()) {
+                    if (map.getValue() != 0) {
+                        String formattedDouble = new DecimalFormat("#0.0")
+                                .format((100 * Double.valueOf(implemented.get(map.getKey()))) / Double.valueOf(map.getValue()));
+                        PP.put(map.getKey(), formattedDouble);
+                    } else {
+                        PP.put(map.getKey(), "0,0");
+                    }
+                }
+
+                for (Map.Entry<String, Integer> map : PKG.entrySet()) {
+                    if (map.getValue() != 0) {
+                        double pp = 100 * Double.valueOf(map.getValue()) / Double.valueOf(PKAtt.get(map.getKey()));
+                        String formattedDouble = new DecimalFormat("#0.0")
+                                .format(100 - pp);
+                        PK.put(map.getKey(), formattedDouble);
+                    } else {
+                        PK.put(map.getKey(), "100,0");
+                    }
+                }
+            }
+
+            createFullTeamNameForPPAndPK(PK, penaltyKill);
+            createFullTeamNameForPPAndPK(PP, powerPlay);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void createFullTeamNameForPPAndPK(Map<String, String> old, Map<String, String> newMap) {
+        old.forEach((team, value) -> {
+            if (Objects.equals(team, "CYK")) {
+                newMap.put("Трактор", value);
+            } else if (Objects.equals(team, "DYN")) {
+                newMap.put("Динамо Москва", value);
+            } else if (Objects.equals(team, "MAG")) {
+                newMap.put("Металлург Мг", value);
+            } else if (Objects.equals(team, "AVG")) {
+                newMap.put("Авангард", value);
+            } else if (Objects.equals(team, "CSK")) {
+                newMap.put("ЦСКА", value);
+            } else if (Objects.equals(team, "SKA")) {
+                newMap.put("СКА", value);
+            } else if (Objects.equals(team, "SPK")) {
+                newMap.put("Сочи", value);
+            } else if (Objects.equals(team, "AMK")) {
+                newMap.put("Амур", value);
+            } else if (Objects.equals(team, "MAN")) {
+                newMap.put("Динамо Минск", value);
+            } else if (Objects.equals(team, "NVG")) {
+                newMap.put("Торпедо", value);
+            } else if (Objects.equals(team, "SVL")) {
+                newMap.put("Северсталь", value);
+            } else if (Objects.equals(team, "FRL")) {
+                newMap.put("Адмирал", value);
+            } else if (Objects.equals(team, "YAR")) {
+                newMap.put("Локомотив", value);
+            } else if (Objects.equals(team, "DEG")) {
+                newMap.put("Куньлунь", value);
+            } else if (Objects.equals(team, "KEV")) {
+                newMap.put("Барыс", value);
+            } else if (Objects.equals(team, "ABK")) {
+                newMap.put("Ак Барс", value);
+            } else if (Objects.equals(team, "KHM")) {
+                newMap.put("Спартак", value);
+            } else if (Objects.equals(team, "SVT")) {
+                newMap.put("Салават Юлаев", value);
+            } else if (Objects.equals(team, "CKV")) {
+                newMap.put("Витязь", value);
+            } else if (Objects.equals(team, "ING")) {
+                newMap.put("Автомобилист", value);
+            } else if (Objects.equals(team, "NIZ")) {
+                newMap.put("Нефтехимик", value);
+            } else if (Objects.equals(team, "SIB")) {
+                newMap.put("Сибирь", value);
+            } else if (Objects.equals(team, "BEL")) {
+                newMap.put("BLR", value);
+            } else if (Objects.equals(team, "SLV")) {
+                newMap.put("SVK", value);
+            } else {
+                newMap.put(team, value);
+            }
+        });
+    }
+
+    private void createPK(Map<String, Integer> PKAtt, Map<String, Integer> PKG, List<String> list, String[] words) {
+        if (!PKAtt.containsKey(words[1])) {
+            PKAtt.put(words[1], Integer.valueOf(String.valueOf(list.get(1).charAt(5))));
+            PKG.put(words[1], Integer.valueOf(String.valueOf(list.get(1).charAt(3))));
+            if (!PKAtt.containsKey(list.get(1).substring(0, 3))) {
+                PKAtt.put(list.get(1).substring(0, 3), Integer.valueOf(String.valueOf(list.get(1).charAt(11))));
+                PKG.put(list.get(1).substring(0, 3), Integer.valueOf(String.valueOf(list.get(1).charAt(9))));
+            } else if (PKAtt.containsKey(list.get(1).substring(0, 3))) {
+                PKAtt.put(list.get(1).substring(0, 3), PKAtt.get(list.get(1).substring(0, 3)) + Integer.valueOf(String.valueOf(list.get(1).charAt(11))));
+                PKG.put(list.get(1).substring(0, 3), PKG.get(list.get(1).substring(0, 3)) + Integer.valueOf(String.valueOf(list.get(1).charAt(9))));
+            }
+        } else if (PKAtt.containsKey(words[1])) {
+            PKAtt.put(words[1], PKAtt.get(words[1]) + Integer.valueOf(String.valueOf(list.get(1).charAt(5))));
+            PKG.put(words[1], PKG.get(words[1]) + Integer.valueOf(String.valueOf(list.get(1).charAt(3))));
+            if (!PKAtt.containsKey(list.get(1).substring(0, 3))) {
+                PKAtt.put(list.get(1).substring(0, 3), Integer.valueOf(String.valueOf(list.get(1).charAt(11))));
+                PKG.put(list.get(1).substring(0, 3), Integer.valueOf(String.valueOf(list.get(1).charAt(9))));
+            } else if (PKAtt.containsKey(list.get(1).substring(0, 3))) {
+                PKAtt.put(list.get(1).substring(0, 3), PKAtt.get(list.get(1).substring(0, 3)) + Integer.valueOf(String.valueOf(list.get(1).charAt(11))));
+                PKG.put(list.get(1).substring(0, 3), PKG.get(list.get(1).substring(0, 3)) + Integer.valueOf(String.valueOf(list.get(1).charAt(9))));
+            }
         }
     }
 }
