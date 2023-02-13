@@ -27,7 +27,7 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
 
     @GetMapping("/stats")
     public String stats(Model model) {
-        model.addAttribute("stats", statsRepository.findAll());
+        model.addAttribute("stats", statsRepository.findAllByOrderByPointsDesc());
         return "stats_page";
     }
 

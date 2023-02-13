@@ -20,8 +20,8 @@ public class StatsServiceImpl implements StatsService {
     private final GoalieStatsRepository goalieStatsRepository;
     private final DefensemanStatsRepository defensemanStatsRepository;
 
-    private final String PATHPLAYERSTAT = "D:/KHL ECHL/Play Off/playerstat";
-    private final String PATHDEFENSEMANS = "D:/KHL ECHL/Defenseman";
+    private final String PATHPLAYERSTAT = "D:/IIHF ECHL/playerstat";
+    private final String PATHDEFENSEMANS = "D:/IIHF ECHL/Defenseman";
     private final String FULLPLAYERSTAT_TXT = "fullplayerstat.txt";
     private final String FULLDEFENSEMANS_TXT = "fulldefensemans.txt";
     private final int GOALS = 4;
@@ -202,7 +202,7 @@ public class StatsServiceImpl implements StatsService {
                         plusMinus.put(words[0] + " (" + words[1] + ")", plusMinus.get(words[0] + " (" + words[1] + ")") + Integer.parseInt(words[7]));
                     }
                 } else {
-                    plusMinus.put(words[0] + " (" + words[1] + ")", -1000);
+                    plusMinus.put(words[0] + " (" + words[1] + ")", Integer.valueOf("-1111"));
                 }
             }
         } catch (IOException e) {
@@ -295,6 +295,12 @@ public class StatsServiceImpl implements StatsService {
             if (playerStats.getAssists() == null) {
                 playerStats.setAssists(0);
             }
+            if (playerStats.getPoints() == null) {
+                playerStats.setPoints(0);
+            }
+            if (playerStats.getPPG() == null) {
+                playerStats.setPPG("0,00");
+            }
         });
         return list;
     }
@@ -343,6 +349,18 @@ public class StatsServiceImpl implements StatsService {
                         shotsAgainst.put(words[0] + " (" + words[1] + ")", shotsAgainst.get(words[0] + " (" + words[1] + ")") + Integer.parseInt(words[10]));
                         goalsAgainst.put(words[0] + " (" + words[1] + ")", goalsAgainst.get(words[0] + " (" + words[1] + ")") + Integer.parseInt(words[8]));
                         TOI.put(words[0] + " (" + words[1] + ")", TOI.get(words[0] + " (" + words[1] + ")") + Double.valueOf(String.valueOf(words[3].charAt(0)) + String.valueOf(words[3].charAt(1))) + d);
+                        System.out.println(Double.valueOf(String.valueOf(words[3].charAt(0))));
+                        System.out.println();
+                        System.out.println();
+
+                        System.out.println();
+                        System.out.println();
+                        System.out.println();
+                        System.out.println();
+                        System.out.println();
+                        System.out.println();
+                        System.out.println();
+
                     }
                 }
             }
@@ -359,7 +377,7 @@ public class StatsServiceImpl implements StatsService {
                 GAA.put(map.getKey(), createGAA);
             }
 
-            List<PlayerStats> goalieAssistsList = statsRepository.findPlayerStatsByPlusMinusIs("-1000");
+            List<PlayerStats> goalieAssistsList = statsRepository.findPlayerStatsByPlusMinusIs("-1111");
             goalieAssistsList.forEach(playerStats -> goalieAssist.put(playerStats.getPlayer(), playerStats.getAssists()));
         } catch (IOException e) {
             throw new RuntimeException(e);

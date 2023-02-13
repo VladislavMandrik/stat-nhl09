@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Player stats</title>
+    <title>Player stats | IIHF ECHL</title>
     <link href="/css/table_style.css" rel="stylesheet">
     <style>
         .table_sort {
             border-collapse: collapse;
             counter-reset: schetchik;
             width: 40%;
+            font-size: 75%;
         }
 
         .table_sort th {
@@ -27,6 +28,13 @@
         .table_sort tr:before {
             padding: .1em .5em;
             border: 1px solid #E7D5C0;
+        }
+
+        .table_sort td,
+        .table_sort th {
+            height: 35px;
+            text-align: center;
+            font-size: 90%;
         }
 
         .table_sort tr:before {
@@ -49,39 +57,52 @@
         }
 
         .table_sort tbody tr:nth-child(-n+1):before {
-            width: 0.01%
+            width: 0.01%;
+            height: 25px;
         }
 
         .table_sort tr td:nth-child(1) {
-            width: 12%
+            width: 12%;
+            height: 25px;
         }
 
         .table_sort tr td:nth-child(2) {
-            width: 4%
+            width: 4%;
+            height: 25px;
         }
 
         .table_sort tr td:nth-child(3) {
-            width: 4%
+            width: 4%;
+            height: 25px;
         }
 
         .table_sort tr td:nth-child(4) {
-            width: 4%
+            width: 4%;
+            height: 25px;
         }
 
         .table_sort tr td:nth-child(5) {
-            width: 4%
+            width: 4%;
+            height: 25px;
         }
 
         .table_sort tr td:nth-child(6) {
-            width: 4%
+            width: 4%;
+            height: 25px;
         }
 
         .table_sort tr td:nth-child(7) {
-            width: 4%
+            width: 4%;
+            height: 25px;
+        }
+
+        .table_sort tbody tr:nth-child(even) {
+            background:
+                    #e3e3e3;
         }
     </style>
 </head>
-<h1>Look stats</h1>
+<h1>IIHF player stats at ...</h1>
 <table class="table_sort">
     <script src="/js/sorter.js"></script>
     <thead>
