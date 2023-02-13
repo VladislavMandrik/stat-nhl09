@@ -16,7 +16,6 @@ public class StandingsControllerImpl implements StandingsController {
     private final StandingsRepository standingsRepository;
     private final TeamStatsRepository teamStatsRepository;
 
-
     @GetMapping("/create")
     public String createStandings() {
         standingsService.createStandings();
@@ -32,7 +31,7 @@ public class StandingsControllerImpl implements StandingsController {
     @GetMapping("/teamstats")
     public String teamstats(Model model) {
         model.addAttribute("teamStats",
-                teamStatsRepository.findAll());
+                teamStatsRepository.findAllByOrderByPowerPlayDesc());
         return "teamStats_page";
     }
 }

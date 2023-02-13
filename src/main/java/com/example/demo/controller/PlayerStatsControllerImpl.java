@@ -34,14 +34,14 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
     @GetMapping("/goalie")
     public String goalie(Model model) {
         model.addAttribute("goalieStats",
-                goalieStatsRepository.findGoalieStatsByGamesBetween(0, 100));
+                goalieStatsRepository.findAllByOrderBySavePercentageDesc());
         return "goalieStats_page";
     }
 
     @GetMapping("/defenders")
     public String defenders(Model model) {
         model.addAttribute("defenders",
-                defensemanStatsRepository.findAll());
+                defensemanStatsRepository.findAllByOrderByPointsDesc());
         return "defenderStats_page";
     }
 }
