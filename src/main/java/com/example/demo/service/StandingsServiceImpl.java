@@ -1,9 +1,9 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Standings;
-import com.example.demo.model.TeamStats;
+import com.example.demo.model.TeamStatsNHL;
 import com.example.demo.repository.StandingsRepository;
-import com.example.demo.repository.TeamStatsRepository;
+import com.example.demo.repository.TeamStatsRepositoryNHL;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +17,8 @@ import java.util.*;
 public class StandingsServiceImpl implements StandingsService {
 
     private final StandingsRepository standingsRepository;
-    private final TeamStatsRepository teamStatsRepository;
-    private final String PATH = "D:/IIHF ECHL/teamstat";
+    private final TeamStatsRepositoryNHL teamStatsRepository;
+    private final String PATH = "D:/NHL ECHL/teamstat";
     private final String FULLTEAMSTAT_TXT = "fullteamstat.txt";
     private final String CALENDAR = "calendar.txt";
     private final String DATA = "data.txt";
@@ -28,7 +28,7 @@ public class StandingsServiceImpl implements StandingsService {
         List<String> tableWithout = new ArrayList<>();
         List<String> tableWith = new ArrayList<>();
         List<String> plus1 = new ArrayList<>();
-        List<TeamStats> listTeam = new ArrayList<>();
+        List<TeamStatsNHL> listTeam = new ArrayList<>();
 
         Map<String, Integer> games = new TreeMap<>();
         Map<String, Integer> points = new TreeMap<>();
@@ -64,7 +64,7 @@ public class StandingsServiceImpl implements StandingsService {
         createTeamstat(OTShots, OTGoals, OTGPercentage, games, OTPG, OTGPG, attempt, implemented, powerPlay, PKRivalAttempts,
                 PKRivalGoals, penaltyKill);
 
-        OTShots.forEach((team, shots) -> listTeam.add(new TeamStats(team, shots, OTGoals.get(team),
+        OTShots.forEach((team, shots) -> listTeam.add(new TeamStatsNHL(team, shots, OTGoals.get(team),
                 OTGPercentage.get(team), games.get(team), OTPG.get(team), OTGPG.get(team), powerPlay.get(team),
                 penaltyKill.get(team))));
         teamStatsRepository.saveAll(listTeam);
@@ -415,6 +415,16 @@ public class StandingsServiceImpl implements StandingsService {
             words[1] = "BLR";
         } else if (Objects.equals(words[1], "SLV")) {
             words[1] = "SVK";
+        } else if (Objects.equals(words[1], "NJ")) {
+            words[1] = "NJD";
+        } else if (Objects.equals(words[1], "LA")) {
+            words[1] = "LAK";
+        } else if (Objects.equals(words[1], "SJ")) {
+            words[1] = "SJS";
+        } else if (Objects.equals(words[1], "TB")) {
+            words[1] = "TBL";
+        } else if (Objects.equals(words[1], "SYR")) {
+            words[1] = "SEA";
         }
     }
 
@@ -497,6 +507,8 @@ public class StandingsServiceImpl implements StandingsService {
             int count = 0;
             while ((c = reader.readLine()) != null) {
                 String[] words = c.split(",");
+
+                createTeamNameForPK(words);
 
                 if (count == 0) {
                     count += 1;
@@ -609,7 +621,18 @@ public class StandingsServiceImpl implements StandingsService {
                 newMap.put("BLR", value);
             } else if (Objects.equals(team, "SLV")) {
                 newMap.put("SVK", value);
-            } else {
+            } else if (Objects.equals(team, "NJ")) {
+                newMap.put("NJD", value);
+            } else if (Objects.equals(team, "LA")) {
+                newMap.put("LAK", value);
+            } else if (Objects.equals(team, "SJ")) {
+                newMap.put("SJS", value);
+            } else if (Objects.equals(team, "TB")) {
+                newMap.put("TBL", value);
+            } else if (Objects.equals(team, "SYR")) {
+                newMap.put("SEA", value);
+            }
+            else {
                 newMap.put(team, value);
             }
         });
@@ -636,6 +659,20 @@ public class StandingsServiceImpl implements StandingsService {
                 PKAtt.put(list.get(1).substring(0, 3), PKAtt.get(list.get(1).substring(0, 3)) + Integer.valueOf(String.valueOf(list.get(1).charAt(11))));
                 PKG.put(list.get(1).substring(0, 3), PKG.get(list.get(1).substring(0, 3)) + Integer.valueOf(String.valueOf(list.get(1).charAt(9))));
             }
+        }
+    }
+
+    private void createTeamNameForPK(String[] words) {
+        if (Objects.equals(words[1], "NJ")) {
+            words[1] = "NJD";
+        } else if (Objects.equals(words[1], "LA")) {
+            words[1] = "LAK";
+        } else if (Objects.equals(words[1], "SJ")) {
+            words[1] = "SJS";
+        } else if (Objects.equals(words[1], "TB")) {
+            words[1] = "TBL";
+        } else if (Objects.equals(words[1], "SYR")) {
+            words[1] = "SEA";
         }
     }
 }

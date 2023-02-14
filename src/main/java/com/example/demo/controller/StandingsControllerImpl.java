@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.repository.StandingsRepository;
 import com.example.demo.repository.TeamStatsRepository;
+import com.example.demo.repository.TeamStatsRepositoryNHL;
 import com.example.demo.service.StandingsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,8 @@ public class StandingsControllerImpl implements StandingsController {
     private final StandingsServiceImpl standingsService;
     private final StandingsRepository standingsRepository;
     private final TeamStatsRepository teamStatsRepository;
+    private final TeamStatsRepositoryNHL teamStatsRepositoryNHL;
+
 
     @GetMapping("/create")
     public String createStandings() {
@@ -33,5 +36,12 @@ public class StandingsControllerImpl implements StandingsController {
         model.addAttribute("teamStats",
                 teamStatsRepository.findAllByOrderByPowerPlayDesc());
         return "teamStats_page";
+    }
+
+    @GetMapping("/nhl/teamstats")
+    public String teamstatsNHL(Model model) {
+        model.addAttribute("teamStats",
+                teamStatsRepositoryNHL.findAllByOrderByPowerPlayDesc());
+        return "teamStatsNHL_page";
     }
 }

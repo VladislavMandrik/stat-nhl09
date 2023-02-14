@@ -1,11 +1,7 @@
 package com.example.demo.service;
 
-import com.example.demo.model.DefensemanStats;
-import com.example.demo.model.GoalieStats;
-import com.example.demo.model.PlayerStats;
-import com.example.demo.repository.DefensemanStatsRepository;
-import com.example.demo.repository.GoalieStatsRepository;
-import com.example.demo.repository.PlayerStatsRepository;
+import com.example.demo.model.*;
+import com.example.demo.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,20 +12,20 @@ import java.util.*;
 @RequiredArgsConstructor
 @Service
 public class StatsServiceImpl implements StatsService {
-    private final PlayerStatsRepository statsRepository;
-    private final GoalieStatsRepository goalieStatsRepository;
+    private final PlayerStatsRepositoryNHL statsRepository;
+    private final GoalieStatsRepositoryNHL goalieStatsRepository;
     private final DefensemanStatsRepository defensemanStatsRepository;
 
-    private final String PATHPLAYERSTAT = "D:/IIHF ECHL/playerstat";
-    private final String PATHDEFENSEMANS = "D:/IIHF ECHL/Defenseman";
+    private final String PATHPLAYERSTAT = "D:/NHL ECHL/playerstat";
+    private final String PATHDEFENSEMANS = "D:/NHL ECHL/Defenseman";
     private final String FULLPLAYERSTAT_TXT = "fullplayerstat.txt";
     private final String FULLDEFENSEMANS_TXT = "fulldefensemans.txt";
     private final int GOALS = 4;
     private final int ASSISTS = 5;
 
     public void createStats() {
-        List<PlayerStats> list = new ArrayList<>();
-        List<GoalieStats> listGoalie = new ArrayList<>();
+        List<PlayerStatsNHL> list = new ArrayList<>();
+        List<GoalieStatsNHL> listGoalie = new ArrayList<>();
         List<DefensemanStats> defensemansList = new ArrayList<>();
 
         getFullStats();
@@ -60,7 +56,7 @@ public class StatsServiceImpl implements StatsService {
         createPPG(gamesMap, points, PPG);
 
         gamesMap.forEach((player, games) ->
-                list.add(new PlayerStats(player, games, goalsMap.get(player), assistsMap.get(player),
+                list.add(new PlayerStatsNHL(player, games, goalsMap.get(player), assistsMap.get(player),
                         points.get(player), PPG.get(player), plusMinus.get(player))));
         statsRepository.saveAll(replaceNullOnZero(list));
 
@@ -69,7 +65,7 @@ public class StatsServiceImpl implements StatsService {
 
         createGoalieStats(goalieGames, shotsAgainst, goalsAgainst, savePercentage, GAA, TOI, goalieAssists);
         goalieGames.forEach((player, games) ->
-                listGoalie.add(new GoalieStats(player, games, shotsAgainst.get(player), goalsAgainst.get(player),
+                listGoalie.add(new GoalieStatsNHL(player, games, shotsAgainst.get(player), goalsAgainst.get(player),
                         savePercentage.get(player), GAA.get(player), TOI.get(player), goalieAssists.get(player))));
         goalieStatsRepository.saveAll(listGoalie);
     }
@@ -287,7 +283,7 @@ public class StatsServiceImpl implements StatsService {
         }
     }
 
-    private List<PlayerStats> replaceNullOnZero(List<PlayerStats> list) {
+    private List<PlayerStatsNHL> replaceNullOnZero(List<PlayerStatsNHL> list) {
         list.forEach(playerStats -> {
             if (playerStats.getGoals() == null) {
                 playerStats.setGoals(0);
@@ -349,18 +345,6 @@ public class StatsServiceImpl implements StatsService {
                         shotsAgainst.put(words[0] + " (" + words[1] + ")", shotsAgainst.get(words[0] + " (" + words[1] + ")") + Integer.parseInt(words[10]));
                         goalsAgainst.put(words[0] + " (" + words[1] + ")", goalsAgainst.get(words[0] + " (" + words[1] + ")") + Integer.parseInt(words[8]));
                         TOI.put(words[0] + " (" + words[1] + ")", TOI.get(words[0] + " (" + words[1] + ")") + Double.valueOf(String.valueOf(words[3].charAt(0)) + String.valueOf(words[3].charAt(1))) + d);
-                        System.out.println(Double.valueOf(String.valueOf(words[3].charAt(0))));
-                        System.out.println();
-                        System.out.println();
-
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-
                     }
                 }
             }
@@ -377,14 +361,14 @@ public class StatsServiceImpl implements StatsService {
                 GAA.put(map.getKey(), createGAA);
             }
 
-            List<PlayerStats> goalieAssistsList = statsRepository.findPlayerStatsByPlusMinusIs("-1111");
+            List<PlayerStatsNHL> goalieAssistsList = statsRepository.findPlayerStatsByPlusMinusIs("-1111");
             goalieAssistsList.forEach(playerStats -> goalieAssist.put(playerStats.getPlayer(), playerStats.getAssists()));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private void createDefensemans(Map<String, String> defensemans, List<PlayerStats> list, List<DefensemanStats> defensemansList) {
+    private void createDefensemans(Map<String, String> defensemans, List<PlayerStatsNHL> list, List<DefensemanStats> defensemansList) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(FULLDEFENSEMANS_TXT));
 

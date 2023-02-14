@@ -1,9 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.repository.DefensemanStatsRepository;
-import com.example.demo.repository.GoalieStatsRepository;
-import com.example.demo.repository.PlayerStatsRepository;
-import com.example.demo.repository.TeamStatsRepository;
+import com.example.demo.repository.*;
 import com.example.demo.service.StatsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -17,6 +14,8 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
     private final StatsServiceImpl statsService;
     private final PlayerStatsRepository statsRepository;
     private final GoalieStatsRepository goalieStatsRepository;
+    private final PlayerStatsRepositoryNHL statsRepositoryNHL;
+    private final GoalieStatsRepositoryNHL goalieStatsRepositoryNHL;
     private final DefensemanStatsRepository defensemanStatsRepository;
 
     @GetMapping("/create")
@@ -31,11 +30,24 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
         return "stats_page";
     }
 
+    @GetMapping("/nhl/stats")
+    public String statsNHL(Model model) {
+        model.addAttribute("stats", statsRepositoryNHL.findAllByOrderByPointsDesc());
+        return "statsNHL_page";
+    }
+
     @GetMapping("/goalie")
     public String goalie(Model model) {
         model.addAttribute("goalieStats",
                 goalieStatsRepository.findAllByOrderBySavePercentageDesc());
         return "goalieStats_page";
+    }
+
+    @GetMapping("/nhl/goalie")
+    public String goalieNHL(Model model) {
+        model.addAttribute("goalieStats",
+                goalieStatsRepositoryNHL.findAllByOrderBySavePercentageDesc());
+        return "goalieStatsNHL_page";
     }
 
     @GetMapping("/defenders")

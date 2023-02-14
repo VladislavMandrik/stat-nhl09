@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Player stats | NHL ECHL</title>
+  <link href="/css/table_style.css" rel="stylesheet">
+  <style>
+    .table_sort {
+      border-collapse: collapse;
+      counter-reset: schetchik;
+      width: 40%;
+      font-size: 75%;
+    }
+
+    .table_sort th {
+      color: #cdfbff;
+      /*#ffebcd;*/
+      background: #00318b;
+      /*#008b8b;*/
+      cursor: pointer;
+    }
+
+    .table_sort tbody tr:nth-child(n) {
+      counter-increment: schetchik;
+    }
+
+    .table_sort td,
+    .table_sort tr:before {
+      padding: .1em .5em;
+      border: 1px solid #E7D5C0;
+    }
+
+    .table_sort td,
+    .table_sort th {
+      height: 35px;
+      text-align: center;
+      font-size: 90%;
+    }
+
+    .table_sort tr:before {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    .table_sort tr:before,
+    .table_sort b:after {
+      content: counter(schetchik);
+      color: #978777;
+    }
+
+    .table_sort tr:nth-child(-n+1):before {
+      content: "#";
+    }
+
+    .table_sort tbody tr:nth-child(-n+1):before {
+      content: "1";
+    }
+
+    .table_sort tbody tr:nth-child(-n+1):before {
+      width: 0.01%;
+      height: 25px;
+    }
+
+    .table_sort tr td:nth-child(1) {
+      width: 12%;
+      height: 25px;
+    }
+
+    .table_sort tr td:nth-child(2) {
+      width: 4%;
+      height: 25px;
+    }
+
+    .table_sort tr td:nth-child(3) {
+      width: 4%;
+      height: 25px;
+    }
+
+    .table_sort tr td:nth-child(4) {
+      width: 4%;
+      height: 25px;
+    }
+
+    .table_sort tr td:nth-child(5) {
+      width: 4%;
+      height: 25px;
+    }
+
+    .table_sort tr td:nth-child(6) {
+      width: 4%;
+      height: 25px;
+    }
+
+    .table_sort tr td:nth-child(7) {
+      width: 4%;
+      height: 25px;
+    }
+
+    .table_sort tbody tr:nth-child(even) {
+      background:
+              #e3e3e3;
+    }
+  </style>
+</head>
+<h2>NHL player stats at 14.02.2023 22:40 MSK</h2>
+<table class="table_sort">
+  <script src="/js/sorter.js"></script>
+  <thead>
+  <tr>
+    <th>Player</th>
+    <th>Games</th>
+    <th>Goals</th>
+    <th>Assists</th>
+    <th>Points</th>
+    <th>PPG</th>
+    <th>+/-</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="stat : ${stats}">
+    <td th:text="${stat.getPlayer()}"></td>
+    <td th:text="${stat.getGames()}"></td>
+    <td th:text="${stat.getGoals()}"></td>
+    <td th:text="${stat.getAssists()}"></td>
+    <td th:text="${stat.getPoints()}"></td>
+    <td th:text="${stat.getPPG()}"></td>
+    <td th:text="${stat.getPlusMinus()}"></td>
+  </tr>
+  </tbody>
+</table>
+</html>
