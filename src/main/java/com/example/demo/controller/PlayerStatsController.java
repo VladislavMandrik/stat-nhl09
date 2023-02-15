@@ -17,4 +17,7 @@ public interface PlayerStatsController {
     String goalieNHL(Model model);
 
     String defenders(Model model);
+
+    String defendersNHL(Model model);
+
 }

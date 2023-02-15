@@ -18,6 +18,9 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
     private final GoalieStatsRepositoryNHL goalieStatsRepositoryNHL;
     private final DefensemanStatsRepository defensemanStatsRepository;
 
+    private final DefensemanStatsRepositoryNHL defensemanStatsRepositoryNHL;
+
+
     @GetMapping("/create")
     public String createStats() {
         statsService.createStats();
@@ -55,5 +58,12 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
         model.addAttribute("defenders",
                 defensemanStatsRepository.findAllByOrderByPointsDesc());
         return "defenderStats_page";
+    }
+
+    @GetMapping("/nhl/defenders")
+    public String defendersNHL(Model model) {
+        model.addAttribute("defenders",
+                defensemanStatsRepositoryNHL.findAllByOrderByPointsDesc());
+        return "defenderStatsNHL_page";
     }
 }

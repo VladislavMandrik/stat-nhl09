@@ -1,7 +1,9 @@
 package com.example.demo.service;
 
 import com.example.demo.model.*;
-import com.example.demo.repository.*;
+import com.example.demo.repository.DefensemanStatsRepositoryNHL;
+import com.example.demo.repository.GoalieStatsRepositoryNHL;
+import com.example.demo.repository.PlayerStatsRepositoryNHL;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +16,7 @@ import java.util.*;
 public class StatsServiceImpl implements StatsService {
     private final PlayerStatsRepositoryNHL statsRepository;
     private final GoalieStatsRepositoryNHL goalieStatsRepository;
-    private final DefensemanStatsRepository defensemanStatsRepository;
+    private final DefensemanStatsRepositoryNHL defensemanStatsRepository;
 
     private final String PATHPLAYERSTAT = "D:/NHL ECHL/playerstat";
     private final String PATHDEFENSEMANS = "D:/NHL ECHL/Defenseman";
@@ -26,7 +28,7 @@ public class StatsServiceImpl implements StatsService {
     public void createStats() {
         List<PlayerStatsNHL> list = new ArrayList<>();
         List<GoalieStatsNHL> listGoalie = new ArrayList<>();
-        List<DefensemanStats> defensemansList = new ArrayList<>();
+        List<DefensemanStatsNHL> defensemansList = new ArrayList<>();
 
         getFullStats();
         getFullDefensemans();
@@ -273,6 +275,18 @@ public class StatsServiceImpl implements StatsService {
             words[1] = "BLR";
         } else if (Objects.equals(words[1], "SLV")) {
             words[1] = "SVK";
+        } else if (Objects.equals(words[1], "NJ")) {
+            words[1] = "NJD";
+        } else if (Objects.equals(words[1], "LA")) {
+            words[1] = "LAK";
+        } else if (Objects.equals(words[1], "SJ")) {
+            words[1] = "SJS";
+        } else if (Objects.equals(words[1], "TB")) {
+            words[1] = "TBL";
+        } else if (Objects.equals(words[1], "SYR")) {
+            words[1] = "SEA";
+        } else if (Objects.equals(words[1], "ATL")) {
+            words[1] = "WPG";
         }
     }
 
@@ -368,7 +382,7 @@ public class StatsServiceImpl implements StatsService {
         }
     }
 
-    private void createDefensemans(Map<String, String> defensemans, List<PlayerStatsNHL> list, List<DefensemanStats> defensemansList) {
+    private void createDefensemans(Map<String, String> defensemans, List<PlayerStatsNHL> list, List<DefensemanStatsNHL> defensemansList) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(FULLDEFENSEMANS_TXT));
 
@@ -424,6 +438,18 @@ public class StatsServiceImpl implements StatsService {
                     words[6] = "BLR";
                 } else if (Objects.equals(words[6], "SLV")) {
                     words[6] = "SVK";
+                } else if (Objects.equals(words[6], "NJ")) {
+                    words[6] = "NJD";
+                } else if (Objects.equals(words[6], "LA")) {
+                    words[6] = "LAK";
+                } else if (Objects.equals(words[6], "SJ")) {
+                    words[6] = "SJS";
+                } else if (Objects.equals(words[6], "TB")) {
+                    words[6] = "TBL";
+                } else if (Objects.equals(words[6], "SYR")) {
+                    words[6] = "SEA";
+                } else if (Objects.equals(words[6], "ATL")) {
+                    words[6] = "WPG";
                 }
 
                 if (!defensemans.containsKey(words[2] + " " + words[1] + " (" + words[6] + ")") && !Objects.equals(words[1], "F. Name")) {
@@ -433,7 +459,7 @@ public class StatsServiceImpl implements StatsService {
 
             list.forEach(playerStats -> {
                 if (defensemans.containsKey(playerStats.getPlayer())) {
-                    defensemansList.add(new DefensemanStats(playerStats.getPlayer(), playerStats.getGames(),
+                    defensemansList.add(new DefensemanStatsNHL(playerStats.getPlayer(), playerStats.getGames(),
                             playerStats.getGoals(), playerStats.getAssists(), playerStats.getPoints(), playerStats.getPPG(), playerStats.getPlusMinus()));
                 }
             });
