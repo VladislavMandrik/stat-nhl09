@@ -1,0 +1,6 @@
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,BUF,0,2,0,1,0,0,2,14,0,0,0,0,0,0,0/0
+Away,TOR,4,12,0,0,0,0,4,5,0,0,4,0,0,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,BUF,1,16,0,0,2,0,8,25,1,0,0,1,0,0,0/0
+Away,TOR,1,9,0,1,4,0,4,21,0,0,0,1,0,0,0/1
