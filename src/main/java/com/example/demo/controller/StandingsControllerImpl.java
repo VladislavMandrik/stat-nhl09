@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @RequiredArgsConstructor
 @Controller
@@ -19,7 +20,7 @@ public class StandingsControllerImpl implements StandingsController {
     private final TeamStatsRepositoryNHL teamStatsRepositoryNHL;
 
 
-    @GetMapping("/create")
+    @PostMapping("/create")
     public String createStandings() {
         standingsService.createStandings();
         return "table-created_page";
