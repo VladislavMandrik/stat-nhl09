@@ -18,8 +18,8 @@ public class StatsServiceImpl implements StatsService {
     private final GoalieStatsRepositoryNHL goalieStatsRepository;
     private final DefensemanStatsRepositoryNHL defensemanStatsRepository;
 
-    private final String PATHPLAYERSTAT = "upload/";
-    private final String PATHDEFENSEMANS = "def/";
+    private final String PATHPLAYERSTAT = "D:/NHL ECHL/playerstat";
+    private final String PATHDEFENSEMANS = "D:/NHL ECHL/Defenseman";
     private final String FULLPLAYERSTAT_TXT = "fullplayerstat.txt";
     private final String FULLDEFENSEMANS_TXT = "fulldefensemans.txt";
     private final int GOALS = 4;
@@ -301,8 +301,10 @@ public class StatsServiceImpl implements StatsService {
             words[1] = "SEA";
         } else if (Objects.equals(words[1], "ATL")) {
             words[1] = "WPG";
-        } else if (Objects.equals(words[1], "PXH")) {
+        } else if (Objects.equals(words[1], "PHX")) {
             words[1] = "ARI";
+        } else if (Objects.equals(words[1], "WOF")) {
+            words[1] = "VGK";
         }
     }
 
@@ -474,6 +476,10 @@ public class StatsServiceImpl implements StatsService {
                     words[6] = "SEA";
                 } else if (Objects.equals(words[6], "ATL")) {
                     words[6] = "WPG";
+                } else if (Objects.equals(words[6], "WOF")) {
+                    words[6] = "VGK";
+                } else if (Objects.equals(words[6], "PHX")) {
+                    words[6] = "ARI";
                 }
 
                 if (!defensemans.containsKey(words[2] + " " + words[1] + " (" + words[6] + ")") && !Objects.equals(words[1], "F. Name")) {

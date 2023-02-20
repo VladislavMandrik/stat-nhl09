@@ -429,6 +429,8 @@ public class StandingsServiceImpl implements StandingsService {
             words[1] = "WPG";
         } else if (Objects.equals(words[1], "PHX")) {
             words[1] = "ARI";
+        } else if (Objects.equals(words[1], "WOF")) {
+            words[1] = "VGK";
         }
     }
 
@@ -639,6 +641,8 @@ public class StandingsServiceImpl implements StandingsService {
                 newMap.put("WPG", value);
             } else if (Objects.equals(team, "PHX")) {
                 newMap.put("ARI", value);
+            } else if (Objects.equals(team, "WOF")) {
+                newMap.put("VGK", value);
             }
             else {
                 newMap.put(team, value);
@@ -685,6 +689,8 @@ public class StandingsServiceImpl implements StandingsService {
             words[1] = "WPG";
         } else if (Objects.equals(words[1], "PHX")) {
             words[1] = "ARI";
+        } else if (Objects.equals(words[1], "WOF")) {
+            words[1] = "VGK";
         }
     }
 }
