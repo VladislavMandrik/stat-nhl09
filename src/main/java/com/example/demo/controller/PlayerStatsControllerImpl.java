@@ -22,7 +22,7 @@ import java.nio.file.StandardCopyOption;
 @Controller
 public class PlayerStatsControllerImpl implements PlayerStatsController {
 
-//    private static final String UPLOAD_DIR = "upload/";
+    private static final String UPLOAD_DIR = "upload/";
     private final StatsServiceImpl statsService;
     private final PlayerStatsRepository statsRepository;
     private final GoalieStatsRepository goalieStatsRepository;
@@ -78,39 +78,39 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
         return "defenderStatsNHL_page";
     }
 
-//    @GetMapping("/uploaded")
-//    public String upl() {
-//        return "upload_page";
-//    }
-//
-//
-//
-//
-//
-//
-//    @PostMapping("/upload")
-//    public String uploadFile(@RequestParam("file") MultipartFile file, RedirectAttributes attributes) {
-//
+    @GetMapping("/uploaded")
+    public String upl() {
+        return "upload_page";
+    }
+
+
+
+
+
+
+    @PostMapping("/upload")
+    public String uploadFile(@RequestParam("file") MultipartFile file, RedirectAttributes attributes) {
+
 //         check if file is empty
-//        if (file.isEmpty()) {
-//            attributes.addFlashAttribute("message", "Please select a file to upload.");
-//            return "redirect:/statistic/uploaded";
-//        }
-//
+        if (file.isEmpty()) {
+            attributes.addFlashAttribute("message", "Please select a file to upload.");
+            return "redirect:/statistic/uploaded";
+        }
+
 //         normalize the file path
-//        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-//
+        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+
 //         save the file on the local file system
-//        try {
-//            Path path = Paths.get(UPLOAD_DIR + fileName);
-//            Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
+        try {
+            Path path = Paths.get(UPLOAD_DIR + fileName);
+            Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 //         return success response
-//        attributes.addFlashAttribute("message", "You successfully uploaded " + fileName + '!');
-//
-//        return "redirect:/statistic/uploaded";
-//    }
+        attributes.addFlashAttribute("message", "You successfully uploaded " + fileName + '!');
+
+        return "redirect:/statistic/uploaded";
+    }
 }
