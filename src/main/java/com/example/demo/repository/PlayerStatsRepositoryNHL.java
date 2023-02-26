@@ -14,4 +14,5 @@ public interface PlayerStatsRepositoryNHL extends JpaRepository<PlayerStatsNHL, 
     PlayerStatsNHL findPlayerStatsByPlayer(String s);
     boolean existsPlayerStatsNHLByPlayer (String s);
     List<PlayerStatsNHL> findAllByOrderByPointsDesc();
+    List<PlayerStatsNHL> findByPlayerStartsWith(String s);
 }

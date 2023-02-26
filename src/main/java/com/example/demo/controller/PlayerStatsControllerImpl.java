@@ -31,6 +31,7 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
     private final DefensemanStatsRepository defensemanStatsRepository;
     private final DefensemanStatsRepositoryNHL defensemanStatsRepositoryNHL;
 
+    private final TransfersRepository transfersRepository;
 
     @PostMapping("/create")
     public String createStats() {
@@ -60,7 +61,7 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
     @GetMapping("/nhl/goalie")
     public String goalieNHL(Model model) {
         model.addAttribute("goalieStats",
-                goalieStatsRepositoryNHL.findAllByOrderBySavePercentageDesc());
+                goalieStatsRepositoryNHL.findGoalieStatsByGamesBetween(7,150));
         return "goalieStatsNHL_page";
     }
 
@@ -76,6 +77,13 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
         model.addAttribute("defenders",
                 defensemanStatsRepositoryNHL.findAllByOrderByPointsDesc());
         return "defenderStatsNHL_page";
+    }
+
+    @GetMapping("/nhl/transfers")
+    public String transfersNHL(Model model) {
+        model.addAttribute("transfers",
+                transfersRepository.findAllByOrderByPlayerAsc());
+        return "transfers_page";
     }
 
     @GetMapping("/uploaded")
