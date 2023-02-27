@@ -22,7 +22,7 @@ import java.nio.file.StandardCopyOption;
 @Controller
 public class PlayerStatsControllerImpl implements PlayerStatsController {
 
-    private static final String UPLOAD_DIR = "upload/";
+    private final String UPLOAD_DIR = "upload/";
     private final StatsServiceImpl statsService;
     private final PlayerStatsRepository statsRepository;
     private final GoalieStatsRepository goalieStatsRepository;
@@ -30,7 +30,6 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
     private final GoalieStatsRepositoryNHL goalieStatsRepositoryNHL;
     private final DefensemanStatsRepository defensemanStatsRepository;
     private final DefensemanStatsRepositoryNHL defensemanStatsRepositoryNHL;
-
     private final TransfersRepository transfersRepository;
 
     @PostMapping("/create")
@@ -61,7 +60,7 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
     @GetMapping("/nhl/goalie")
     public String goalieNHL(Model model) {
         model.addAttribute("goalieStats",
-                goalieStatsRepositoryNHL.findGoalieStatsByGamesBetween(11,150));
+                goalieStatsRepositoryNHL.findGoalieStatsByGamesBetween(11, 150));
         return "goalieStatsNHL_page";
     }
 

@@ -4,12 +4,18 @@ import com.example.demo.model.*;
 import com.example.demo.repository.DefensemanStatsRepositoryNHL;
 import com.example.demo.repository.GoalieStatsRepositoryNHL;
 import com.example.demo.repository.PlayerStatsRepositoryNHL;
+import com.example.demo.repository.TransfersRepository;
 import lombok.RequiredArgsConstructor;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.text.DecimalFormat;
 import java.util.*;
+import java.util.stream.Stream;
 
 @RequiredArgsConstructor
 @Service
@@ -17,9 +23,10 @@ public class StatsServiceImpl implements StatsService {
     private final PlayerStatsRepositoryNHL statsRepository;
     private final GoalieStatsRepositoryNHL goalieStatsRepository;
     private final DefensemanStatsRepositoryNHL defensemanStatsRepository;
+    private final TransfersRepository transfersRepository;
 
-    private final String PATHPLAYERSTAT = "D:/NHL ECHL/playerstat";
-    private final String PATHDEFENSEMANS = "D:/NHL ECHL/Defenseman";
+    private final String PATHPLAYERSTAT = "upload/";
+    private final String PATHDEFENSEMANS = "def/";
     private final String FULLPLAYERSTAT_TXT = "fullplayerstat.txt";
     private final String FULLDEFENSEMANS_TXT = "fulldefensemans.txt";
     private final int GOALS = 4;
@@ -97,8 +104,8 @@ public class StatsServiceImpl implements StatsService {
             }
         });
         goalieStatsRepository.saveAll(listGoalie);
+        createTransfers();
     }
-
 
     private void getFullStats() {
         try (PrintWriter printWriter = new PrintWriter(new FileWriter(FULLPLAYERSTAT_TXT))) {
@@ -408,7 +415,8 @@ public class StatsServiceImpl implements StatsService {
         }
     }
 
-    private void createDefensemans(Map<String, String> defensemans, List<PlayerStatsNHL> list, List<DefensemanStatsNHL> defensemansList) {
+    private void createDefensemans(Map<String, String> defensemans, List<PlayerStatsNHL> list,
+                                   List<DefensemanStatsNHL> defensemansList) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(FULLDEFENSEMANS_TXT));
 
@@ -497,4 +505,60 @@ public class StatsServiceImpl implements StatsService {
             throw new RuntimeException(e);
         }
     }
+
+    private void createTransfers() {
+        List<String> list = new ArrayList<>();
+        statsRepository.findAll().forEach(playerStatsNHL -> list.add(playerStatsNHL.getPlayer().substring(0, playerStatsNHL.getPlayer().indexOf('('))));
+
+        Set<String> duplicates = new HashSet<>();
+        for (int i = 0; i < list.size(); i++) {
+            String e1 = list.get(i);
+            if (e1 == null) continue; // игнорируем null
+            // сравниваем каждый элемент со всеми остальными
+            for (int j = 0; j < list.size(); j++) {
+                if (i == j) continue; // не проверяем элемент с собой же
+                String e2 = list.get(j);
+                if (e1.equals(e2)) {
+                    // дубликат найден, сохраним его
+                    duplicates.add(e2);
+                }
+            }
+        }
+
+        List<List<PlayerStatsNHL>> pl = new ArrayList<>();
+        duplicates.forEach(s -> pl.add(statsRepository.findByPlayerStartsWith(s)));
+
+        for (List<PlayerStatsNHL> player : pl) {
+            transfersRepository.save(new TransfersStats(player.get(0).getPlayer(),
+                    player.get(0).getGames(), player.get(0).getGoals(), player.get(0).getAssists(),
+                    player.get(0).getPoints(), player.get(0).getPPG(), player.get(0).getPlusMinus()));
+
+            transfersRepository.save(new TransfersStats(player.get(1).getPlayer(),
+                    player.get(1).getGames(), player.get(1).getGoals(), player.get(1).getAssists(),
+                    player.get(1).getPoints(), player.get(1).getPPG(), player.get(1).getPlusMinus()));
+        }
+    }
+
+//    private void copy() throws IOException {
+//        try (Stream<Path> walk = Files.walk(new File("upload/").toPath())) {
+//
+//            walk.forEach(source -> {
+//                try {
+//                    Files.copy(source,
+//                            new File("cache/").toPath().resolve(new File("upload/").toPath().relativize(source)),
+//                            StandardCopyOption.REPLACE_EXISTING);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            });
+//        }
+//    }
+//
+//    private void delete() {
+//        try {
+//            FileUtils.cleanDirectory(new File("upload/"));
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 }
