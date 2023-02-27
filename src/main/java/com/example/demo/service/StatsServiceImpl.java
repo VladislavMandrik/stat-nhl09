@@ -20,8 +20,8 @@ public class StatsServiceImpl implements StatsService {
     private final GoalieStatsRepository goalieStatsRepository;
     private final DefensemanStatsRepository defensemanStatsRepository;
 
-    private final String PATHPLAYERSTAT = "D:/IIHF ECHL/playerstat";
-    private final String PATHDEFENSEMANS = "D:/IIHF ECHL/Defenseman";
+    private final String PATHPLAYERSTAT = "upload/";
+    private final String PATHDEFENSEMANS = "def/";
     private final String FULLPLAYERSTAT_TXT = "fullplayerstat.txt";
     private final String FULLDEFENSEMANS_TXT = "fulldefensemans.txt";
     private final int GOALS = 4;

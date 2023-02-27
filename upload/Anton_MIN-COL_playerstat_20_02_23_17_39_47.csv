@@ -1,0 +1,41 @@
+Player Name,Team,Pos,Time,Goal,Asst,PIMS,+/-,PPG/GA,SHG/ENG,Shoot/SA,Hits,Player ID,Player INDX
+Addison Calen,MIN,Player,20:03,0,0,0,0,0,0,0,4,6612,144
+Boldy Matt,MIN,Player,13:24,1,0,0,0,0,0,3,2,6613,287
+Dewar Connor,MIN,Player,14:05,0,2,0,2,0,0,1,1,6614,389
+Reaves Ryan,MIN,Player,11:20,1,0,0,1,0,0,3,0,4442,394
+Eriksson Ek Joel,MIN,Player,15:15,0,0,0,0,0,0,1,1,6071,558
+Hartman Ryan,MIN,Player,15:38,1,1,0,2,0,0,2,4,2648,869
+Dumba Matt,MIN,Player,16:57,0,0,0,0,0,0,1,3,4445,1196
+Merrill Jon,MIN,Player,21:07,0,0,0,3,0,0,0,2,2956,1496
+Zuccarello Mats,MIN,Player,14:41,0,1,0,1,0,0,3,2,5807,1559
+Greenway Jordan,MIN,Player,14:01,0,1,0,0,0,0,2,0,866,2130
+Brodin Jonas,MIN,Player,21:28,0,0,0,2,0,0,0,3,4506,2217
+Duhaime Brandon,MIN,Player,14:19,0,1,0,1,0,0,2,1,6565,2258
+Foligno Marcus,MIN,Player,18:26,0,2,0,3,0,0,3,1,579,3395
+Spurgeon Jared,MIN,Player,19:32,0,1,0,3,0,0,0,3,4407,3434
+Kaprizov Kirill,MIN,Player,13:51,1,0,0,1,0,0,3,1,1717,3774
+Goligoski Alex,MIN,Player,20:53,0,0,2,2,0,0,0,4,5323,4287
+Steel Sam,MIN,Player,15:02,0,1,0,1,0,0,2,2,3212,4357
+Gaudreau Frederick ,MIN,Player,15:02,2,1,0,3,0,0,5,4,6174,4429
+Gustavsson Filip,MIN,Goalie,00:00,-,0,0,-,0,0,0,-,6017,14
+Fleury Marc-Andre,MIN,Goalie,60:00,-,0,0,-,2,0,21,-,652,508
+Landeskog Gabriel,COL,Player,13:41,1,0,0,-1,1,0,3,2,1157,105
+Nichushkin Valery,COL,Player,24:31,0,0,0,-2,0,0,8,2,2145,258
+Cogliano Andrew,COL,Player,14:04,0,0,0,-2,0,0,0,4,5163,259
+Galchenyuk Alex,COL,Player,08:56,0,0,0,0,0,0,1,1,1690,281
+Johnson Erik,COL,Player,21:36,0,0,0,-2,0,0,0,1,5288,544
+MacKinnon Nathan,COL,Player,19:41,0,1,0,-2,0,0,1,2,3917,599
+Makar Cale,COL,Player,23:30,0,0,0,-2,0,0,0,5,4146,683
+MacDermid Kurtis,COL,Player,21:27,0,0,0,-1,0,0,0,7,1114,747
+Toews Devon,COL,Player,17:33,0,0,0,-1,0,0,0,2,3708,854
+Lehkonen Artturi,COL,Player,16:53,0,1,0,-1,0,0,1,2,3216,1447
+Newhook Alex,COL,Player,16:24,1,0,0,-1,0,0,2,1,6560,1456
+Rantanen Mikko,COL,Player,19:00,0,0,0,-2,0,0,1,4,5444,1683
+O'Connor Logan,COL,Player,14:08,0,0,0,-2,0,0,1,4,6576,2388
+Rodrigues Evan,COL,Player,09:32,0,0,0,0,0,0,1,0,6126,2650
+Matteau Stefan,COL,Player,08:47,0,0,0,0,0,0,2,4,3256,3216
+Manson Josh,COL,Player,16:34,0,0,0,-2,0,0,0,3,5585,3493
+Compher J.T.,COL,Player,14:23,0,0,0,-2,0,0,0,4,5937,3848
+Girard Samuel,COL,Player,19:20,0,0,0,-2,0,0,0,2,6118,4344
+Georgiev Alexander,COL,Goalie,00:00,-,0,0,-,0,0,0,-,482,92
+Francouz Pavel,COL,Goalie,60:00,-,0,0,-,6,0,31,-,2460,341

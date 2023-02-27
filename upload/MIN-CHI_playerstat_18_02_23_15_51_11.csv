@@ -1,0 +1,41 @@
+Player Name,Team,Pos,Time,Goal,Asst,PIMS,+/-,PPG/GA,SHG/ENG,Shoot/SA,Hits,Player ID,Player INDX
+Addison Calen,MIN,Player,26:34,0,1,2,-2,0,0,0,4,6612,144
+Boldy Matt,MIN,Player,12:37,0,0,0,-3,0,0,0,2,6613,287
+Dewar Connor,MIN,Player,17:27,0,0,0,-2,0,0,3,1,6614,389
+Reaves Ryan,MIN,Player,12:12,0,0,0,-1,0,0,0,0,4442,394
+Eriksson Ek Joel,MIN,Player,14:06,0,0,0,-3,0,0,1,0,6071,558
+Hartman Ryan,MIN,Player,08:30,0,0,0,-1,0,0,1,0,2648,869
+Dumba Matt,MIN,Player,21:30,0,0,0,-3,0,0,0,7,4445,1196
+Merrill Jon,MIN,Player,24:38,0,0,0,-1,0,0,0,3,2956,1496
+Zuccarello Mats,MIN,Player,17:23,0,0,0,-2,0,0,2,1,5807,1559
+Greenway Jordan,MIN,Player,11:21,0,0,0,-3,0,0,1,1,866,2130
+Brodin Jonas,MIN,Player,15:17,0,0,0,-2,0,0,0,4,4506,2217
+Duhaime Brandon,MIN,Player,14:11,0,0,0,-1,0,0,2,0,6565,2258
+Foligno Marcus,MIN,Player,12:22,0,0,2,-1,0,0,1,1,579,3395
+Spurgeon Jared,MIN,Player,17:00,0,0,2,-2,0,0,0,4,4407,3434
+Kaprizov Kirill,MIN,Player,21:29,1,0,0,-1,0,1,2,3,1717,3774
+Goligoski Alex,MIN,Player,15:01,0,0,0,-2,0,0,0,5,5323,4287
+Steel Sam,MIN,Player,19:57,0,1,0,0,0,0,1,6,3212,4357
+Gaudreau Frederick ,MIN,Player,08:30,0,0,2,-1,0,0,2,1,6174,4429
+Gustavsson Filip,MIN,Goalie,00:00,-,0,0,-,0,0,0,-,6017,14
+Fleury Marc-Andre,MIN,Goalie,60:00,-,0,0,-,10,0,32,-,652,508
+Kane Patrick,CHI,Player,23:07,2,2,0,1,1,0,4,2,5160,151
+Toews Jonathan,CHI,Player,23:50,0,0,0,1,0,0,2,0,5161,152
+Johnson Jack,CHI,Player,15:35,0,0,0,3,0,0,1,6,1232,285
+Jones Seth,CHI,Player,19:55,0,1,0,0,0,0,0,2,4044,424
+Kurashev Philipp,CHI,Player,14:01,1,1,0,2,0,0,2,1,1698,542
+Connolly Brett,CHI,Player,10:27,0,2,0,1,0,0,0,0,2688,584
+Jones Caleb,CHI,Player,24:30,0,1,0,3,0,0,0,5,2949,712
+Murphy Connor,CHI,Player,23:44,0,1,0,1,0,0,1,5,289,1842
+Johnson Tyler,CHI,Player,15:11,0,2,0,1,0,0,0,0,892,2411
+Tinordi Jarred,CHI,Player,15:30,0,2,0,3,0,0,1,2,2087,2435
+Katchouk Boris,CHI,Player,13:50,0,0,0,1,0,0,1,0,6594,2457
+Raddysh Taylor,CHI,Player,12:25,2,0,0,2,0,0,7,1,6595,2458
+Blackwell Colin,CHI,Player,12:53,0,0,0,1,0,0,0,0,3751,2663
+McCabe Jake,CHI,Player,20:46,0,1,0,2,0,0,0,2,5306,3478
+Domi Max,CHI,Player,23:15,1,2,0,1,1,0,3,0,2552,4013
+Khaira Jujhar,CHI,Player,08:31,3,0,0,3,0,0,6,0,4766,4033
+Athanasiou Andreas,CHI,Player,15:21,1,1,0,1,1,0,3,1,5664,4103
+Dickinson Jason,CHI,Player,07:34,0,0,0,3,0,0,1,0,6177,4437
+Mrazek Petr,CHI,Goalie,59:35,-,1,0,-,1,0,16,-,4271,171
+Stalock Alex,CHI,Goalie,00:00,-,0,0,-,0,0,0,-,2993,2401

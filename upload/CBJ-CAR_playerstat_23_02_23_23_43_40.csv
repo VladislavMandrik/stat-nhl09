@@ -1,0 +1,41 @@
+Player Name,Team,Pos,Time,Goal,Asst,PIMS,+/-,PPG/GA,SHG/ENG,Shoot/SA,Hits,Player ID,Player INDX
+Suzuki Nick,CBJ,Player,17:06,1,0,0,1,0,0,1,2,1922,191
+Thompson  Tage,CBJ,Player,16:03,0,1,2,1,0,0,3,1,3781,297
+Bean Jake,CBJ,Player,28:08,0,0,0,1,0,0,0,7,5992,493
+Kubalik Dominik,CBJ,Player,09:15,0,1,0,1,0,0,1,1,6156,522
+Peeke Andrew,CBJ,Player,23:21,0,0,0,1,0,0,0,8,4119,675
+St. Louis Martin,CBJ,Player,19:20,0,1,0,1,0,0,3,2,1881,718
+Carlsson Gabriel,CBJ,Player,12:08,0,0,0,1,0,0,0,2,4626,1073
+Rantanen Mikko,CBJ,Player,17:25,1,0,0,1,0,0,1,2,5444,1683
+Gustafsson Erik,CBJ,Player,25:21,0,1,2,1,0,0,0,7,5592,1753
+Jenner Boone,CBJ,Player,12:19,0,1,0,1,0,0,1,2,297,2015
+Laine Patrik,CBJ,Player,15:34,0,1,0,1,0,0,2,0,1146,2033
+Gudbranson Erik,CBJ,Player,14:32,0,0,2,1,0,0,0,5,4402,2337
+Sillinger Cole,CBJ,Player,15:08,0,0,0,0,0,0,2,1,6569,2370
+Bayreuther Gavin,CBJ,Player,18:40,0,0,0,1,0,0,0,4,6577,2390
+Kyrou Jordan,CBJ,Player,09:14,1,0,0,1,0,0,2,1,6208,2446
+Texier Alexandre,CBJ,Player,07:51,1,0,0,0,0,0,4,0,2813,2742
+Leivo Josh,CBJ,Player,08:07,0,1,0,0,0,0,3,0,2541,3307
+Giroux Claude,CBJ,Player,15:51,0,0,0,1,0,0,1,0,3923,4237
+Korpisalo Joonas,CBJ,Goalie,00:00,-,0,0,-,0,0,0,-,2338,4131
+Merzlikins Elvis,CBJ,Goalie,59:36,-,0,0,-,1,0,37,-,5888,4200
+Stastny Paul,CAR,Player,12:27,0,0,0,0,0,0,3,1,934,153
+Burns Brent,CAR,Player,29:32,0,0,0,-2,0,0,1,6,410,309
+Wheeler Blake,CAR,Player,13:39,0,0,0,-1,0,0,2,0,206,404
+Carter Jeff,CAR,Player,19:18,1,0,0,-1,0,0,6,2,3297,474
+Staal Jordan,CAR,Player,17:05,0,0,0,1,0,0,2,0,1628,500
+Pavelski Joe,CAR,Player,17:28,0,0,0,-1,0,0,2,0,1826,546
+Gardiner Jake,CAR,Player,19:10,0,0,0,-1,0,0,0,3,5230,595
+Sedin Daniel,CAR,Player,10:39,0,0,0,-2,0,0,2,2,1794,627
+Pesce Brett,CAR,Player,24:02,0,0,0,-2,0,0,0,6,4415,906
+de Haan Calvin,CAR,Player,18:37,0,0,0,-2,0,0,0,3,4595,1754
+Schmidt Nate,CAR,Player,17:27,0,0,0,1,0,0,0,2,4431,2129
+Jarvis Seth,CAR,Player,10:58,0,0,0,-2,0,0,2,3,6574,2381
+Peterka JJ,CAR,Player,11:37,0,0,0,0,0,0,1,0,6605,2509
+Bonino Nick,CAR,Player,12:33,0,0,0,0,0,0,2,2,563,2862
+Teravainen Teuvo,CAR,Player,17:59,0,0,2,0,0,0,5,4,1779,2963
+Fast Jesper,CAR,Player,10:38,0,0,0,-1,0,0,2,1,286,3542
+Svechnikov Andrei,CAR,Player,20:41,0,0,0,-2,0,0,5,1,5058,3885
+Slavin Jaccob,CAR,Player,11:12,0,0,0,0,0,0,2,1,4920,4060
+Andersen Frederik,CAR,Goalie,60:00,-,1,0,-,4,0,24,-,1149,664
+Raanta Antti,CAR,Goalie,00:00,-,0,0,-,0,0,0,-,2608,2912

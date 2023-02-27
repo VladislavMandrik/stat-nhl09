@@ -1,0 +1,41 @@
+Player Name,Team,Pos,Time,Goal,Asst,PIMS,+/-,PPG/GA,SHG/ENG,Shoot/SA,Hits,Player ID,Player INDX
+Maroon Patrick,TB,Player,19:40,0,0,0,1,0,0,0,1,969,4
+Perry Corey,TB,Player,15:54,0,0,0,-1,0,0,0,0,3400,19
+Hagel Brandon,TB,Player,02:09,0,0,0,0,0,0,0,0,6555,106
+Balcers Rudolfs,TB,Player,14:44,0,0,0,-1,0,0,0,1,6256,444
+Point Brayden,TB,Player,20:21,1,0,2,1,0,0,2,1,6070,521
+Kucherov Nikita,TB,Player,17:35,1,0,2,-1,0,0,1,2,538,623
+Myers Philippe,TB,Player,17:10,0,0,0,-1,0,0,0,3,1875,762
+Fleury Haydn,TB,Player,11:23,0,0,0,-1,0,0,0,0,614,1400
+Hedman Victor,TB,Player,26:58,0,1,0,0,0,0,0,2,5416,1558
+Killorn Alex,TB,Player,10:12,0,0,0,-1,0,0,0,0,1170,2413
+Colton Ross,TB,Player,10:52,0,0,0,-1,0,0,1,0,6593,2456
+Cirelli Anthony,TB,Player,31:29,0,0,0,1,0,0,3,0,3041,2839
+Namestnikov Vladislav,TB,Player,02:06,0,0,0,0,0,0,0,0,3844,3132
+Stamkos Steven,TB,Player,23:34,0,1,0,0,0,0,0,1,240,3254
+Sergachyov Mikhail,TB,Player,22:34,0,1,0,0,0,0,0,6,5971,3477
+Bellemare Pierre-Edouard,TB,Player,01:23,0,0,0,-1,0,0,0,0,979,3518
+Cole Ian,TB,Player,20:42,0,0,0,-1,0,0,0,3,1833,3554
+Cernak Erik,TB,Player,21:13,0,0,2,1,0,0,0,2,6198,4549
+Vasilevsky Andrei,TB,Goalie,60:00,-,0,0,-,4,0,33,-,3767,61
+Elliott Brian,TB,Goalie,00:00,-,0,0,-,0,0,0,-,5156,420
+Addison Calen,MIN,Player,17:48,0,0,0,1,0,0,1,1,6612,144
+Boldy Matt,MIN,Player,22:32,0,0,0,1,0,0,4,2,6613,287
+Dewar Connor,MIN,Player,19:50,0,0,0,-2,0,0,1,4,6614,389
+Reaves Ryan,MIN,Player,06:35,1,0,0,0,0,0,3,1,4442,394
+Eriksson Ek Joel,MIN,Player,21:05,1,1,0,1,1,0,2,0,6071,558
+Hartman Ryan,MIN,Player,14:26,0,1,0,1,0,0,2,2,2648,869
+Dumba Matt,MIN,Player,20:01,0,0,0,1,0,0,1,2,4445,1196
+Merrill Jon,MIN,Player,19:11,0,0,0,-2,0,0,0,2,2956,1496
+Zuccarello Mats,MIN,Player,19:39,0,0,0,-1,0,0,4,1,5807,1559
+Greenway Jordan,MIN,Player,18:33,1,0,0,1,0,0,5,1,866,2130
+Brodin Jonas,MIN,Player,21:25,0,1,0,2,0,0,1,1,4506,2217
+Duhaime Brandon,MIN,Player,09:54,0,1,2,0,0,0,2,0,6565,2258
+Foligno Marcus,MIN,Player,08:45,1,0,0,1,0,0,3,2,579,3395
+Spurgeon Jared,MIN,Player,19:16,0,0,0,-1,0,0,0,2,4407,3434
+Kaprizov Kirill,MIN,Player,14:42,0,0,0,-1,0,0,2,1,1717,3774
+Goligoski Alex,MIN,Player,22:19,0,1,0,1,0,0,1,5,5323,4287
+Steel Sam,MIN,Player,07:00,0,1,0,1,0,0,0,1,3212,4357
+Gaudreau Frederick ,MIN,Player,12:40,0,1,0,1,0,0,1,2,6174,4429
+Gustavsson Filip,MIN,Goalie,00:00,-,0,0,-,0,0,0,-,6017,14
+Fleury Marc-Andre,MIN,Goalie,59:17,-,0,0,-,2,0,7,-,652,508

@@ -1,0 +1,41 @@
+Player Name,Team,Pos,Time,Goal,Asst,PIMS,+/-,PPG/GA,SHG/ENG,Shoot/SA,Hits,Player ID,Player INDX
+Addison Calen,MIN,Player,18:13,0,0,0,0,0,0,1,4,6612,144
+Boldy Matt,MIN,Player,24:04,0,0,0,0,0,0,1,4,6613,287
+Dewar Connor,MIN,Player,15:07,0,0,0,-1,0,0,0,2,6614,389
+Reaves Ryan,MIN,Player,12:12,0,0,0,-1,0,0,0,2,4442,394
+Eriksson Ek Joel,MIN,Player,24:40,0,0,0,0,0,0,2,6,6071,558
+Hartman Ryan,MIN,Player,14:26,0,0,0,-1,0,0,3,0,2648,869
+Dumba Matt,MIN,Player,14:03,0,0,0,-1,0,0,0,3,4445,1196
+Merrill Jon,MIN,Player,20:07,0,0,0,-2,0,0,0,1,2956,1496
+Zuccarello Mats,MIN,Player,16:59,0,0,0,-2,0,0,2,1,5807,1559
+Greenway Jordan,MIN,Player,14:49,0,0,0,0,0,0,3,1,866,2130
+Brodin Jonas,MIN,Player,23:14,0,0,0,-2,0,0,0,4,4506,2217
+Duhaime Brandon,MIN,Player,10:26,0,0,0,0,0,0,0,2,6565,2258
+Foligno Marcus,MIN,Player,08:15,0,0,0,-2,0,0,3,1,579,3395
+Spurgeon Jared,MIN,Player,23:18,0,0,0,-2,0,0,0,4,4407,3434
+Kaprizov Kirill,MIN,Player,17:15,0,0,0,-2,0,0,2,1,1717,3774
+Goligoski Alex,MIN,Player,21:05,0,0,0,-1,0,0,0,4,5323,4287
+Steel Sam,MIN,Player,14:09,0,0,0,-2,0,0,0,0,3212,4357
+Gaudreau Frederick ,MIN,Player,07:38,0,0,0,-1,0,0,1,2,6174,4429
+Gustavsson Filip,MIN,Goalie,00:00,-,0,0,-,0,0,0,-,6017,14
+Fleury Marc-Andre,MIN,Goalie,60:00,-,0,0,-,4,0,38,-,652,508
+Pacioretty Max,CAR,Player,16:54,0,0,0,1,0,0,1,4,762,42
+Stastny Paul,CAR,Player,15:49,0,0,0,0,0,0,6,3,934,153
+Burns Brent,CAR,Player,26:24,0,0,0,1,0,0,0,5,410,309
+Necas Martin,CAR,Player,13:40,0,0,0,1,0,0,2,3,751,377
+Martinook Jordan,CAR,Player,07:03,1,0,0,1,0,0,1,0,219,485
+Staal Jordan,CAR,Player,16:13,1,0,0,2,0,0,2,2,1628,500
+Gardiner Jake,CAR,Player,19:49,0,0,0,3,0,0,0,4,5230,595
+Pesce Brett,CAR,Player,21:30,0,0,2,1,0,0,1,4,4415,906
+Skeji Brady,CAR,Player,13:47,0,0,2,0,0,0,0,3,1132,1228
+de Haan Calvin,CAR,Player,22:18,0,0,0,1,0,0,0,7,4595,1754
+Aho Sebastian,CAR,Player,16:14,1,0,0,1,0,0,3,2,4038,1908
+Jarvis Seth,CAR,Player,16:06,0,1,0,1,0,0,5,5,6574,2381
+Teravainen Teuvo,CAR,Player,12:34,1,0,0,1,0,0,3,0,1779,2963
+Fast Jesper,CAR,Player,17:52,0,2,0,2,0,0,2,3,286,3542
+Kotkaniemi Jesperi,CAR,Player,12:38,0,0,0,0,0,0,4,1,5051,3878
+Svechnikov Andrei,CAR,Player,18:45,0,1,0,1,0,0,5,2,5058,3885
+Slavin Jaccob,CAR,Player,18:25,0,0,0,2,0,0,0,3,4920,4060
+Kase Ondrej,CAR,Player,08:36,0,1,0,1,0,0,3,1,6107,4322
+Andersen Frederik,CAR,Goalie,60:00,-,0,0,-,0,0,18,-,1149,664
+Raanta Antti,CAR,Goalie,00:00,-,0,0,-,0,0,0,-,2608,2912

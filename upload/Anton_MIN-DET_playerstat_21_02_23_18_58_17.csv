@@ -1,0 +1,41 @@
+Player Name,Team,Pos,Time,Goal,Asst,PIMS,+/-,PPG/GA,SHG/ENG,Shoot/SA,Hits,Player ID,Player INDX
+Addison Calen,MIN,Player,26:27,0,2,0,2,0,0,0,5,6612,144
+Boldy Matt,MIN,Player,07:25,2,0,0,2,0,0,4,0,6613,287
+Dewar Connor,MIN,Player,15:27,0,1,0,0,0,0,1,3,6614,389
+Reaves Ryan,MIN,Player,10:07,0,0,0,0,0,0,4,1,4442,394
+Eriksson Ek Joel,MIN,Player,12:54,1,1,0,3,0,1,2,0,6071,558
+Hartman Ryan,MIN,Player,15:06,0,1,0,1,0,0,1,0,2648,869
+Dumba Matt,MIN,Player,19:33,0,1,0,1,0,0,0,5,4445,1196
+Merrill Jon,MIN,Player,24:39,0,0,2,2,0,0,0,6,2956,1496
+Zuccarello Mats,MIN,Player,12:14,0,1,0,0,0,0,2,0,5807,1559
+Greenway Jordan,MIN,Player,10:01,0,2,0,2,0,0,0,1,866,2130
+Brodin Jonas,MIN,Player,15:13,0,0,0,1,0,0,0,2,4506,2217
+Duhaime Brandon,MIN,Player,14:51,0,2,0,2,0,0,3,0,6565,2258
+Foligno Marcus,MIN,Player,21:39,1,1,0,1,0,0,3,2,579,3395
+Spurgeon Jared,MIN,Player,18:03,0,1,0,0,0,0,0,1,4407,3434
+Kaprizov Kirill,MIN,Player,15:57,1,0,0,-1,0,0,1,3,1717,3774
+Goligoski Alex,MIN,Player,15:49,0,0,0,2,0,0,0,3,5323,4287
+Steel Sam,MIN,Player,16:35,1,0,2,1,0,0,3,0,3212,4357
+Gaudreau Frederick ,MIN,Player,14:39,1,0,2,0,0,0,3,1,6174,4429
+Gustavsson Filip,MIN,Goalie,00:00,-,0,0,-,0,0,0,-,6017,14
+Fleury Marc-Andre,MIN,Goalie,59:52,-,0,0,-,4,0,24,-,652,508
+Hronek Filip,DET,Player,27:16,0,1,0,-1,0,0,1,2,6228,9
+Copp Andy,DET,Player,09:01,0,1,0,-1,0,0,2,2,4865,103
+Berggren Jonatan,DET,Player,11:34,0,1,0,1,0,0,1,3,6610,292
+Sundqvist Oskar,DET,Player,10:27,0,0,0,-2,0,0,0,0,4451,325
+Rasmussen Michael,DET,Player,10:02,1,1,0,1,0,0,2,1,6556,399
+Hagg Robert,DET,Player,14:56,0,0,0,-3,0,0,0,3,2110,400
+Kubalik Dominik,DET,Player,20:37,2,0,0,-2,1,0,3,2,6156,522
+Perron David,DET,Player,18:48,0,1,0,-2,0,0,3,0,5165,543
+Seider Moritz,DET,Player,25:08,0,0,0,-4,0,0,0,2,1948,645
+Maatta Olli,DET,Player,19:22,0,0,0,0,0,0,1,1,2735,1899
+Raymond Lucas,DET,Player,19:28,0,0,0,-1,0,0,0,2,6568,2364
+Oesterle Jordan,DET,Player,16:03,0,1,0,0,0,0,0,5,3157,2845
+Chiarot Ben,DET,Player,16:59,0,0,0,0,0,0,0,3,2315,3069
+Larkin Dylan,DET,Player,29:22,0,1,0,-1,0,0,6,4,5774,3165
+Fabbri Robby,DET,Player,13:51,0,0,0,-3,0,0,1,2,5090,4016
+Bertuzzi Tyler,DET,Player,19:30,0,0,0,-1,0,0,1,4,328,4304
+Vrana Jakub,DET,Player,10:46,1,0,0,1,0,0,2,2,6115,4338
+Erne Adam,DET,Player,10:06,0,0,0,-2,0,0,1,0,6139,4341
+Husso Ville,DET,Goalie,55:56,-,0,0,-,7,0,27,-,4982,1743
+Nedeljkovic Alex,DET,Goalie,00:00,-,0,0,-,0,0,0,-,6579,2397
