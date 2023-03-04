@@ -10,4 +10,5 @@ import java.util.List;
 public interface PlayerStatsRepository extends JpaRepository<PlayerStats, Long> {
     List<PlayerStats> findPlayerStatsByPlusMinusIs(String s);
     List<PlayerStats> findAllByOrderByPointsDesc();
+    List<PlayerStats> findByPlayerStartsWith(String s);
 }

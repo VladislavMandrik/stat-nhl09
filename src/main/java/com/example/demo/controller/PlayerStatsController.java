@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import org.springframework.boot.Banner;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -13,4 +12,6 @@ public interface PlayerStatsController {
     String goalie(Model model);
 
     String defenders(Model model);
+
+    String transfers(Model model);
 }

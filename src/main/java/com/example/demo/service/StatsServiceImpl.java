@@ -3,9 +3,11 @@ package com.example.demo.service;
 import com.example.demo.model.DefensemanStats;
 import com.example.demo.model.GoalieStats;
 import com.example.demo.model.PlayerStats;
+import com.example.demo.model.TransfersStats;
 import com.example.demo.repository.DefensemanStatsRepository;
 import com.example.demo.repository.GoalieStatsRepository;
 import com.example.demo.repository.PlayerStatsRepository;
+import com.example.demo.repository.TransfersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,7 @@ public class StatsServiceImpl implements StatsService {
     private final PlayerStatsRepository statsRepository;
     private final GoalieStatsRepository goalieStatsRepository;
     private final DefensemanStatsRepository defensemanStatsRepository;
+    private final TransfersRepository transfersRepository;
 
     private final String PATHPLAYERSTAT = "upload/";
     private final String PATHDEFENSEMANS = "def/";
@@ -35,12 +38,12 @@ public class StatsServiceImpl implements StatsService {
         getFullStats();
         getFullDefensemans();
 
-        List<String> goals = createStatsForTable(GOALS);
-        List<String> assists = createStatsForTable(ASSISTS);
+        Map<String, Integer> goals = createStatsForTable(GOALS);
+        Map<String, Integer> assists = createStatsForTable(ASSISTS);
+        Map<String, Integer> points = createPoints(goals, assists);
+
+
         Map<String, Integer> gamesMap = new TreeMap<>();
-        Map<String, Integer> goalsMap = new TreeMap<>();
-        Map<String, Integer> assistsMap = new TreeMap<>();
-        Map<String, Integer> points = new TreeMap<>();
         Map<String, String> PPG = new TreeMap<>();
         Map<String, String> defensemans = new TreeMap<>();
         Map<String, Integer> plusMinus = new TreeMap<>();
@@ -52,26 +55,26 @@ public class StatsServiceImpl implements StatsService {
         Map<String, String> GAA = new TreeMap<>();
         Map<String, Double> TOI = new TreeMap<>();
         Map<String, Integer> goalieAssists = new TreeMap<>();
+        Map<String, String> goalieNameAssists = new TreeMap<>();
 
         createGamesAndPlusMinusMap(gamesMap, plusMinus);
-        createMapFromList(goals, goalsMap);
-        createMapFromList(assists, assistsMap);
-        createMapFromList(createPoints(goals, assists), points);
         createPPG(gamesMap, points, PPG);
 
         gamesMap.forEach((player, games) ->
-                list.add(new PlayerStats(player, games, goalsMap.get(player), assistsMap.get(player),
+                list.add(new PlayerStats(player, games, goals.get(player), assists.get(player),
                         points.get(player), PPG.get(player), plusMinus.get(player))));
         statsRepository.saveAll(replaceNullOnZero(list));
 
         createDefensemans(defensemans, list, defensemansList);
         defensemanStatsRepository.saveAll(defensemansList);
 
-        createGoalieStats(goalieGames, shotsAgainst, goalsAgainst, savePercentage, GAA, TOI, goalieAssists);
+        createGoalieStats(goalieGames, shotsAgainst, goalsAgainst, savePercentage, GAA, TOI, goalieAssists,
+                goalieNameAssists, list);
         goalieGames.forEach((player, games) ->
                 listGoalie.add(new GoalieStats(player, games, shotsAgainst.get(player), goalsAgainst.get(player),
                         savePercentage.get(player), GAA.get(player), TOI.get(player), goalieAssists.get(player))));
         goalieStatsRepository.saveAll(listGoalie);
+        createTransfers();
     }
 
     private void getFullStats() {
@@ -102,9 +105,9 @@ public class StatsServiceImpl implements StatsService {
         }
     }
 
-    private List<String> createStatsForTable(int i) {
+    private Map<String, Integer> createStatsForTable(int i) {
         try {
-            List<String> statsList = new ArrayList<>();
+            Map<String, Integer> statsMap = new TreeMap<>();
             BufferedReader reader = new BufferedReader(new FileReader(FULLPLAYERSTAT_TXT));
 
             String c;
@@ -113,50 +116,46 @@ public class StatsServiceImpl implements StatsService {
 
                 createFullTeamName(words);
 
-                if (Objects.equals(words[i], "1")) {
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                } else if (Objects.equals(words[i], "2")) {
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                } else if (Objects.equals(words[i], "3")) {
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                } else if (Objects.equals(words[i], "4")) {
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                } else if (Objects.equals(words[i], "5")) {
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                } else if (Objects.equals(words[i], "6")) {
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                } else if (Objects.equals(words[i], "7")) {
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                } else if (Objects.equals(words[i], "8")) {
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                    statsList.add(words[0] + " (" + words[1] + ")");
-                    statsList.add(words[0] + " (" + words[1] + ")");
+                if (!statsMap.containsKey(words[0] + " (" + words[1] + ")") && Objects.equals(words[i], "0")) {
+                    statsMap.put(words[0] + " (" + words[1] + ")", 0);
+                } else if (!statsMap.containsKey(words[0] + " (" + words[1] + ")") && Objects.equals(words[i], "-")) {
+                    statsMap.put(words[0] + " (" + words[1] + ")", 0);
+                } else if (!statsMap.containsKey(words[0] + " (" + words[1] + ")") && Objects.equals(words[i], "1")) {
+                    statsMap.put(words[0] + " (" + words[1] + ")", 1);
+                } else if (!statsMap.containsKey(words[0] + " (" + words[1] + ")") && Objects.equals(words[i], "2")) {
+                    statsMap.put(words[0] + " (" + words[1] + ")", 2);
+                } else if (!statsMap.containsKey(words[0] + " (" + words[1] + ")") && Objects.equals(words[i], "3")) {
+                    statsMap.put(words[0] + " (" + words[1] + ")", 3);
+                } else if (!statsMap.containsKey(words[0] + " (" + words[1] + ")") && Objects.equals(words[i], "4")) {
+                    statsMap.put(words[0] + " (" + words[1] + ")", 4);
+                } else if (!statsMap.containsKey(words[0] + " (" + words[1] + ")") && Objects.equals(words[i], "5")) {
+                    statsMap.put(words[0] + " (" + words[1] + ")", 5);
+                } else if (!statsMap.containsKey(words[0] + " (" + words[1] + ")") && Objects.equals(words[i], "6")) {
+                    statsMap.put(words[0] + " (" + words[1] + ")", 6);
+                } else if (!statsMap.containsKey(words[0] + " (" + words[1] + ")") && Objects.equals(words[i], "7")) {
+                    statsMap.put(words[0] + " (" + words[1] + ")", 7);
+                } else if (!statsMap.containsKey(words[0] + " (" + words[1] + ")") && Objects.equals(words[i], "8")) {
+                    statsMap.put(words[0] + " (" + words[1] + ")", 8);
+                } else if (statsMap.containsKey(words[0] + " (" + words[1] + ")") && Objects.equals(words[i], "0")) {
+                    statsMap.put(words[0] + " (" + words[1] + ")", statsMap.get(words[0] + " (" + words[1] + ")"));
+                } else if (statsMap.containsKey(words[0] + " (" + words[1] + ")") && Objects.equals(words[i], "-")) {
+                    statsMap.put(words[0] + " (" + words[1] + ")", statsMap.get(words[0] + " (" + words[1] + ")"));
+                } else if (statsMap.containsKey(words[0] + " (" + words[1] + ")") && Objects.equals(words[i], "1")) {
+                    statsMap.put(words[0] + " (" + words[1] + ")", statsMap.get(words[0] + " (" + words[1] + ")") + 1);
+                } else if (statsMap.containsKey(words[0] + " (" + words[1] + ")") && Objects.equals(words[i], "2")) {
+                    statsMap.put(words[0] + " (" + words[1] + ")", statsMap.get(words[0] + " (" + words[1] + ")") + 2);
+                } else if (statsMap.containsKey(words[0] + " (" + words[1] + ")") && Objects.equals(words[i], "3")) {
+                    statsMap.put(words[0] + " (" + words[1] + ")", statsMap.get(words[0] + " (" + words[1] + ")") + 3);
+                } else if (statsMap.containsKey(words[0] + " (" + words[1] + ")") && Objects.equals(words[i], "4")) {
+                    statsMap.put(words[0] + " (" + words[1] + ")", statsMap.get(words[0] + " (" + words[1] + ")") + 4);
+                } else if (statsMap.containsKey(words[0] + " (" + words[1] + ")") && Objects.equals(words[i], "5")) {
+                    statsMap.put(words[0] + " (" + words[1] + ")", statsMap.get(words[0] + " (" + words[1] + ")") + 5);
+                } else if (statsMap.containsKey(words[0] + " (" + words[1] + ")") && Objects.equals(words[i], "6")) {
+                    statsMap.put(words[0] + " (" + words[1] + ")", statsMap.get(words[0] + " (" + words[1] + ")") + 6);
+                } else if (statsMap.containsKey(words[0] + " (" + words[1] + ")") && Objects.equals(words[i], "7")) {
+                    statsMap.put(words[0] + " (" + words[1] + ")", statsMap.get(words[0] + " (" + words[1] + ")") + 7);
+                } else if (statsMap.containsKey(words[0] + " (" + words[1] + ")") && Objects.equals(words[i], "8")) {
+                    statsMap.put(words[0] + " (" + words[1] + ")", statsMap.get(words[0] + " (" + words[1] + ")") + 8);
                 } else if (Objects.equals(words[i], "9")) {
                     throw new RuntimeException("Много!!!!!!!!!!!!!!!1");
                 } else if (Objects.equals(words[i], "10")) {
@@ -171,7 +170,7 @@ public class StatsServiceImpl implements StatsService {
                     throw new RuntimeException("Много!!!!!!!!!!!!!!!1");
                 }
             }
-            return statsList;
+            return statsMap;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -210,22 +209,10 @@ public class StatsServiceImpl implements StatsService {
         }
     }
 
-    private List<String> createPoints(List<String> scorers, List<String> assists) {
-        List<String> pointsList = new ArrayList<>();
-
-        pointsList.addAll(scorers);
-        pointsList.addAll(assists);
-        return pointsList;
-    }
-
-    private void createMapFromList(List<String> scorers, Map<String, Integer> m) {
-        for (String s : scorers) {
-            if (!m.containsKey(s)) {
-                m.put(s, 1);
-            } else {
-                m.put(s, m.get(s) + 1);
-            }
-        }
+    private Map<String, Integer> createPoints(Map<String, Integer> scorers, Map<String, Integer> assists) {
+        Map<String, Integer> pointsMap = new TreeMap<>();
+        scorers.forEach((player, goal) -> pointsMap.put(player, goal + assists.get(player)));
+        return pointsMap;
     }
 
     private void createFullTeamName(String[] words) {
@@ -277,6 +264,22 @@ public class StatsServiceImpl implements StatsService {
             words[1] = "BLR";
         } else if (Objects.equals(words[1], "SLV")) {
             words[1] = "SVK";
+        } else if (Objects.equals(words[1], "NJ")) {
+            words[1] = "NJD";
+        } else if (Objects.equals(words[1], "LA")) {
+            words[1] = "LAK";
+        } else if (Objects.equals(words[1], "SJ")) {
+            words[1] = "SJS";
+        } else if (Objects.equals(words[1], "TB")) {
+            words[1] = "TBL";
+        } else if (Objects.equals(words[1], "SYR")) {
+            words[1] = "SEA";
+        } else if (Objects.equals(words[1], "ATL")) {
+            words[1] = "WPG";
+        } else if (Objects.equals(words[1], "PHX")) {
+            words[1] = "ARI";
+        } else if (Objects.equals(words[1], "WOF")) {
+            words[1] = "VGK";
         }
     }
 
@@ -307,7 +310,8 @@ public class StatsServiceImpl implements StatsService {
 
     private void createGoalieStats(Map<String, Integer> games, Map<String, Integer> shotsAgainst,
                                    Map<String, Integer> goalsAgainst, Map<String, String> savePercentage,
-                                   Map<String, String> GAA, Map<String, Double> TOI, Map<String, Integer> goalieAssist) {
+                                   Map<String, String> GAA, Map<String, Double> TOI, Map<String, Integer> goalieAssist,
+                                   Map<String, String> goalieNameAssists, List<PlayerStats> listPlayers) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(FULLPLAYERSTAT_TXT));
 
@@ -342,6 +346,8 @@ public class StatsServiceImpl implements StatsService {
                             d = 0.66;
                         } else if (words[3].charAt(3) == '5') {
                             d = 0.83;
+                        } else if (words[3].charAt(3) == '0') {
+                            d = 0.0;
                         }
 
                         TOI.put(words[0] + " (" + words[1] + ")", Double.valueOf(String.valueOf(words[3].charAt(0)) + String.valueOf(words[3].charAt(1))) + d);
@@ -349,18 +355,6 @@ public class StatsServiceImpl implements StatsService {
                         shotsAgainst.put(words[0] + " (" + words[1] + ")", shotsAgainst.get(words[0] + " (" + words[1] + ")") + Integer.parseInt(words[10]));
                         goalsAgainst.put(words[0] + " (" + words[1] + ")", goalsAgainst.get(words[0] + " (" + words[1] + ")") + Integer.parseInt(words[8]));
                         TOI.put(words[0] + " (" + words[1] + ")", TOI.get(words[0] + " (" + words[1] + ")") + Double.valueOf(String.valueOf(words[3].charAt(0)) + String.valueOf(words[3].charAt(1))) + d);
-                        System.out.println(Double.valueOf(String.valueOf(words[3].charAt(0))));
-                        System.out.println();
-                        System.out.println();
-
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-
                     }
                 }
             }
@@ -377,8 +371,13 @@ public class StatsServiceImpl implements StatsService {
                 GAA.put(map.getKey(), createGAA);
             }
 
-            List<PlayerStats> goalieAssistsList = statsRepository.findPlayerStatsByPlusMinusIs("-1111");
-            goalieAssistsList.forEach(playerStats -> goalieAssist.put(playerStats.getPlayer(), playerStats.getAssists()));
+            List<PlayerStats> list = new ArrayList<>();
+            listPlayers.forEach(playerStats -> {
+                if (goalieNameAssists.containsKey(playerStats.getPlayer())) {
+                    list.add(playerStats);
+                }
+            });
+            list.forEach(playerStats -> goalieAssist.put(playerStats.getPlayer(), playerStats.getAssists()));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -440,6 +439,22 @@ public class StatsServiceImpl implements StatsService {
                     words[6] = "BLR";
                 } else if (Objects.equals(words[6], "SLV")) {
                     words[6] = "SVK";
+                } else if (Objects.equals(words[6], "NJ")) {
+                    words[6] = "NJD";
+                } else if (Objects.equals(words[6], "LA")) {
+                    words[6] = "LAK";
+                } else if (Objects.equals(words[6], "SJ")) {
+                    words[6] = "SJS";
+                } else if (Objects.equals(words[6], "TB")) {
+                    words[6] = "TBL";
+                } else if (Objects.equals(words[6], "SYR")) {
+                    words[6] = "SEA";
+                } else if (Objects.equals(words[6], "ATL")) {
+                    words[6] = "WPG";
+                } else if (Objects.equals(words[6], "WOF")) {
+                    words[6] = "VGK";
+                } else if (Objects.equals(words[6], "PHX")) {
+                    words[6] = "ARI";
                 }
 
                 if (!defensemans.containsKey(words[2] + " " + words[1] + " (" + words[6] + ")") && !Objects.equals(words[1], "F. Name")) {
@@ -455,6 +470,39 @@ public class StatsServiceImpl implements StatsService {
             });
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    private void createTransfers() {
+        List<String> list = new ArrayList<>();
+        statsRepository.findAll().forEach(playerStatsNHL -> list.add(playerStatsNHL.getPlayer().substring(0, playerStatsNHL.getPlayer().indexOf('('))));
+
+        Set<String> duplicates = new HashSet<>();
+        for (int i = 0; i < list.size(); i++) {
+            String e1 = list.get(i);
+            if (e1 == null) continue; // игнорируем null
+            // сравниваем каждый элемент со всеми остальными
+            for (int j = 0; j < list.size(); j++) {
+                if (i == j) continue; // не проверяем элемент с собой же
+                String e2 = list.get(j);
+                if (e1.equals(e2)) {
+                    // дубликат найден, сохраним его
+                    duplicates.add(e2);
+                }
+            }
+        }
+
+        List<List<PlayerStats>> pl = new ArrayList<>();
+        duplicates.forEach(s -> pl.add(statsRepository.findByPlayerStartsWith(s)));
+
+        for (List<PlayerStats> player : pl) {
+            transfersRepository.save(new TransfersStats(player.get(0).getPlayer(),
+                    player.get(0).getGames(), player.get(0).getGoals(), player.get(0).getAssists(),
+                    player.get(0).getPoints(), player.get(0).getPPG(), player.get(0).getPlusMinus()));
+
+            transfersRepository.save(new TransfersStats(player.get(1).getPlayer(),
+                    player.get(1).getGames(), player.get(1).getGoals(), player.get(1).getAssists(),
+                    player.get(1).getPoints(), player.get(1).getPPG(), player.get(1).getPlusMinus()));
         }
     }
 }
