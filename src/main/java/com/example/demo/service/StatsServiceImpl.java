@@ -57,7 +57,7 @@ public class StatsServiceImpl implements StatsService {
         Map<String, Integer> goalieAssists = new TreeMap<>();
         Map<String, String> goalieNameAssists = new TreeMap<>();
 
-        createGamesAndPlusMinusMap(gamesMap, plusMinus);
+        createGamesAndPlusMinusMap(gamesMap, plusMinus, goalieNameAssists);
         createPPG(gamesMap, points, PPG);
 
         gamesMap.forEach((player, games) ->
@@ -176,7 +176,8 @@ public class StatsServiceImpl implements StatsService {
         }
     }
 
-    private void createGamesAndPlusMinusMap(Map<String, Integer> gamesMap, Map<String, Integer> plusMinus) {
+    private void createGamesAndPlusMinusMap(Map<String, Integer> gamesMap, Map<String, Integer> plusMinus,
+                                            Map<String, String> goalieNameAssists) {
 
         try {
             BufferedReader reader = new BufferedReader(new FileReader(FULLPLAYERSTAT_TXT));
@@ -201,7 +202,8 @@ public class StatsServiceImpl implements StatsService {
                         plusMinus.put(words[0] + " (" + words[1] + ")", plusMinus.get(words[0] + " (" + words[1] + ")") + Integer.parseInt(words[7]));
                     }
                 } else {
-                    plusMinus.put(words[0] + " (" + words[1] + ")", Integer.valueOf("-1111"));
+                    plusMinus.put(words[0] + " (" + words[1] + ")", 0);
+                    goalieNameAssists.put(words[0] + " (" + words[1] + ")", "G");
                 }
             }
         } catch (IOException e) {

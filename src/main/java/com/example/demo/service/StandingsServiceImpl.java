@@ -415,6 +415,22 @@ public class StandingsServiceImpl implements StandingsService {
             words[1] = "BLR";
         } else if (Objects.equals(words[1], "SLV")) {
             words[1] = "SVK";
+        } else if (Objects.equals(words[1], "NJ")) {
+            words[1] = "NJD";
+        } else if (Objects.equals(words[1], "LA")) {
+            words[1] = "LAK";
+        } else if (Objects.equals(words[1], "SJ")) {
+            words[1] = "SJS";
+        } else if (Objects.equals(words[1], "TB")) {
+            words[1] = "TBL";
+        } else if (Objects.equals(words[1], "SYR")) {
+            words[1] = "SEA";
+        } else if (Objects.equals(words[1], "ATL")) {
+            words[1] = "WPG";
+        } else if (Objects.equals(words[1], "PHX")) {
+            words[1] = "ARI";
+        } else if (Objects.equals(words[1], "WOF")) {
+            words[1] = "VGK";
         }
     }
 
@@ -497,6 +513,8 @@ public class StandingsServiceImpl implements StandingsService {
             int count = 0;
             while ((c = reader.readLine()) != null) {
                 String[] words = c.split(",");
+
+                createTeamNameForPK(words);
 
                 if (count == 0) {
                     count += 1;
@@ -609,7 +627,24 @@ public class StandingsServiceImpl implements StandingsService {
                 newMap.put("BLR", value);
             } else if (Objects.equals(team, "SLV")) {
                 newMap.put("SVK", value);
-            } else {
+            } else if (Objects.equals(team, "NJ")) {
+                newMap.put("NJD", value);
+            } else if (Objects.equals(team, "LA")) {
+                newMap.put("LAK", value);
+            } else if (Objects.equals(team, "SJ")) {
+                newMap.put("SJS", value);
+            } else if (Objects.equals(team, "TB")) {
+                newMap.put("TBL", value);
+            } else if (Objects.equals(team, "SYR")) {
+                newMap.put("SEA", value);
+            } else if (Objects.equals(team, "ATL")) {
+                newMap.put("WPG", value);
+            } else if (Objects.equals(team, "PHX")) {
+                newMap.put("ARI", value);
+            } else if (Objects.equals(team, "WOF")) {
+                newMap.put("VGK", value);
+            }
+            else {
                 newMap.put(team, value);
             }
         });
@@ -636,6 +671,26 @@ public class StandingsServiceImpl implements StandingsService {
                 PKAtt.put(list.get(1).substring(0, 3), PKAtt.get(list.get(1).substring(0, 3)) + Integer.valueOf(String.valueOf(list.get(1).charAt(11))));
                 PKG.put(list.get(1).substring(0, 3), PKG.get(list.get(1).substring(0, 3)) + Integer.valueOf(String.valueOf(list.get(1).charAt(9))));
             }
+        }
+    }
+
+    private void createTeamNameForPK(String[] words) {
+        if (Objects.equals(words[1], "NJ")) {
+            words[1] = "NJD";
+        } else if (Objects.equals(words[1], "LA")) {
+            words[1] = "LAK";
+        } else if (Objects.equals(words[1], "SJ")) {
+            words[1] = "SJS";
+        } else if (Objects.equals(words[1], "TB")) {
+            words[1] = "TBL";
+        } else if (Objects.equals(words[1], "SYR")) {
+            words[1] = "SEA";
+        } else if (Objects.equals(words[1], "ATL")) {
+            words[1] = "WPG";
+        } else if (Objects.equals(words[1], "PHX")) {
+            words[1] = "ARI";
+        } else if (Objects.equals(words[1], "WOF")) {
+            words[1] = "VGK";
         }
     }
 }
