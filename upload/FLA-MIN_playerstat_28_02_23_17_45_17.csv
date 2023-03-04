@@ -1,0 +1,41 @@
+Player Name,Team,Pos,Time,Goal,Asst,PIMS,+/-,PPG/GA,SHG/ENG,Shoot/SA,Hits,Player ID,Player INDX
+Forsling Gustav,FLA,Player,10:14,0,1,0,0,0,0,0,2,4628,3
+Staal Eric,FLA,Player,03:25,0,0,0,0,0,0,0,1,1882,121
+Reinhart Sam,FLA,Player,08:57,0,0,0,0,0,0,0,0,2477,379
+Bennett Sam,FLA,Player,10:27,0,0,0,0,0,0,1,2,2478,393
+Rasmussen Michael,FLA,Player,04:43,0,0,0,1,0,0,1,0,6556,399
+Staal Marc,FLA,Player,04:44,0,0,0,0,0,0,0,1,5158,433
+Barkov Aleksander,FLA,Player,06:41,0,0,0,-1,0,0,0,0,1405,699
+Lundell Anton,FLA,Player,04:30,0,0,0,0,0,0,1,0,6572,848
+Ekblad Aaron,FLA,Player,09:31,0,0,0,0,0,0,0,3,2485,1106
+Luostarinen Eetu,FLA,Player,03:52,0,1,0,1,0,0,1,0,2136,1245
+Hornqvist Patric,FLA,Player,04:48,0,0,0,0,0,0,0,0,3077,1411
+Montour Brandon,FLA,Player,08:49,0,0,0,0,0,0,0,2,6124,2226
+Tkachuk Matthew,FLA,Player,06:41,0,0,0,-1,0,0,0,1,5951,2362
+Duclair Anthony,FLA,Player,10:06,0,0,0,0,0,0,1,2,2495,2393
+Gudas Radko,FLA,Player,10:11,0,0,0,0,0,0,0,1,3632,2409
+Verhaeghe Carter,FLA,Player,06:41,0,0,0,-1,0,0,1,0,1035,2641
+Mahura Josh,FLA,Player,06:49,0,0,0,0,0,0,0,1,466,2667
+Cousins Nick,FLA,Player,04:36,1,0,0,1,0,0,1,1,4665,4041
+Francouz Pavel,FLA,Goalie,25:09,-,0,0,-,1,0,9,-,2460,341
+Bobrovsky Sergei,FLA,Goalie,00:00,-,0,0,-,0,0,0,-,5639,3160
+Addison Calen,MIN,Player,08:10,0,0,0,0,0,0,0,0,6612,144
+Cramarossa Joseph,MIN,Player,02:20,0,0,0,-1,0,0,0,1,6062,149
+Boldy Matt,MIN,Player,08:25,0,0,0,0,0,0,1,0,6613,287
+Dewar Connor,MIN,Player,08:28,1,0,0,1,0,0,1,0,6614,389
+Eriksson Ek Joel,MIN,Player,09:15,0,0,0,0,0,0,0,0,6071,558
+Hartman Ryan,MIN,Player,04:02,0,0,0,0,0,0,0,1,2648,869
+Dumba Matt,MIN,Player,07:00,0,0,0,0,0,0,0,0,4445,1196
+Merrill Jon,MIN,Player,09:32,0,0,0,1,0,0,0,3,2956,1496
+Greenway Jordan,MIN,Player,09:29,0,0,0,0,0,0,5,0,866,2130
+Brodin Jonas,MIN,Player,07:27,0,0,0,-1,0,0,0,1,4506,2217
+Duhaime Brandon,MIN,Player,02:01,0,0,0,-1,0,0,0,1,6565,2258
+Foligno Marcus,MIN,Player,05:11,0,0,0,0,0,0,0,0,579,3395
+Spurgeon Jared,MIN,Player,08:15,0,0,0,1,0,0,0,2,4407,3434
+Kaprizov Kirill,MIN,Player,09:32,0,1,0,1,0,0,0,1,1717,3774
+Arvidsson Viktor,MIN,Player,09:32,0,1,0,1,0,0,1,0,4310,4040
+Goligoski Alex,MIN,Player,09:54,0,0,0,-1,0,0,0,2,5323,4287
+Steel Sam,MIN,Player,03:24,0,0,0,-1,0,0,0,0,3212,4357
+Gaudreau Frederick ,MIN,Player,03:48,0,0,0,0,0,0,1,1,6174,4429
+Gustavsson Filip,MIN,Goalie,00:00,-,0,0,-,0,0,0,-,6017,14
+Fleury Marc-Andre,MIN,Goalie,25:09,-,0,0,-,1,0,7,-,652,508

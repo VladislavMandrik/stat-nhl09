@@ -5,16 +5,21 @@ import com.example.demo.repository.GoalieStatsRepository;
 import com.example.demo.repository.PlayerStatsRepository;
 import com.example.demo.repository.TransfersRepository;
 import com.example.demo.service.StatsServiceImpl;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -71,10 +76,6 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
     }
 
 
-
-
-
-
     @PostMapping("/upload")
     public String uploadFile(@RequestParam("file") MultipartFile file, RedirectAttributes attributes) {
 
@@ -100,4 +101,24 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
 
         return "redirect:/statistic/uploaded";
     }
+
+    @RequestMapping(value = "/download", method = RequestMethod.GET)
+    public ResponseEntity<Object> downloadFile() throws IOException {
+        String filename = "fullplayerstat.txt";
+        File file = new File(filename);
+        InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.add("Content-Disposition", String.format("attachment; filename=\"%s\"", file.getName()));
+        headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
+        headers.add("Pragma", "no-cache");
+        headers.add("Expires", "0");
+
+        ResponseEntity<Object>
+                responseEntity = ResponseEntity.ok().headers(headers).contentLength(
+                file.length()).contentType(MediaType.parseMediaType("application/txt")).body(resource);
+
+        return responseEntity;
+    }
 }
+
