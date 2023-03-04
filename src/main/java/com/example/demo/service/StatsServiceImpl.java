@@ -23,7 +23,7 @@ public class StatsServiceImpl implements StatsService {
     private final DefensemanStatsRepository defensemanStatsRepository;
     private final TransfersRepository transfersRepository;
 
-    private final String PATHPLAYERSTAT = "upload/";
+    private final String PATHPLAYERSTAT = "upload playerstat/";
     private final String PATHDEFENSEMANS = "def/";
     private final String FULLPLAYERSTAT_TXT = "fullplayerstat.txt";
     private final String FULLDEFENSEMANS_TXT = "fulldefensemans.txt";

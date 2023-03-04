@@ -18,7 +18,7 @@ public class StandingsServiceImpl implements StandingsService {
 
     private final StandingsRepository standingsRepository;
     private final TeamStatsRepository teamStatsRepository;
-    private final String PATH = "D:/IIHF ECHL/teamstat";
+    private final String PATH = "upload teamstat/";
     private final String FULLTEAMSTAT_TXT = "fullteamstat.txt";
     private final String CALENDAR = "calendar.txt";
     private final String DATA = "data.txt";
@@ -52,7 +52,7 @@ public class StandingsServiceImpl implements StandingsService {
 
         getFileNames();
         getDataFromFiles();
-        createCalendar();
+//        createCalendar();
         createMapGameTable(games, points, goalsScored, goalsMissing, loses, tableWithout, tableWith, plus1,
                 wins, losesOT);
 
@@ -101,57 +101,57 @@ public class StandingsServiceImpl implements StandingsService {
         }
     }
 
-    public void createCalendar() {
-        try {
-            List<String> gamesTime = new ArrayList<>();
-            List<String> gamesData = new ArrayList<>();
-
-            BufferedReader readTeamstatForCalendar = new BufferedReader(new FileReader(FULLTEAMSTAT_TXT));
-            BufferedReader readDataForCalendar = new BufferedReader(new FileReader(DATA));
-
-            String c;
-            int i;
-
-            while ((c = readTeamstatForCalendar.readLine()) != null) {
-                String[] words = c.split(",");
-//            for (String s : words) {
-//                System.out.println(s);
-
-                createFullTeamName(words);
-
-                if (checkInt(words[2]) && !Objects.equals(words[3], "Á") && !Objects.equals(words[3], "ÎÒ")) {
-                    gamesData.add(words[1] + "," + Integer.parseInt(words[2]) + ",");
-                }
-
-                if (Objects.equals(words[3], "Á")) {
-                    gamesData.add(words[1] + "," + Integer.parseInt(words[2]) + "," + words[3]);
-                } else if (Objects.equals(words[3], "ÎÒ")) {
-                    gamesData.add(words[1] + "," + Integer.parseInt(words[2]) + "," + words[3]);
-                }
-            }
-
-            while ((c = readDataForCalendar.readLine()) != null) {
-                String[] words = c.split("_");
-                gamesTime.add(words[2] + "_" + words[3] + "_" + words[4]);
-            }
-
-            try (PrintWriter writer = new PrintWriter(CALENDAR)) {
-                int count = 0;
-                int j = 0;
-                for (i = 0; i < gamesData.size(); i++) {
-                    writer.write(gamesData.get(i));
-                    count++;
-                    if (count == 2) {
-                        writer.write(" " + "," + gamesTime.get(j) + "\n");
-                        count = 0;
-                        j++;
-                    }
-                }
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+//    public void createCalendar() {
+//        try {
+//            List<String> gamesTime = new ArrayList<>();
+//            List<String> gamesData = new ArrayList<>();
+//
+//            BufferedReader readTeamstatForCalendar = new BufferedReader(new FileReader(FULLTEAMSTAT_TXT));
+//            BufferedReader readDataForCalendar = new BufferedReader(new FileReader(DATA));
+//
+//            String c;
+//            int i;
+//
+//            while ((c = readTeamstatForCalendar.readLine()) != null) {
+//                String[] words = c.split(",");
+////            for (String s : words) {
+////                System.out.println(s);
+//
+//                createFullTeamName(words);
+//
+//                if (checkInt(words[2]) && !Objects.equals(words[3], "Á") && !Objects.equals(words[3], "ÎÒ")) {
+//                    gamesData.add(words[1] + "," + Integer.parseInt(words[2]) + ",");
+//                }
+//
+//                if (Objects.equals(words[3], "Á")) {
+//                    gamesData.add(words[1] + "," + Integer.parseInt(words[2]) + "," + words[3]);
+//                } else if (Objects.equals(words[3], "ÎÒ")) {
+//                    gamesData.add(words[1] + "," + Integer.parseInt(words[2]) + "," + words[3]);
+//                }
+//            }
+//
+//            while ((c = readDataForCalendar.readLine()) != null) {
+//                String[] words = c.split("_");
+//                gamesTime.add(words[2] + "_" + words[3] + "_" + words[4]);
+//            }
+//
+//            try (PrintWriter writer = new PrintWriter(CALENDAR)) {
+//                int count = 0;
+//                int j = 0;
+//                for (i = 0; i < gamesData.size(); i++) {
+//                    writer.write(gamesData.get(i));
+//                    count++;
+//                    if (count == 2) {
+//                        writer.write(" " + "," + gamesTime.get(j) + "\n");
+//                        count = 0;
+//                        j++;
+//                    }
+//                }
+//            }
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
     public void createMapGameTable(Map<String, Integer> games, Map<String, Integer> points, Map<String, Integer> goalsScored,
                                    Map<String, Integer> goalsMissing, Map<String, Integer> loses,

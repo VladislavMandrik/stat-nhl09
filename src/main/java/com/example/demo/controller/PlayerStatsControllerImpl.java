@@ -5,7 +5,6 @@ import com.example.demo.repository.GoalieStatsRepository;
 import com.example.demo.repository.PlayerStatsRepository;
 import com.example.demo.repository.TransfersRepository;
 import com.example.demo.service.StatsServiceImpl;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
@@ -25,12 +24,14 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Objects;
 
 @RequiredArgsConstructor
 @Controller
 public class PlayerStatsControllerImpl implements PlayerStatsController {
 
-    private final String UPLOAD_DIR = "upload/";
+    private final String UPLOADPLAYERSTAT_DIR = "upload playerstat/";
+    private final String UPLOADTEAMSTAT_DIR = "upload teamstat/";
     private final StatsServiceImpl statsService;
     private final PlayerStatsRepository statsRepository;
     private final GoalieStatsRepository goalieStatsRepository;
@@ -77,34 +78,63 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
 
 
     @PostMapping("/upload")
-    public String uploadFile(@RequestParam("file") MultipartFile file, RedirectAttributes attributes) {
+    public String uploadFile(@RequestParam("playerstat") MultipartFile playerstat,
+                             @RequestParam("teamstat") MultipartFile teamstat, RedirectAttributes attributes) {
 
 //         check if file is empty
-        if (file.isEmpty()) {
+        if (playerstat.isEmpty() || teamstat.isEmpty()) {
             attributes.addFlashAttribute("message", "Please select a file to upload.");
             return "redirect:/statistic/uploaded";
         }
 
+        if (!playerstat.getOriginalFilename().contains("playerstat") || !teamstat.getOriginalFilename().contains("teamstat")) {
+            attributes.addFlashAttribute("message", "Проверьте правильность выбора файлов teamstat и playerstat.");
+            return "redirect:/statistic/uploaded";
+        }
+
 //         normalize the file path
-        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        String fileNamePlayerstat = StringUtils.cleanPath(playerstat.getOriginalFilename());
+        String fileNameTeamstat = StringUtils.cleanPath(teamstat.getOriginalFilename());
 
 //         save the file on the local file system
         try {
-            Path path = Paths.get(UPLOAD_DIR + fileName);
-            Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+            Path pathPl = Paths.get(UPLOADPLAYERSTAT_DIR + fileNamePlayerstat);
+            Path pathT = Paths.get(UPLOADTEAMSTAT_DIR + fileNameTeamstat);
+
+            Files.copy(playerstat.getInputStream(), pathPl, StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(teamstat.getInputStream(), pathT, StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
 //         return success response
-        attributes.addFlashAttribute("message", "You successfully uploaded " + fileName + '!');
-
+        attributes.addFlashAttribute("message", "Файлы успешно загружены, статистика обновлена!");
+        statsService.createStats();
         return "redirect:/statistic/uploaded";
     }
 
     @RequestMapping(value = "/download", method = RequestMethod.GET)
     public ResponseEntity<Object> downloadFile() throws IOException {
         String filename = "fullplayerstat.txt";
+        File file = new File(filename);
+        InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.add("Content-Disposition", String.format("attachment; filename=\"%s\"", file.getName()));
+        headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
+        headers.add("Pragma", "no-cache");
+        headers.add("Expires", "0");
+
+        ResponseEntity<Object>
+                responseEntity = ResponseEntity.ok().headers(headers).contentLength(
+                file.length()).contentType(MediaType.parseMediaType("application/txt")).body(resource);
+
+        return responseEntity;
+    }
+
+    @RequestMapping(value = "/download1", method = RequestMethod.GET)
+    public ResponseEntity<Object> downloadFile1() throws IOException {
+        String filename = "fullteamstat.txt";
         File file = new File(filename);
         InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
         HttpHeaders headers = new HttpHeaders();

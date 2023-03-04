@@ -14,7 +14,9 @@
                 <p th:text="${message}" th:if="${message ne null}" class="alert alert-primary"></p>
                 <form method="post" th:action="@{/statistic/upload}" enctype="multipart/form-data">
                     <div class="form-group">
-                        <input type="file" name="file" class="form-control-file">
+                        playerstat &darr; <input type="file" name="playerstat" class="form-control-file" accept=".csv">
+                        <br>
+                        teamstat &darr; <input type="file" name="teamstat" class="form-control-file" accept=".csv">
                     </div>
                     <button type="submit" class="btn btn-primary">Upload File</button>
                 </form>

@@ -46,7 +46,6 @@
         .table_sort tr:before,
         .table_sort b:after {
             content: counter(schetchik);
-
         }
 
         .table_sort tr:nth-child(-n+1):before {
@@ -101,7 +100,7 @@ Filter:
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="напр.: (DAL), Tyler, Jones..." size="50">
 <br>
 <br>
-<table class="table_sort">
+<table id="myTable" class="table_sort">
     <script src="/js/sorter.js"></script>
     <script src="/js/filter.js"></script>
     <thead>
