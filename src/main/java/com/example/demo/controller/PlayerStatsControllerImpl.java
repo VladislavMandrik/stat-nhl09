@@ -24,7 +24,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.Objects;
 
 @RequiredArgsConstructor
 @Controller
@@ -37,6 +36,7 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
     private final GoalieStatsRepository goalieStatsRepository;
     private final DefensemanStatsRepository defensemanStatsRepository;
     private final TransfersRepository transfersRepository;
+    private final StandingsControllerImpl standingsController;
 
     @PostMapping("/create")
     public String createStats() {
@@ -83,7 +83,7 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
 
 //         check if file is empty
         if (playerstat.isEmpty() || teamstat.isEmpty()) {
-            attributes.addFlashAttribute("message", "Please select a file to upload.");
+            attributes.addFlashAttribute("message", "Необходимо выбрать и загрузить playerstat и teamstat.");
             return "redirect:/statistic/uploaded";
         }
 
@@ -110,6 +110,7 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
 //         return success response
         attributes.addFlashAttribute("message", "Файлы успешно загружены, статистика обновлена!");
         statsService.createStats();
+        standingsController.createStandings();
         return "redirect:/statistic/uploaded";
     }
 

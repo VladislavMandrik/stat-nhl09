@@ -52,7 +52,7 @@ public class StandingsServiceImpl implements StandingsService {
 
         getFileNames();
         getDataFromFiles();
-//        createCalendar();
+        createCalendar();
         createMapGameTable(games, points, goalsScored, goalsMissing, loses, tableWithout, tableWith, plus1,
                 wins, losesOT);
 
@@ -101,57 +101,59 @@ public class StandingsServiceImpl implements StandingsService {
         }
     }
 
-//    public void createCalendar() {
-//        try {
+    public void createCalendar() {
+        try {
 //            List<String> gamesTime = new ArrayList<>();
-//            List<String> gamesData = new ArrayList<>();
-//
-//            BufferedReader readTeamstatForCalendar = new BufferedReader(new FileReader(FULLTEAMSTAT_TXT));
+            List<String> gamesData = new ArrayList<>();
+
+            BufferedReader readTeamstatForCalendar = new BufferedReader(new FileReader(FULLTEAMSTAT_TXT));
 //            BufferedReader readDataForCalendar = new BufferedReader(new FileReader(DATA));
-//
-//            String c;
-//            int i;
-//
-//            while ((c = readTeamstatForCalendar.readLine()) != null) {
-//                String[] words = c.split(",");
-////            for (String s : words) {
-////                System.out.println(s);
-//
-//                createFullTeamName(words);
-//
-//                if (checkInt(words[2]) && !Objects.equals(words[3], "Á") && !Objects.equals(words[3], "ÎÒ")) {
-//                    gamesData.add(words[1] + "," + Integer.parseInt(words[2]) + ",");
-//                }
-//
-//                if (Objects.equals(words[3], "Á")) {
-//                    gamesData.add(words[1] + "," + Integer.parseInt(words[2]) + "," + words[3]);
-//                } else if (Objects.equals(words[3], "ÎÒ")) {
-//                    gamesData.add(words[1] + "," + Integer.parseInt(words[2]) + "," + words[3]);
-//                }
-//            }
-//
+
+            String c;
+            int i;
+
+            while ((c = readTeamstatForCalendar.readLine()) != null) {
+                String[] words = c.split(",");
+//            for (String s : words) {
+//                System.out.println(s);
+
+                createFullTeamName(words);
+
+                if (checkInt(words[2]) && !Objects.equals(words[3], "Á") && !Objects.equals(words[3], "ÎÒ")) {
+                    gamesData.add(words[1] + "," + Integer.parseInt(words[2]) + ",");
+                }
+
+                if (Objects.equals(words[3], "Á")) {
+                    gamesData.add(words[1] + "," + Integer.parseInt(words[2]) + "," + words[3]);
+                } else if (Objects.equals(words[3], "ÎÒ")) {
+                    gamesData.add(words[1] + "," + Integer.parseInt(words[2]) + "," + words[3]);
+                }
+            }
+
 //            while ((c = readDataForCalendar.readLine()) != null) {
 //                String[] words = c.split("_");
 //                gamesTime.add(words[2] + "_" + words[3] + "_" + words[4]);
 //            }
-//
-//            try (PrintWriter writer = new PrintWriter(CALENDAR)) {
-//                int count = 0;
+
+            try (PrintWriter writer = new PrintWriter(CALENDAR)) {
+                int count = 0;
 //                int j = 0;
-//                for (i = 0; i < gamesData.size(); i++) {
-//                    writer.write(gamesData.get(i));
-//                    count++;
-//                    if (count == 2) {
-//                        writer.write(" " + "," + gamesTime.get(j) + "\n");
-//                        count = 0;
+                for (i = 0; i < gamesData.size(); i++) {
+                    writer.write(gamesData.get(i));
+                    count++;
+                    if (count == 2) {
+                        writer.write(" " + ","
+//                                + gamesTime.get(j)
+                                + "\n");
+                        count = 0;
 //                        j++;
-//                    }
-//                }
-//            }
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
+                    }
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public void createMapGameTable(Map<String, Integer> games, Map<String, Integer> points, Map<String, Integer> goalsScored,
                                    Map<String, Integer> goalsMissing, Map<String, Integer> loses,
@@ -171,7 +173,7 @@ public class StandingsServiceImpl implements StandingsService {
 
                 createGamesAndFinalCalendar(games, points, finalCalendar, words);
                 createScoredAndMissingGoals(goalsScored, goalsMissing, words);
-                createWinsLosesLosesOTPoints(loses, tableWithout, tableWith, plus1, words);
+//                createWinsLosesLosesOTPoints(loses, tableWithout, tableWith, plus1, words);
             }
 
             for (String s : tableWithout) {
@@ -276,26 +278,26 @@ public class StandingsServiceImpl implements StandingsService {
         if (!games.containsKey(words[0]) && Objects.equals(words[4], " ")) {
             games.put(words[0], 1);
             points.put(words[0], 0);
-            finalCalendar.computeIfAbsent(words[0], k -> new ArrayList<>()).add(words[5] + " " + words[0] + " " + words[1] + ":" + words[3] + " " + words[2]);
+//            finalCalendar.computeIfAbsent(words[0], k -> new ArrayList<>()).add(words[5] + " " + words[0] + " " + words[1] + ":" + words[3] + " " + words[2]);
 
 
         } else if (games.containsKey(words[0]) && Objects.equals(words[4], " ")) {
             games.put(words[0], games.get(words[0]) + 1);
-            finalCalendar.computeIfAbsent(words[0], k -> new ArrayList<>()).add(words[5] + " " + words[0] + " " + words[1] + ":" + words[3] + " " + words[2]);
+//            finalCalendar.computeIfAbsent(words[0], k -> new ArrayList<>()).add(words[5] + " " + words[0] + " " + words[1] + ":" + words[3] + " " + words[2]);
             if (!points.containsKey(words[0])) {
                 points.put(words[0], 0);
             }
 
         } else if (!games.containsKey(words[0]) && !Objects.equals(words[4], " ")) {
             games.put(words[0], 1);
-            finalCalendar.computeIfAbsent(words[0], k -> new ArrayList<>()).add(words[5] + " " + words[0] + " " + words[1] + ":" + words[3] + "( " + words[4] + ")" + " " + words[2]);
+//            finalCalendar.computeIfAbsent(words[0], k -> new ArrayList<>()).add(words[5] + " " + words[0] + " " + words[1] + ":" + words[3] + "( " + words[4] + ")" + " " + words[2]);
             if (!points.containsKey(words[0])) {
                 points.put(words[0], 0);
             }
 
         } else if (games.containsKey(words[0]) && !Objects.equals(words[4], " ")) {
             games.put(words[0], games.get(words[0]) + 1);
-            finalCalendar.computeIfAbsent(words[0], k -> new ArrayList<>()).add(words[5] + " " + words[0] + " " + words[1] + ":" + words[3] + "( " + words[4] + ")" + " " + words[2]);
+//            finalCalendar.computeIfAbsent(words[0], k -> new ArrayList<>()).add(words[5] + " " + words[0] + " " + words[1] + ":" + words[3] + "( " + words[4] + ")" + " " + words[2]);
             if (!points.containsKey(words[0])) {
                 points.put(words[0], 0);
             }
@@ -303,28 +305,28 @@ public class StandingsServiceImpl implements StandingsService {
 
         if (!games.containsKey(words[2]) && Objects.equals(words[4], " ")) {
             games.put(words[2], 1);
-            finalCalendar.computeIfAbsent(words[2], k -> new ArrayList<>()).add(words[5] + " " + words[0] + " " + words[1] + ":" + words[3] + " " + words[2]);
+//            finalCalendar.computeIfAbsent(words[2], k -> new ArrayList<>()).add(words[5] + " " + words[0] + " " + words[1] + ":" + words[3] + " " + words[2]);
             if (!points.containsKey(words[2])) {
                 points.put(words[2], 0);
             }
 
         } else if (games.containsKey(words[2]) && Objects.equals(words[4], " ")) {
             games.put(words[2], games.get(words[2]) + 1);
-            finalCalendar.computeIfAbsent(words[2], k -> new ArrayList<>()).add(words[5] + " " + words[0] + " " + words[1] + ":" + words[3] + " " + words[2]);
+//            finalCalendar.computeIfAbsent(words[2], k -> new ArrayList<>()).add(words[5] + " " + words[0] + " " + words[1] + ":" + words[3] + " " + words[2]);
             if (!points.containsKey(words[2])) {
                 points.put(words[2], 0);
             }
 
         } else if (!games.containsKey(words[2]) && !Objects.equals(words[4], " ")) {
             games.put(words[2], 1);
-            finalCalendar.computeIfAbsent(words[2], k -> new ArrayList<>()).add(words[5] + " " + words[0] + " " + words[1] + ":" + words[3] + "( " + words[4] + ")" + " " + words[2]);
+//            finalCalendar.computeIfAbsent(words[2], k -> new ArrayList<>()).add(words[5] + " " + words[0] + " " + words[1] + ":" + words[3] + "( " + words[4] + ")" + " " + words[2]);
             if (!points.containsKey(words[2])) {
                 points.put(words[2], 0);
             }
 
         } else if (games.containsKey(words[2]) && !Objects.equals(words[4], " ")) {
             games.put(words[2], games.get(words[2]) + 1);
-            finalCalendar.computeIfAbsent(words[2], k -> new ArrayList<>()).add(words[5] + " " + words[0] + " " + words[1] + ":" + words[3] + "( " + words[4] + ")" + " " + words[2]);
+//            finalCalendar.computeIfAbsent(words[2], k -> new ArrayList<>()).add(words[5] + " " + words[0] + " " + words[1] + ":" + words[3] + "( " + words[4] + ")" + " " + words[2]);
             if (!points.containsKey(words[2])) {
                 points.put(words[2], 0);
             }
