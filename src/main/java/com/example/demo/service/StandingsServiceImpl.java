@@ -91,9 +91,11 @@ public class StandingsServiceImpl implements StandingsService {
         try (PrintWriter printWriter = new PrintWriter(new FileWriter(FULLTEAMSTAT_TXT))) {
             File dir = new File(PATH);
             for (File file : dir.listFiles()) {
-                Scanner scanner = new Scanner(new FileInputStream(file)).useDelimiter("\\A");
-                if (scanner.hasNext()) {
-                    printWriter.write(scanner.next());
+                if (!file.getName().equals("upload teamstat/textt.txt")) {
+                    Scanner scanner = new Scanner(new FileInputStream(file)).useDelimiter("\\A");
+                    if (scanner.hasNext()) {
+                        printWriter.write(scanner.next());
+                    }
                 }
             }
         } catch (IOException e) {
@@ -645,8 +647,7 @@ public class StandingsServiceImpl implements StandingsService {
                 newMap.put("ARI", value);
             } else if (Objects.equals(team, "WOF")) {
                 newMap.put("VGK", value);
-            }
-            else {
+            } else {
                 newMap.put(team, value);
             }
         });

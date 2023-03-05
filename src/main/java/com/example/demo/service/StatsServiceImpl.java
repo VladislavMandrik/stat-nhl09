@@ -81,9 +81,11 @@ public class StatsServiceImpl implements StatsService {
         try (PrintWriter printWriter = new PrintWriter(new FileWriter(FULLPLAYERSTAT_TXT))) {
             File dir = new File(PATHPLAYERSTAT);
             for (File file : dir.listFiles()) {
-                Scanner scanner = new Scanner(new FileInputStream(file)).useDelimiter("\\A");
-                if (scanner.hasNext()) {
-                    printWriter.write(scanner.next());
+                if (!file.getName().equals("upload playerstat/text.txt")) {
+                    Scanner scanner = new Scanner(new FileInputStream(file)).useDelimiter("\\A");
+                    if (scanner.hasNext()) {
+                        printWriter.write(scanner.next());
+                    }
                 }
             }
         } catch (IOException e) {
