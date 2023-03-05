@@ -74,7 +74,7 @@ public class StatsServiceImpl implements StatsService {
                 listGoalie.add(new GoalieStats(player, games, shotsAgainst.get(player), goalsAgainst.get(player),
                         savePercentage.get(player), GAA.get(player), TOI.get(player), goalieAssists.get(player))));
         goalieStatsRepository.saveAll(listGoalie);
-        createTransfers();
+//        createTransfers();
     }
 
     private void getFullStats() {
