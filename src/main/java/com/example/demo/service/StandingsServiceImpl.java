@@ -224,7 +224,7 @@ public class StandingsServiceImpl implements StandingsService {
                 }
             }
 
-            try (PrintWriter writer = new PrintWriter("D:/KHL ECHL/finalCalendarKHL.txt")) {
+            try (PrintWriter writer = new PrintWriter("finalCalendar.txt")) {
                 List<String> s;
                 for (Map.Entry<String, List<String>> map : finalCalendar.entrySet()) {
                     s = map.getValue();
