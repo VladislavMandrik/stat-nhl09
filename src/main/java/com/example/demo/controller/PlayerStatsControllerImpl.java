@@ -6,6 +6,7 @@ import com.example.demo.repository.PlayerStatsRepository;
 import com.example.demo.repository.TransfersRepository;
 import com.example.demo.service.StatsServiceImpl;
 import lombok.RequiredArgsConstructor;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -150,6 +151,17 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
                 file.length()).contentType(MediaType.parseMediaType("application/txt")).body(resource);
 
         return responseEntity;
+    }
+
+    @PostMapping("/delete")
+    public String deleteStats() {
+        try {
+            FileUtils.cleanDirectory(new File("upload playerstat/"));
+            FileUtils.cleanDirectory(new File("upload teamstat/"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return "stats-created_page";
     }
 }
 
