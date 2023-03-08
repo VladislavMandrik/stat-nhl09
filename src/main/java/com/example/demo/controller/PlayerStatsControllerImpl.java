@@ -6,7 +6,8 @@ import com.example.demo.repository.PlayerStatsRepository;
 import com.example.demo.repository.TransfersRepository;
 import com.example.demo.service.StatsServiceImpl;
 import lombok.RequiredArgsConstructor;
-import org.apache.tomcat.util.http.fileupload.FileUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -29,7 +30,7 @@ import java.nio.file.StandardCopyOption;
 @RequiredArgsConstructor
 @Controller
 public class PlayerStatsControllerImpl implements PlayerStatsController {
-
+    Logger logger = LoggerFactory.getLogger(PlayerStatsControllerImpl.class);
     private final String UPLOADPLAYERSTAT_DIR = "upload playerstat/";
     private final String UPLOADTEAMSTAT_DIR = "upload teamstat/";
     private final StatsServiceImpl statsService;
@@ -101,6 +102,8 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
         try {
             Path pathPl = Paths.get(UPLOADPLAYERSTAT_DIR + fileNamePlayerstat);
             Path pathT = Paths.get(UPLOADTEAMSTAT_DIR + fileNameTeamstat);
+            logger.warn(fileNamePlayerstat);
+            logger.warn(fileNameTeamstat);
 
             Files.copy(playerstat.getInputStream(), pathPl, StandardCopyOption.REPLACE_EXISTING);
             Files.copy(teamstat.getInputStream(), pathT, StandardCopyOption.REPLACE_EXISTING);
@@ -153,15 +156,23 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
         return responseEntity;
     }
 
-    @PostMapping("/delete")
-    public String deleteStats() {
-        try {
-            FileUtils.cleanDirectory(new File("upload playerstat/"));
-            FileUtils.cleanDirectory(new File("upload teamstat/"));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        return "stats-created_page";
+    @RequestMapping(value = "/logs", method = RequestMethod.GET)
+    public ResponseEntity<Object> logs() throws IOException {
+        String filename = "log.txt";
+        File file = new File(filename);
+        InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.add("Content-Disposition", String.format("attachment; filename=\"%s\"", file.getName()));
+        headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
+        headers.add("Pragma", "no-cache");
+        headers.add("Expires", "0");
+
+        ResponseEntity<Object>
+                responseEntity = ResponseEntity.ok().headers(headers).contentLength(
+                file.length()).contentType(MediaType.parseMediaType("application/txt")).body(resource);
+
+        return responseEntity;
     }
 }
 
