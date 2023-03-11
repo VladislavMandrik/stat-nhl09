@@ -8,10 +8,14 @@ import com.example.demo.service.StatsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -83,7 +87,6 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
     public String uploadFile(@RequestParam("playerstat") MultipartFile playerstat,
                              @RequestParam("teamstat") MultipartFile teamstat, RedirectAttributes attributes) {
 
-//         check if file is empty
         if (playerstat.isEmpty() || teamstat.isEmpty()) {
             attributes.addFlashAttribute("message", "Необходимо выбрать и загрузить playerstat и teamstat.");
             return "redirect:/statistic/uploaded";
@@ -94,16 +97,15 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
             return "redirect:/statistic/uploaded";
         }
 
-//         normalize the file path
         String fileNamePlayerstat = StringUtils.cleanPath(playerstat.getOriginalFilename());
         String fileNameTeamstat = StringUtils.cleanPath(teamstat.getOriginalFilename());
 
-//         save the file on the local file system
         try {
             Path pathPl = Paths.get(UPLOADPLAYERSTAT_DIR + fileNamePlayerstat);
             Path pathT = Paths.get(UPLOADTEAMSTAT_DIR + fileNameTeamstat);
-            logger.warn(fileNamePlayerstat);
-            logger.warn(fileNameTeamstat);
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            logger.warn(authentication.getName() + " " + fileNamePlayerstat);
+            logger.warn(authentication.getName() + " " + fileNameTeamstat);
 
             Files.copy(playerstat.getInputStream(), pathPl, StandardCopyOption.REPLACE_EXISTING);
             Files.copy(teamstat.getInputStream(), pathT, StandardCopyOption.REPLACE_EXISTING);
@@ -111,15 +113,14 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
             e.printStackTrace();
         }
 
-//         return success response
         attributes.addFlashAttribute("message", "Файлы успешно загружены, статистика обновлена!");
         statsService.createStats();
         standingsController.createStandings();
         return "redirect:/statistic/uploaded";
     }
 
-    @RequestMapping(value = "/download", method = RequestMethod.GET)
-    public ResponseEntity<Object> downloadFile() throws IOException {
+    @GetMapping("/downloadP")
+    public ResponseEntity<Object> downloadFilePlayerstat() throws IOException {
         String filename = "fullplayerstat.txt";
         File file = new File(filename);
         InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
@@ -137,8 +138,8 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
         return responseEntity;
     }
 
-    @RequestMapping(value = "/download1", method = RequestMethod.GET)
-    public ResponseEntity<Object> downloadFile1() throws IOException {
+    @GetMapping("/downloadT")
+    public ResponseEntity<Object> downloadFileTeamstat() throws IOException {
         String filename = "fullteamstat.txt";
         File file = new File(filename);
         InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
@@ -156,7 +157,7 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
         return responseEntity;
     }
 
-    @RequestMapping(value = "/logs", method = RequestMethod.GET)
+    @GetMapping("/logs")
     public ResponseEntity<Object> logs() throws IOException {
         String filename = "log.txt";
         File file = new File(filename);
