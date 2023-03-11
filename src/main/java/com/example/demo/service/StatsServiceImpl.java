@@ -483,15 +483,13 @@ public class StatsServiceImpl implements StatsService {
 
         Set<String> duplicates = new HashSet<>();
         for (int i = 0; i < list.size(); i++) {
-            String e1 = list.get(i);
-            if (e1 == null) continue; // игнорируем null
-            // сравниваем каждый элемент со всеми остальными
+            String s1 = list.get(i);
+            if (s1 == null) continue;
             for (int j = 0; j < list.size(); j++) {
-                if (i == j) continue; // не проверяем элемент с собой же
-                String e2 = list.get(j);
-                if (e1.equals(e2)) {
-                    // дубликат найден, сохраним его
-                    duplicates.add(e2);
+                if (i == j) continue;
+                String s2 = list.get(j);
+                if (s1.equals(s2)) {
+                    duplicates.add(s2);
                 }
             }
         }
