@@ -37,6 +37,11 @@ public class StandingsServiceImpl implements StandingsService {
         Map<String, Integer> losesOT = new TreeMap<>();
         Map<String, Integer> goalsScored = new TreeMap<>();
         Map<String, Integer> goalsMissing = new TreeMap<>();
+        Map<String, String> GSPG = new TreeMap<>();
+        Map<String, String> GMPG = new TreeMap<>();
+        Map<String, Integer> shotsAtt = new TreeMap<>();
+        Map<String, String> shotsPercentage = new TreeMap<>();
+        Map<String, String> shotsPG = new TreeMap<>();
 
         Map<String, Integer> OTShots = new TreeMap<>();
         Map<String, Integer> OTGoals = new TreeMap<>();
@@ -61,12 +66,12 @@ public class StandingsServiceImpl implements StandingsService {
                         goalsScored.get(team), goalsMissing.get(team), points.get(team))));
         standingsRepository.saveAll(list);
 
-        createTeamstat(OTShots, OTGoals, OTGPercentage, games, OTPG, OTGPG, attempt, implemented, powerPlay, PKRivalAttempts,
-                PKRivalGoals, penaltyKill);
+        createTeamstat(shotsAtt, goalsScored, shotsPercentage, OTShots, OTGoals, OTGPercentage, games, OTPG, OTGPG, attempt, implemented, powerPlay, PKRivalAttempts,
+                PKRivalGoals, penaltyKill, shotsPG, GSPG, goalsMissing, GMPG);
 
         OTShots.forEach((team, shots) -> listTeam.add(new TeamStatsNHL(team, shots, OTGoals.get(team),
                 OTGPercentage.get(team), games.get(team), OTPG.get(team), OTGPG.get(team), powerPlay.get(team),
-                penaltyKill.get(team))));
+                penaltyKill.get(team), shotsPG.get(team), shotsPercentage.get(team), GSPG.get(team), GMPG.get(team))));
         teamStatsRepository.saveAll(listTeam);
     }
 
@@ -434,11 +439,13 @@ public class StandingsServiceImpl implements StandingsService {
         }
     }
 
-    private void createTeamstat(Map<String, Integer> OTS, Map<String, Integer> OTG, Map<String,
+    private void createTeamstat(Map<String, Integer> shotsAtt, Map<String, Integer> goalsSc, Map<String, String> shotsPercentage, Map<String, Integer> OTS, Map<String, Integer> OTG, Map<String,
             String> OTGPercentage, Map<String, Integer> games, Map<String, String> OTPG, Map<String, String> OTGPG,
                                 Map<String, Integer> attempt, Map<String, Integer> implemented,
                                 Map<String, String> powerPlay, Map<String, Integer> PKAtt,
-                                Map<String, Integer> PKG, Map<String, String> penaltyKill) {
+                                Map<String, Integer> PKG, Map<String, String> penaltyKill,
+                                Map<String, String> shotsPG, Map<String, String> GSPG, Map<String, Integer> goalsM,
+                                Map<String, String> GMPG) {
 
         Map<String, String> PK = new TreeMap<>();
         Map<String, String> PP = new TreeMap<>();
@@ -464,6 +471,12 @@ public class StandingsServiceImpl implements StandingsService {
                 } else if (OTS.containsKey(words[1]) && checkInt(words[6]) && !checkInt(words[3])) {
                     OTS.put(words[1], OTS.get(words[1]) + Integer.parseInt(words[7]));
                     OTG.put(words[1], OTG.get(words[1]) + Integer.parseInt(words[8]));
+                }
+
+                if (shotsAtt.containsKey(words[1]) && checkInt(words[3])) {
+                    shotsAtt.put(words[1], shotsAtt.get(words[1]) + Integer.parseInt(words[3]));
+                } else if (!shotsAtt.containsKey(words[1]) && checkInt(words[3])) {
+                    shotsAtt.put(words[1], Integer.parseInt(words[3]));
                 }
             }
 
@@ -493,6 +506,51 @@ public class StandingsServiceImpl implements StandingsService {
                     }
                 } else {
                     OTPG.put(map.getKey(), "0");
+                }
+            }
+
+            for (Map.Entry<String, Integer> map : goalsSc.entrySet()) {
+                if (goalsSc.get(map.getKey()) != 0) {
+                    if (shotsAtt.containsKey(map.getKey())) {
+                        Double i = Double.valueOf(goalsSc.get(map.getKey()));
+                        Double j = Double.valueOf(shotsAtt.get(map.getKey()));
+                        String formattedDouble = new DecimalFormat("#0.0").format((100 * i) / (j));
+                        shotsPercentage.put(map.getKey(), formattedDouble);
+                    }
+
+                    if (games.containsKey(map.getKey())) {
+                        Double i = Double.valueOf(goalsSc.get(map.getKey()));
+                        Double j = Double.valueOf(games.get(map.getKey()));
+                        String formattedDouble = new DecimalFormat("#0.0").format(i / j);
+                        GSPG.put(map.getKey(), formattedDouble);
+                    }
+                } else {
+                    shotsPercentage.put(map.getKey(), "0");
+                    GSPG.put(map.getKey(), "0");
+                }
+            }
+
+            for (Map.Entry<String, Integer> map : shotsAtt.entrySet()) {
+                if (shotsAtt.get(map.getKey()) != 0) {
+                    if (games.containsKey(map.getKey())) {
+                        String formattedDouble = new DecimalFormat("#0.0")
+                                .format(Double.valueOf(shotsAtt.get(map.getKey())) / Double.valueOf(games.get(map.getKey())));
+                        shotsPG.put(map.getKey(), formattedDouble);
+                    }
+                } else {
+                    shotsPG.put(map.getKey(), "0");
+                }
+            }
+
+            for (Map.Entry<String, Integer> map : goalsM.entrySet()) {
+                if (goalsM.get(map.getKey()) != 0) {
+                    if (games.containsKey(map.getKey())) {
+                        String formattedDouble = new DecimalFormat("#0.0")
+                                .format(Double.valueOf(goalsM.get(map.getKey())) / Double.valueOf(games.get(map.getKey())));
+                        GMPG.put(map.getKey(), formattedDouble);
+                    }
+                } else {
+                    GMPG.put(map.getKey(), "0");
                 }
             }
         } catch (IOException e) {
@@ -643,8 +701,7 @@ public class StandingsServiceImpl implements StandingsService {
                 newMap.put("ARI", value);
             } else if (Objects.equals(team, "WOF")) {
                 newMap.put("VGK", value);
-            }
-            else {
+            } else {
                 newMap.put(team, value);
             }
         });
