@@ -43,8 +43,12 @@ CREATE TABLE IF NOT EXISTS team_stats
     OTPG                      CHARACTER VARYING(100),
     OTGPG                     CHARACTER VARYING(100),
     power_play                CHARACTER VARYING(100),
-    penalty_kill              CHARACTER VARYING(100)
-);
+    penalty_kill              CHARACTER VARYING(100),
+    shotspg                   CHARACTER VARYING(100),
+    shots_percentage                  CHARACTER VARYING(100),
+    gspg                   CHARACTER VARYING(100),
+    gmpg                  CHARACTER VARYING(100)
+    );
 
 CREATE TABLE IF NOT EXISTS defenseman_stats
 (
