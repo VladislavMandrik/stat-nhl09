@@ -18,7 +18,7 @@ public class StandingsServiceImpl implements StandingsService {
 
     private final StandingsRepository standingsRepository;
     private final TeamStatsRepository teamStatsRepository;
-    private final String PATH = "D:/NHL ECHL/playoff";
+    private final String PATH = "upload teamstat/";
     private final String FULLTEAMSTAT_TXT = "fullteamstat.txt";
     private final String CALENDAR = "calendar.txt";
     private final String DATA = "data.txt";
