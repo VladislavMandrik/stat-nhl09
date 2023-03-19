@@ -1,0 +1,33 @@
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,LA,2,21,0,0,1,0,10,47,1,0,0,1,1,0,0/1
+Away,STL,5,19,0,1,2,0,8,40,1,1,0,2,3,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,STL,3,27,1,3,11,0,8,27,3,0,2,0,1,0,1/1
+Away,LA,3,21,0,1,5,0,7,46,1,0,1,2,0,0,0/3
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,CHI,6,20,0,3,3,1,7,18,0,1,4,2,0,0,0/1
+Away,ATL,1,12,0,1,4,1,7,15,1,0,1,0,0,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,NJ,2,25,0,1,2,0,13,35,0,0,0,1,1,0,0/0
+Away,NYI,8,31,0,2,6,2,7,21,0,0,1,5,2,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,NYI,2,22,0,1,7,2,12,28,2,0,1,0,1,0,0/0
+Away,NJ,7,28,0,5,2,0,18,34,0,0,1,3,3,0,2/2
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,NJ,9,28,0,1,0,0,15,38,0,0,2,3,4,0,2/4
+Away,NYI,3,20,0,1,9,0,11,21,4,0,3,0,0,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,STL,10,23,0,4,2,1,16,29,1,0,3,4,3,0,0/0
+Away,LA,6,24,0,1,4,1,11,35,0,0,0,4,2,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,NYI,10,24,0,3,5,1,10,23,0,0,1,5,4,0,2/2
+Away,NJ,1,27,0,3,1,0,12,35,2,0,0,0,1,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,NJ,9,28,0,1,0,0,15,38,0,0,2,3,4,0,2/4
+Away,NYI,3,20,0,1,9,0,11,21,4,0,3,0,0,0,0/0
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,NYI,5,21,0,1,3,0,8,26,1,0,1,0,4,0,0/0
+Away,NJ,2,22,0,2,1,0,17,31,0,0,0,0,2,0,0/1
+"",Team,Goal,Shot,SH goal,Breakaway,Onetimers,Onetimer goal,Faceoff,Hits,Penalties,EN goal,GP1,GP2,GP3,GOT,PP
+Home,STL,9,29,0,3,8,2,18,28,0,0,3,2,4,0,1/1
+Away,LA,7,23,1,1,5,2,12,51,1,0,4,1,2,0,0/0
