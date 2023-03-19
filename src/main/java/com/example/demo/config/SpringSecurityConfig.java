@@ -15,20 +15,20 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("jam")
-                .password("jam")
+                .withUser("mir")
+                .password("mir")
                 .roles("ADMIN")
                 .and()
-                .withUser("alex")
-                .password("alex")
+                .withUser("Artemy")
+                .password("Artemy0701")
+                .roles("USER")
+                .and()
+                .withUser("prostoromantic")
+                .password("kolokol5000")
                 .roles("USER")
                 .and()
                 .withUser("vm")
                 .password("vm")
-                .roles("USER")
-                .and()
-                .withUser("mir")
-                .password("mir")
                 .roles("USER");
     }
 
@@ -37,7 +37,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable().authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/statistic/create").hasRole("ADMIN")
-                .antMatchers(HttpMethod.POST, "/table/create").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, "/table/create").permitAll()
                 .antMatchers(HttpMethod.GET, "/statistic/stats").permitAll()
                 .antMatchers(HttpMethod.GET, "/statistic/goalie").permitAll()
                 .antMatchers(HttpMethod.GET, "/statistic/defenders").permitAll()

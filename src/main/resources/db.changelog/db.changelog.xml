@@ -6,5 +6,5 @@
                      https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
 <!--    <include file="truncate-standings.sql" relativeToChangelogFile="true"/>-->
-    <include file="create-standings.sql" relativeToChangelogFile="true"/>
+<!--    <include file="create-standings.sql" relativeToChangelogFile="true"/>-->
 </databaseChangeLog>
