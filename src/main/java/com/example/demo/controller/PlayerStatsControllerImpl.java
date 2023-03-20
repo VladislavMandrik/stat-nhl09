@@ -60,7 +60,7 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
     @GetMapping("/nhl/goalie")
     public String goalieNHL(Model model) {
         model.addAttribute("goalieStats",
-                goalieStatsRepositoryNHL.findGoalieStatsByGamesBetween(11, 150));
+                goalieStatsRepositoryNHL.findAllByOrderBySavePercentageDesc());
         return "goalieStatsNHL_page";
     }
 
