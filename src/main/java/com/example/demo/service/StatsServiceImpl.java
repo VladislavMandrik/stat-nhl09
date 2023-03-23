@@ -25,7 +25,7 @@ public class StatsServiceImpl implements StatsService {
     private final DefensemanStatsRepositoryNHL defensemanStatsRepository;
     private final TransfersRepository transfersRepository;
 
-    private final String PATHPLAYERSTAT = "D:/NHL ECHL/playerstat";
+    private final String PATHPLAYERSTAT = "E:/KHL ECHL/Март 2023/playerstat";
     private final String PATHDEFENSEMANS = "def/";
     private final String FULLPLAYERSTAT_TXT = "fullplayerstat.txt";
     private final String FULLDEFENSEMANS_TXT = "fulldefensemans.txt";

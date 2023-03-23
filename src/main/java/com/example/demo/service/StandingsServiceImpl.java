@@ -18,7 +18,7 @@ public class StandingsServiceImpl implements StandingsService {
 
     private final StandingsRepository standingsRepository;
     private final TeamStatsRepositoryNHL teamStatsRepository;
-    private final String PATH = "D:/NHL ECHL/teamstat";
+    private final String PATH = "E:/KHL ECHL/Март 2023/team";
     private final String FULLTEAMSTAT_TXT = "fullteamstat.txt";
     private final String CALENDAR = "calendar.txt";
     private final String DATA = "data.txt";
@@ -225,7 +225,7 @@ public class StandingsServiceImpl implements StandingsService {
                 }
             }
 
-            try (PrintWriter writer = new PrintWriter("D:/KHL ECHL/finalCalendarKHL.txt")) {
+            try (PrintWriter writer = new PrintWriter("E:/KHL ECHL/finalCalendarKHL.txt")) {
                 List<String> s;
                 for (Map.Entry<String, List<String>> map : finalCalendar.entrySet()) {
                     s = map.getValue();
