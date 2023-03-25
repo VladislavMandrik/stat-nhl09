@@ -496,8 +496,8 @@ public class StandingsServiceImpl implements StandingsService {
                         OTGPG.put(map.getKey(), createOTGPG);
                     }
                 } else {
-                    OTGPercentage.put(map.getKey(), "0");
-                    OTGPG.put(map.getKey(), "0");
+                    OTGPercentage.put(map.getKey(), "0,0");
+                    OTGPG.put(map.getKey(), "0,0");
                 }
             }
 
