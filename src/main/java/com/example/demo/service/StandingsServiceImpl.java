@@ -492,8 +492,8 @@ public class StandingsServiceImpl implements StandingsService {
                         OTGPG.put(map.getKey(), createOTGPG);
                     }
                 } else {
-                    OTGPercentage.put(map.getKey(), "0");
-                    OTGPG.put(map.getKey(), "0");
+                    OTGPercentage.put(map.getKey(), "0.0");
+                    OTGPG.put(map.getKey(), "0.0");
                 }
             }
 
@@ -612,7 +612,7 @@ public class StandingsServiceImpl implements StandingsService {
                                 .format((100 * Double.valueOf(implemented.get(map.getKey()))) / Double.valueOf(map.getValue()));
                         PP.put(map.getKey(), formattedDouble);
                     } else {
-                        PP.put(map.getKey(), "0,0");
+                        PP.put(map.getKey(), "0.0");
                     }
                 }
 
@@ -623,7 +623,7 @@ public class StandingsServiceImpl implements StandingsService {
                                 .format(100 - pp);
                         PK.put(map.getKey(), formattedDouble);
                     } else {
-                        PK.put(map.getKey(), "100,0");
+                        PK.put(map.getKey(), "100.0");
                     }
                 }
             }
