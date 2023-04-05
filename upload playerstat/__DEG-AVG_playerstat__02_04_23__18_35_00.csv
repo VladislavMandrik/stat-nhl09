@@ -1,0 +1,41 @@
+Player Name,Team,Pos,Time,Goal,Asst,PIMS,+/-,PPG/GA,SHG/ENG,Shoot/SA,Hits,Player ID,Player INDX
+Yip Brandon,DEG,Player,22:42,0,2,0,2,0,0,1,1,1363,284
+Foo Parker,DEG,Player,10:12,1,0,0,1,0,0,3,2,1687,300
+Davidson Brandon,DEG,Player,17:27,0,1,0,0,0,0,0,4,1828,591
+Kane Cory,DEG,Player,13:31,0,1,0,2,0,0,0,1,2512,1739
+Jurco Tomas,DEG,Player,21:05,1,0,0,1,0,0,5,2,1261,2929
+Werek Ethan,DEG,Player,16:08,0,0,0,0,0,0,1,1,2860,3423
+Pu Cliff,DEG,Player,11:05,0,0,0,-1,0,0,1,2,2652,4181
+Lockhart Lucas,DEG,Player,09:21,0,0,0,-1,0,0,0,2,5299,4435
+Nicholls Josh,DEG,Player,08:27,0,0,0,0,0,0,0,1,1308,4491
+Wong Tyler,DEG,Player,14:02,1,1,0,2,0,0,1,2,1629,4717
+Fram Jason,DEG,Player,20:12,0,0,0,1,0,0,0,7,5307,4732
+Sproul Ryan,DEG,Player,18:12,0,1,0,2,0,0,1,4,4408,4759
+Leslie Zac,DEG,Player,21:14,0,0,0,2,0,0,0,4,6316,5653
+Rodewald Jack,DEG,Player,09:34,1,0,0,2,0,0,2,3,6317,5654
+LoVerde Vincent,DEG,Player,14:34,0,0,0,0,0,0,0,3,6319,5656
+Brosseau Devin,DEG,Player,13:30,0,1,0,0,0,0,2,2,6322,5659
+Wood Kyle,DEG,Player,14:49,0,0,0,1,0,0,0,5,6324,5661
+Afanasyev Kristian,DEG,Player,10:05,0,1,0,1,0,0,3,3,6325,5662
+Smith Jeremy,DEG,Goalie,53:14,-,0,0,-,1,0,11,-,3315,4714
+O Brien Paris,DEG,Goalie,00:00,-,0,0,-,0,0,0,-,6026,5376
+Broadhurst Alex,AVG,Player,16:36,0,0,0,-2,0,0,1,0,1158,111
+Yakupov Nail,AVG,Player,12:26,0,0,0,-1,0,0,0,1,2152,438
+Boucher Reid,AVG,Player,15:14,0,0,2,-2,0,0,3,0,1520,469
+Dergachyov Alexander,AVG,Player,14:25,0,0,0,0,0,0,0,1,2546,1107
+Bereglazov Alexei,AVG,Player,16:19,0,0,0,1,0,0,0,5,2417,1487
+Sharipzyanov Damir,AVG,Player,14:28,0,0,0,-2,0,0,0,0,3563,2003
+Malykhin Fyodor,AVG,Player,12:33,0,0,0,0,0,0,0,0,2946,2569
+Telegin Ivan,AVG,Player,14:25,0,0,0,-1,0,0,2,1,1959,2856
+Zharkov Vladimir,AVG,Player,12:05,1,0,0,0,0,0,2,1,5636,2958
+Tkachyov Vladimir E.,AVG,Player,11:06,0,0,0,-1,0,0,0,0,5618,2979
+Gritsyuk Arseny,AVG,Player,12:03,0,0,0,-1,0,0,0,0,1183,3095
+Kazakov Maxim D.,AVG,Player,11:45,0,1,0,0,0,0,3,0,3803,3437
+Belyakov Fyodor,AVG,Player,14:51,0,0,0,-2,0,0,0,1,1567,3748
+Paigin Ziyat,AVG,Player,22:27,0,0,0,-2,0,0,0,0,2303,3786
+Belov Anton,AVG,Player,16:29,0,1,0,1,0,0,0,3,4285,4079
+Knight Corban,AVG,Player,12:52,0,0,0,-1,0,0,0,0,502,4129
+Tolchinsky Sergey,AVG,Player,09:13,0,0,0,0,0,0,0,1,2575,4199
+Gulyaev Mikhail,AVG,Player,21:54,0,0,0,-2,0,0,0,0,6334,5671
+Melnichuk Alexei,AVG,Goalie,53:14,-,0,0,-,4,0,20,-,3657,227
+Demchenko Vasily,AVG,Goalie,00:00,-,0,0,-,0,0,0,-,5825,3198
