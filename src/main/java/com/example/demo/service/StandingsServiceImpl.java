@@ -48,6 +48,7 @@ public class StandingsServiceImpl implements StandingsService {
         Map<String, String> OTGPercentage = new TreeMap<>();
         Map<String, String> OTPG = new TreeMap<>();
         Map<String, String> OTGPG = new TreeMap<>();
+        Map<String, Integer> breakaways = new TreeMap<>();
         Map<String, Integer> attempt = new TreeMap<>();
         Map<String, Integer> implemented = new TreeMap<>();
         Map<String, String> powerPlay = new TreeMap<>();
@@ -66,11 +67,11 @@ public class StandingsServiceImpl implements StandingsService {
                         goalsScored.get(team), goalsMissing.get(team), points.get(team))));
         standingsRepository.saveAll(list);
 
-        createTeamstat(shotsAtt, goalsScored, shotsPercentage, OTShots, OTGoals, OTGPercentage, games, OTPG, OTGPG, attempt, implemented, powerPlay, PKRivalAttempts,
+        createTeamstat(shotsAtt, goalsScored, shotsPercentage, OTShots, OTGoals, OTGPercentage, games, OTPG, OTGPG, breakaways, attempt, implemented, powerPlay, PKRivalAttempts,
                 PKRivalGoals, penaltyKill, shotsPG, GSPG, goalsMissing, GMPG);
 
         OTShots.forEach((team, shots) -> listTeam.add(new TeamStats(team, shots, OTGoals.get(team),
-                OTGPercentage.get(team), games.get(team), OTPG.get(team), OTGPG.get(team), powerPlay.get(team),
+                OTGPercentage.get(team), games.get(team), OTPG.get(team), OTGPG.get(team), breakaways.get(team), powerPlay.get(team),
                 penaltyKill.get(team), shotsPG.get(team), shotsPercentage.get(team), GSPG.get(team), GMPG.get(team))));
         teamStatsRepository.saveAll(listTeam);
     }
@@ -444,7 +445,7 @@ public class StandingsServiceImpl implements StandingsService {
     }
 
     private void createTeamstat(Map<String, Integer> shotsAtt, Map<String, Integer> goalsSc, Map<String, String> shotsPercentage, Map<String, Integer> OTS, Map<String, Integer> OTG, Map<String,
-            String> OTGPercentage, Map<String, Integer> games, Map<String, String> OTPG, Map<String, String> OTGPG,
+            String> OTGPercentage, Map<String, Integer> games, Map<String, String> OTPG, Map<String, String> OTGPG, Map<String, Integer> breakaways,
                                 Map<String, Integer> attempt, Map<String, Integer> implemented,
                                 Map<String, String> powerPlay, Map<String, Integer> PKAtt,
                                 Map<String, Integer> PKG, Map<String, String> penaltyKill,
@@ -479,8 +480,10 @@ public class StandingsServiceImpl implements StandingsService {
 
                 if (shotsAtt.containsKey(words[1]) && checkInt(words[3])) {
                     shotsAtt.put(words[1], shotsAtt.get(words[1]) + Integer.parseInt(words[3]));
+                    breakaways.put(words[1], breakaways.get(words[1]) + Integer.parseInt(words[5]));
                 } else if (!shotsAtt.containsKey(words[1]) && checkInt(words[3])) {
                     shotsAtt.put(words[1], Integer.parseInt(words[3]));
+                    breakaways.put(words[1], Integer.parseInt(words[5]));
                 }
             }
 

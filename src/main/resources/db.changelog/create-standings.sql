@@ -111,6 +111,7 @@ CREATE TABLE IF NOT EXISTS team_statsbrhl
     games                     INTEGER,
     OTPG                      CHARACTER VARYING(100),
     OTGPG                     CHARACTER VARYING(100),
+    breakaways                INTEGER,
     power_play                CHARACTER VARYING(100),
     penalty_kill              CHARACTER VARYING(100),
     shotspg                   CHARACTER VARYING(100),

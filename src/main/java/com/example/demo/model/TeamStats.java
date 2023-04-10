@@ -19,6 +19,7 @@ public class TeamStats {
     private Integer games;
     private String OTPG;
     private String OTGPG;
+    private Integer breakaways;
     private String powerPlay;
     private String penaltyKill;
     private String shotsPG;
@@ -27,7 +28,7 @@ public class TeamStats {
     private String GMPG;
 
     public TeamStats(String team, Integer onetimerShots, Integer onetimerGoals, String onetimerGoalsPercentage,
-                     Integer games, String OTPG, String OTGPG, String powerPlay, String penaltyKill, String shotsPG,
+                     Integer games, String OTPG, String OTGPG, Integer breakaways, String powerPlay, String penaltyKill, String shotsPG,
                      String shotsPercentage, String GSPG, String GMPG) {
         this.team = team;
         this.onetimerShots = onetimerShots;
@@ -36,6 +37,7 @@ public class TeamStats {
         this.games = games;
         this.OTPG = OTPG;
         this.OTGPG = OTGPG;
+        this.breakaways = breakaways;
         this.powerPlay = powerPlay;
         this.penaltyKill = penaltyKill;
         this.shotsPG = shotsPG;

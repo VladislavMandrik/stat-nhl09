@@ -111,6 +111,11 @@
             height: 25px;
         }
 
+        .table_sort tr td:nth-child(11) {
+            width: 4%;
+            height: 25px;
+        }
+
         .table_sort tbody tr:nth-child(even) {
             background: #e3e3e3;
         }
@@ -126,6 +131,7 @@
 <div style="float: right; width: 39%;">OTPG - количество совершенных бросков в одно касание в среднем за игру <br>
     OTGPG - забито голов в одно касание в среднем за игру <br>
     OT% - процент реализованных бросков в касание <br>
+    BR - количество выходов один на один с вратарем <br>
     SPG - среднее количество бросков по воротам за игру <br>
     S% - процент реализованных бросков по воротам <br>
     GSPG - забито голов в среднем за игру <br>
@@ -141,6 +147,7 @@
         <th>OTPG</th>
         <th>OTGPG</th>
         <th>OT%</th>
+        <th>BR</th>
         <th>SPG</th>
         <th>S%</th>
         <th>GSPG</th>
@@ -155,6 +162,7 @@
         <td th:text="${stat.getOTPG()}"></td>
         <td th:text="${stat.getOTGPG()}"></td>
         <td th:text="${stat.getOnetimerGoalsPercentage()}"></td>
+        <td th:text="${stat.getBreakaways()}"></td>
         <td th:text="${stat.getShotsPG()}"></td>
         <td th:text="${stat.getShotsPercentage()}"></td>
         <td th:text="${stat.getGSPG()}"></td>
