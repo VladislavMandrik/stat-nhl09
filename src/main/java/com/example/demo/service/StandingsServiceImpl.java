@@ -443,6 +443,18 @@ public class StandingsServiceImpl implements StandingsService {
             words[1] = "ARI";
         } else if (Objects.equals(words[1], "WOF")) {
             words[1] = "VGK";
+        } else if (Objects.equals(words[1], "IOW")) {
+            words[1] = "TEX";
+        } else if (Objects.equals(words[1], "PEO")) {
+            words[1] = "UTC";
+        } else if (Objects.equals(words[1], "QCF")) {
+            words[1] = "ADR";
+        } else if (Objects.equals(words[1], "HOU")) {
+            words[1] = "IOW";
+        } else if (Objects.equals(words[1], "DAV")) {
+            words[1] = "OKL";
+        } else if (Objects.equals(words[1], "MTB")) {
+            words[1] = "STJ";
         }
     }
 
@@ -708,6 +720,18 @@ public class StandingsServiceImpl implements StandingsService {
                 newMap.put("ARI", value);
             } else if (Objects.equals(team, "WOF")) {
                 newMap.put("VGK", value);
+            } else if (Objects.equals(team, "IOW")) {
+                newMap.put("TEX", value);
+            } else if (Objects.equals(team, "PEO")) {
+                newMap.put("UTC", value);
+            } else if (Objects.equals(team, "QCF")) {
+                newMap.put("ADR", value);
+            } else if (Objects.equals(team, "HOU")) {
+                newMap.put("IOW", value);
+            } else if (Objects.equals(team, "DAV")) {
+                newMap.put("OKL", value);
+            } else if (Objects.equals(team, "MTB")) {
+                newMap.put("STJ", value);
             } else {
                 newMap.put(team, value);
             }

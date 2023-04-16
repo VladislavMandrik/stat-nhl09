@@ -60,3 +60,12 @@ CREATE TABLE IF NOT EXISTS defenseman_stats
     PPG        CHARACTER VARYING(100),
     plus_minus INTEGER
 );
+
+CREATE TABLE IF NOT EXISTS results
+(
+    first_team   CHARACTER VARYING(100) PRIMARY KEY,
+    first_goals  CHARACTER VARYING(100),
+    total        CHARACTER VARYING(100),
+    second_team  CHARACTER VARYING(100),
+    second_goals CHARACTER VARYING(100)
+);

@@ -284,6 +284,18 @@ public class StatsServiceImpl implements StatsService {
             words[1] = "ARI";
         } else if (Objects.equals(words[1], "WOF")) {
             words[1] = "VGK";
+        } else if (Objects.equals(words[1], "IOW")) {
+            words[1] = "TEX";
+        } else if (Objects.equals(words[1], "PEO")) {
+            words[1] = "UTC";
+        } else if (Objects.equals(words[1], "QCF")) {
+            words[1] = "ADR";
+        } else if (Objects.equals(words[1], "HOU")) {
+            words[1] = "IOW";
+        } else if (Objects.equals(words[1], "DAV")) {
+            words[1] = "OKL";
+        } else if (Objects.equals(words[1], "MTB")) {
+            words[1] = "STJ";
         }
     }
 
@@ -459,6 +471,18 @@ public class StatsServiceImpl implements StatsService {
                     words[6] = "VGK";
                 } else if (Objects.equals(words[6], "PHX")) {
                     words[6] = "ARI";
+                } else if (Objects.equals(words[6], "IOW")) {
+                    words[6] = "TEX";
+                } else if (Objects.equals(words[6], "PEO")) {
+                    words[6] = "UTC";
+                } else if (Objects.equals(words[6], "QCF")) {
+                    words[6] = "ADR";
+                } else if (Objects.equals(words[6], "HOU")) {
+                    words[6] = "IOW";
+                } else if (Objects.equals(words[6], "DAV")) {
+                    words[6] = "OKL";
+                } else if (Objects.equals(words[6], "MTB")) {
+                    words[6] = "STJ";
                 }
 
                 if (!defensemans.containsKey(words[2] + " " + words[1] + " (" + words[6] + ")") && !Objects.equals(words[1], "F. Name")) {
