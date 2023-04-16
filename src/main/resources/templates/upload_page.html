@@ -14,6 +14,94 @@
                 <p th:text="${message}" th:if="${message ne null}" class="alert alert-primary"></p>
                 <form method="post" th:action="@{/statistic/upload}" enctype="multipart/form-data">
                     <div class="form-group">
+                        <br>
+                        <tr>
+                            <td>
+                                <select name="firstTeam">
+                                    <option value=" ">-Выберите команду-</option>
+                                    <option value="BNG">Bighamton</option>
+                                    <option value="HER">Hershey</option>
+                                    <option value="ROC">Rochester</option>
+                                    <option value="HFD">Hartford</option>
+                                    <option value="SYR">Syracuse</option>
+                                    <option value="IOW">Texas</option>
+                                    <option value="PEO">Utica</option>
+                                    <option value="QCF">Adirondack</option>
+                                    <option value="HOU">Iowa</option>
+                                    <option value="WBS">Wilkes-Barre Scranton</option>
+                                    <option value="DAV">Oklahoma City</option>
+                                </select></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select name="firstGoals">
+                                    <option value=" ">-</option>
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15<option>
+                                </select></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select name="total">
+                                    <option value=" ">Основное время</option>
+                                    <option value="OT">Овертайм</option>
+                                    <option value="SO">Буллиты</option>
+                                </select></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select name="secondGoals">
+                                    <option value=" ">-</option>
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15<option>
+                                </select></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select name="secondTeam">
+                                    <option value=" ">-Выберите команду-</option>
+                                    <option value="BNG">Bighamton</option>
+                                    <option value="HER">Hershey</option>
+                                    <option value="ROC">Rochester</option>
+                                    <option value="HFD">Hartford</option>
+                                    <option value="SYR">Syracuse</option>
+                                    <option value="IOW">Texas</option>
+                                    <option value="PEO">Utica</option>
+                                    <option value="QCF">Adirondack</option>
+                                    <option value="HOU">Iowa</option>
+                                    <option value="WBS">Wilkes-Barre Scranton</option>
+                                    <option value="DAV">Oklahoma City</option>
+                                </select></td>
+                        </tr>
+                        <br>
                         playerstat &darr; <input type="file" name="playerstat" class="form-control-file" accept=".csv">
                         <br>
                         teamstat &darr; <input type="file" name="teamstat" class="form-control-file" accept=".csv">

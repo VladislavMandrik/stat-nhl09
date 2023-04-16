@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.controller.PlayerStatsControllerImpl;
 import com.example.demo.model.Standings;
 import com.example.demo.model.TeamStats;
 import com.example.demo.repository.StandingsRepository;
@@ -22,6 +23,7 @@ public class StandingsServiceImpl implements StandingsService {
     private final String FULLTEAMSTAT_TXT = "fullteamstat.txt";
     private final String CALENDAR = "calendar.txt";
     private final String DATA = "data.txt";
+    public String total;
 
     public void createStandings() {
         List<Standings> list = new ArrayList<>();
@@ -126,14 +128,14 @@ public class StandingsServiceImpl implements StandingsService {
 
                 createFullTeamName(words);
 
-                if (checkInt(words[2]) && !Objects.equals(words[3], "Á") && !Objects.equals(words[3], "ÎÒ")) {
+                if (checkInt(words[2]) && !Objects.equals(total, "SO") && !Objects.equals(total, "OT")) {
                     gamesData.add(words[1] + "," + Integer.parseInt(words[2]) + ",");
                 }
 
-                if (Objects.equals(words[3], "Á")) {
-                    gamesData.add(words[1] + "," + Integer.parseInt(words[2]) + "," + words[3]);
-                } else if (Objects.equals(words[3], "ÎÒ")) {
-                    gamesData.add(words[1] + "," + Integer.parseInt(words[2]) + "," + words[3]);
+                if (checkInt(words[2]) && Objects.equals(total, "SO")) {
+                    gamesData.add(words[1] + "," + Integer.parseInt(words[2]) + "," + total);
+                } else if (checkInt(words[2]) && Objects.equals(total, "OT")) {
+                    gamesData.add(words[1] + "," + Integer.parseInt(words[2]) + "," + total);
                 }
             }
 
@@ -180,7 +182,7 @@ public class StandingsServiceImpl implements StandingsService {
 
                 createGamesAndFinalCalendar(games, points, finalCalendar, words);
                 createScoredAndMissingGoals(goalsScored, goalsMissing, words);
-//                createWinsLosesLosesOTPoints(loses, tableWithout, tableWith, plus1, words);
+                createWinsLosesLosesOTPoints(loses, tableWithout, tableWith, plus1, words);
             }
 
             for (String s : tableWithout) {
@@ -254,7 +256,8 @@ public class StandingsServiceImpl implements StandingsService {
         }
     }
 
-    private void createWinsLosesLosesOTPoints(Map<String, Integer> loses, List<String> tableWithout, List<String> tableWith, List<String> plus1, String[] words) {
+    private void createWinsLosesLosesOTPoints(Map<String, Integer> loses, List<String> tableWithout,
+                                              List<String> tableWith, List<String> plus1, String[] words) {
         if (Integer.parseInt(words[1]) > Integer.parseInt(words[3]) && Objects.equals(words[4], " ")) {
             tableWithout.add(words[0]);
         } else if (Integer.parseInt(words[1]) < Integer.parseInt(words[3]) && Objects.equals(words[4], " ")) {

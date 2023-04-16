@@ -1,20 +1,21 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.Results;
 import com.example.demo.repository.DefensemanStatsRepository;
 import com.example.demo.repository.GoalieStatsRepository;
 import com.example.demo.repository.PlayerStatsRepository;
 import com.example.demo.repository.TransfersRepository;
+import com.example.demo.service.StandingsService;
+import com.example.demo.service.StandingsServiceImpl;
 import com.example.demo.service.StatsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,13 +24,13 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Arrays;
+import java.util.Map;
 
 @RequiredArgsConstructor
 @Controller
@@ -42,7 +43,8 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
     private final GoalieStatsRepository goalieStatsRepository;
     private final DefensemanStatsRepository defensemanStatsRepository;
     private final TransfersRepository transfersRepository;
-    private final StandingsControllerImpl standingsController;
+    private final StandingsServiceImpl standingsService;
+    public String total;
 
     @PostMapping("/create")
     public String createStats() {
@@ -78,14 +80,17 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
     }
 
     @GetMapping("/uploaded")
-    public String upl() {
+    public String upl(Map<String, Object> model) {
+        Results results = new Results();
+        model.put("results", results);
         return "upload_page";
     }
 
 
     @PostMapping("/upload")
-    public String uploadFile(@RequestParam("playerstat") MultipartFile playerstat,
-                             @RequestParam("teamstat") MultipartFile teamstat, RedirectAttributes attributes) {
+    public String uploadFile(@ModelAttribute("results") Results results,
+                             @RequestParam("playerstat") MultipartFile playerstat,
+                             @RequestParam("teamstat") MultipartFile teamstat, RedirectAttributes attributes) throws IOException {
 
         if (playerstat.isEmpty() || teamstat.isEmpty()) {
             attributes.addFlashAttribute("message", "Необходимо выбрать и загрузить playerstat и teamstat.");
@@ -100,12 +105,18 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
         String fileNamePlayerstat = StringUtils.cleanPath(playerstat.getOriginalFilename());
         String fileNameTeamstat = StringUtils.cleanPath(teamstat.getOriginalFilename());
 
+        System.out.println("--------------" + Arrays.toString(teamstat.getBytes()));
+
         try {
             Path pathPl = Paths.get(UPLOADPLAYERSTAT_DIR + fileNamePlayerstat);
             Path pathT = Paths.get(UPLOADTEAMSTAT_DIR + fileNameTeamstat);
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            logger.warn(authentication.getName() + " " + results.getFirstTeam() + " " + results.getFirstGoals() + " " +
+                    results.getTotal() + " " + results.getSecondGoals() + " " + results.getSecondTeam());
+            total = results.getTotal();
             logger.warn(authentication.getName() + " " + fileNamePlayerstat);
             logger.warn(authentication.getName() + " " + fileNameTeamstat);
+
 
             Files.copy(playerstat.getInputStream(), pathPl, StandardCopyOption.REPLACE_EXISTING);
             Files.copy(teamstat.getInputStream(), pathT, StandardCopyOption.REPLACE_EXISTING);
@@ -115,7 +126,8 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
 
         attributes.addFlashAttribute("message", "Файлы успешно загружены, статистика обновлена!");
         statsService.createStats();
-        standingsController.createStandings();
+        standingsService.total = total; 
+        standingsService.createStandings();
         return "redirect:/statistic/uploaded";
     }
 
@@ -176,4 +188,3 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
         return responseEntity;
     }
 }
-
