@@ -69,3 +69,23 @@ CREATE TABLE IF NOT EXISTS results
     second_team  CHARACTER VARYING(100),
     second_goals CHARACTER VARYING(100)
 );
+
+CREATE TABLE IF NOT EXISTS res
+(
+    res   CHARACTER VARYING(500) PRIMARY KEY
+    );
+
+CREATE TABLE IF NOT EXISTS playerstat
+(
+    id           BIGSERIAL PRIMARY KEY,
+    playerstat   CHARACTER VARYING(500)
+    );
+
+CREATE TABLE IF NOT EXISTS teamstat
+(
+    id           BIGSERIAL PRIMARY KEY,
+    teamstat   CHARACTER VARYING(500)
+    );
+
+CREATE VIEW a AS SELECT * FROM standings where team in ('UTC', 'NFK', 'WBS', 'HFD', 'HAM', 'MIL', 'ADR', 'SEA');
+CREATE VIEW b AS SELECT * FROM standings where team in ('BNG', 'HER', 'IOW', 'ROC', 'OKL', 'GRA', 'STJ', 'TEX');

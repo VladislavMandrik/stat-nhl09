@@ -29,15 +29,22 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .withUser("ZHLOBIK")
                 .password("artemmmnhl2023")
+                .roles("USER")
+                .and()
+                .withUser("user")
+                .password("user")
                 .roles("USER");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/").hasRole("ADMIN")
-                .antMatchers(HttpMethod.POST, "/statistic/create").hasRole("ADMIN")
-                .antMatchers(HttpMethod.POST, "/table/create").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/").permitAll()
+//                .hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, "/statistic/create").permitAll()
+//                .hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, "/table/create").permitAll()
+//                .hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "/statistic/stats").permitAll()
                 .antMatchers(HttpMethod.GET, "/statistic/goalie").permitAll()
                 .antMatchers(HttpMethod.GET, "/statistic/defenders").permitAll()

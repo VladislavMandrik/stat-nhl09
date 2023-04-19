@@ -1,11 +1,8 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.Res;
 import com.example.demo.model.Results;
-import com.example.demo.repository.DefensemanStatsRepository;
-import com.example.demo.repository.GoalieStatsRepository;
-import com.example.demo.repository.PlayerStatsRepository;
-import com.example.demo.repository.TransfersRepository;
-import com.example.demo.service.StandingsService;
+import com.example.demo.repository.*;
 import com.example.demo.service.StandingsServiceImpl;
 import com.example.demo.service.StatsServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +28,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Arrays;
 import java.util.Map;
+import java.util.Objects;
 
 @RequiredArgsConstructor
 @Controller
@@ -43,6 +41,7 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
     private final GoalieStatsRepository goalieStatsRepository;
     private final DefensemanStatsRepository defensemanStatsRepository;
     private final TransfersRepository transfersRepository;
+    private final ResRepository resRepository;
     private final StandingsServiceImpl standingsService;
     public String total;
 
@@ -86,7 +85,6 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
         return "upload_page";
     }
 
-
     @PostMapping("/upload")
     public String uploadFile(@ModelAttribute("results") Results results,
                              @RequestParam("playerstat") MultipartFile playerstat,
@@ -105,7 +103,24 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
         String fileNamePlayerstat = StringUtils.cleanPath(playerstat.getOriginalFilename());
         String fileNameTeamstat = StringUtils.cleanPath(teamstat.getOriginalFilename());
 
-        System.out.println("--------------" + Arrays.toString(teamstat.getBytes()));
+        InputStream inputStream = teamstat.getInputStream();
+
+        BufferedInputStream bis = new BufferedInputStream(inputStream);
+        ByteArrayOutputStream buf = new ByteArrayOutputStream();
+        int result = bis.read();
+        while (result != -1) {
+            buf.write((byte) result);
+            result = bis.read();
+        }
+
+        if (!Objects.equals(results.getTotal(), " ")) {
+            String resultTeamstat = buf.toString();
+            int start = resultTeamstat.indexOf("Away,") + 4;
+            int to = start + 29;
+            char[] dst = new char[to - start];
+            resultTeamstat.getChars(start, to, dst, 0);
+            resRepository.save(new Res(Arrays.toString(dst)));
+        }
 
         try {
             Path pathPl = Paths.get(UPLOADPLAYERSTAT_DIR + fileNamePlayerstat);
@@ -120,13 +135,13 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
 
             Files.copy(playerstat.getInputStream(), pathPl, StandardCopyOption.REPLACE_EXISTING);
             Files.copy(teamstat.getInputStream(), pathT, StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException e) {
+        } catch (
+                IOException e) {
             e.printStackTrace();
         }
 
         attributes.addFlashAttribute("message", "Файлы успешно загружены, статистика обновлена!");
         statsService.createStats();
-        standingsService.total = total; 
         standingsService.createStandings();
         return "redirect:/statistic/uploaded";
     }
@@ -172,6 +187,25 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
     @GetMapping("/logs")
     public ResponseEntity<Object> logs() throws IOException {
         String filename = "log.txt";
+        File file = new File(filename);
+        InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.add("Content-Disposition", String.format("attachment; filename=\"%s\"", file.getName()));
+        headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
+        headers.add("Pragma", "no-cache");
+        headers.add("Expires", "0");
+
+        ResponseEntity<Object>
+                responseEntity = ResponseEntity.ok().headers(headers).contentLength(
+                file.length()).contentType(MediaType.parseMediaType("application/txt")).body(resource);
+
+        return responseEntity;
+    }
+
+    @GetMapping("/downloadCalendar")
+    public ResponseEntity<Object> downloadFileCalendar() throws IOException {
+        String filename = "finalCalendar.txt";
         File file = new File(filename);
         InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
         HttpHeaders headers = new HttpHeaders();

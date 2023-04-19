@@ -25,7 +25,9 @@ public class StandingsControllerImpl implements StandingsController {
 
     @GetMapping("/standings")
     public String standings(Model model) {
-        model.addAttribute("standings", standingsRepository.findAll());
+        model.addAttribute("standings", standingsRepository.findAllByOrderByPointsDesc());
+        model.addAttribute("a", standingsRepository.findByGroupA());
+        model.addAttribute("b", standingsRepository.findByGroupB());
         return "standings_page";
     }
 
