@@ -89,3 +89,8 @@ CREATE TABLE IF NOT EXISTS teamstat
 
 CREATE VIEW a AS SELECT * FROM standings where team in ('UTC', 'NFK', 'WBS', 'HFD', 'HAM', 'MIL', 'ADR', 'SEA');
 CREATE VIEW b AS SELECT * FROM standings where team in ('BNG', 'HER', 'IOW', 'ROC', 'OKL', 'GRA', 'STJ', 'TEX');
+
+create table if not exists logger
+(
+    log CHARACTER VARYING(500) PRIMARY KEY
+);
