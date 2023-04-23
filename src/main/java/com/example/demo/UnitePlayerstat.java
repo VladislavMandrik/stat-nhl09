@@ -6,7 +6,7 @@ import java.util.*;
 public class UnitePlayerstat {
     public static void main(String[] args) {
 
-        final String PLAYERSTAT = "D:/KHL ECHL/Unite/playerstat";
+        final String PLAYERSTAT = "E:/KHL ECHL/Unite/playerstat";
         final String UNITEPLAYERSTAT_TXT = "uniteplayerstat.txt";
         List<String> str = new ArrayList<>();
 
@@ -122,7 +122,7 @@ public class UnitePlayerstat {
             }
 
 
-            try (PrintWriter writer = new PrintWriter("D:/KHL ECHL/Unite/unitplayerstat.csv")) {
+            try (PrintWriter writer = new PrintWriter("E:/KHL ECHL/Unite/unitplayerstat.csv")) {
                 writer.write(str.get(0) + "\n");
 
                 int count4 = 0;

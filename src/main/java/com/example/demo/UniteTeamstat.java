@@ -7,7 +7,7 @@ public class UniteTeamstat {
 
     public static void main(String[] args) {
 
-        final String TEAMSTAT = "D:/KHL ECHL/Unite/teamstat";
+        final String TEAMSTAT = "E:/KHL ECHL/Unite/teamstat";
         final String UNITETEAMSTAT_TXT = "uniteteamstat.txt";
         List<String> str = new ArrayList<>();
 
@@ -108,7 +108,7 @@ public class UniteTeamstat {
                 }
             });
 
-            try (PrintWriter writer = new PrintWriter("D:/KHL ECHL/Unite/unit.csv")) {
+            try (PrintWriter writer = new PrintWriter("E:/KHL ECHL/Unite/unit.csv")) {
                 writer.write(str.get(0) + "\n");
                 for (Map.Entry<Integer, TeamstatUnite> mapN : newMap.entrySet()) {
                     writer.write(mapN.getValue().getWord0() + ",");
