@@ -11,10 +11,16 @@ import java.util.List;
 @Repository
 public interface StandingsRepository extends JpaRepository<Standings, Long> {
     List<Standings> findAllByOrderByPointsDesc();
-    @Query(value = "select * from a order by points desc", nativeQuery = true)
+    @Query(value = "select * from " +
+//            "e " +
+            "a " +
+            "order by points desc", nativeQuery = true)
     List<Standings> findByGroupA();
 
-    @Query(value = "select * from b order by points desc", nativeQuery = true)
+    @Query(value = "select * from " +
+//            "w " +
+            "b " +
+            "order by points desc", nativeQuery = true)
     List<Standings> findByGroupB();
 }
 

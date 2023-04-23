@@ -3,7 +3,6 @@ package com.example.demo.scheduler;
 import com.example.demo.model.Playerstat;
 import com.example.demo.model.Teamstat;
 import com.example.demo.repository.PlayerstatRepo;
-import com.example.demo.repository.StandingsRepository;
 import com.example.demo.repository.TeamstatRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
