@@ -78,7 +78,8 @@ public class UniteTeamstat {
 
             map.forEach((integer, teamstatUnit) -> {
                 if (integer == 0) {
-                    newMap.put(0, new TeamstatUnite(teamstatUnit.getWord0(), teamstatUnit.getWord1(), map.get(integer).getWord2() + map.get(2).getWord2(),
+                    newMap.put(0, new TeamstatUnite(teamstatUnit.getWord0(), teamstatUnit.getWord1(),
+                            map.get(integer).getWord2() + map.get(2).getWord2(),
                             map.get(integer).getWord3() + map.get(2).getWord3(),
                             map.get(integer).getWord4() + map.get(2).getWord4(),
                             map.get(integer).getWord5() + map.get(2).getWord5(),
