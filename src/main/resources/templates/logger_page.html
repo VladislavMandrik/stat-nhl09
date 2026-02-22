@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logger</title>
+</head>
+<body>
+<h1>Look logger</h1>
+<form>
+    <table class="table">
+        <thead>
+        <tr>
+            <th> </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="logger : ${logger}">
+            <td th:text="${logger.getLog()}"></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>

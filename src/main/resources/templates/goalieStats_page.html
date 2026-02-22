@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Goalie stats</title>
+    <link href="/css/table_style.css" rel="stylesheet">
+    <style>
+        .table_sort {
+            border-collapse: collapse;
+            counter-reset: schetchik;
+            width: 50%;
+            font-size: 75%;
+        }
+
+        .table_sort th {
+            color: #ffffff;
+            /*#ffebcd;*/
+            background: #0a0a0a;
+            /*#008b8b;*/
+            cursor: pointer;
+        }
+
+        .table_sort tbody tr:nth-child(n) {
+            counter-increment: schetchik;
+        }
+
+        .table_sort td,
+        .table_sort tr:before {
+            padding: .1em .5em;
+            border: 1px
+            solid #E7D5C0;
+        }
+
+        .table_sort td,
+        .table_sort th {
+            height: 35px;
+            text-align: center;
+            font-size: 80%;
+        }
+
+        .table_sort tr:before {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .table_sort tr:before,
+        .table_sort b:after {
+            content: counter(schetchik);
+        }
+
+        .table_sort tr:nth-child(-n+1):before {
+            content: "#";
+        }
+
+        .table_sort tbody tr:nth-child(-n+1):before {
+            content: "1";
+        }
+
+        .table_sort tbody tr:nth-child(-n+1):before {
+            width: 1%;
+            height: 25px;
+        }
+
+        .table_sort tr td:nth-child(1) {
+            height: 25px;
+        }
+
+        .table_sort tr td:nth-child(2) {
+            height: 25px;
+        }
+
+        .table_sort tr td:nth-child(3) {
+            height: 25px;
+        }
+
+        .table_sort tr td:nth-child(4) {
+            height: 25px;
+        }
+
+        .table_sort tr td:nth-child(5) {
+            height: 25px;
+        }
+
+        .table_sort tr td:nth-child(6) {
+            height: 25px;
+        }
+
+        .table_sort tr td:nth-child(7) {
+            height: 25px;
+        }
+
+        .table_sort tbody tr {
+            background: #eeeef1;
+        }
+    </style>
+</head>
+<h2>Goalie stats</h2>
+
+Filter:
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="напр.: (DAL), Tyler, Jones..." size="50">
+<br>
+<br>
+<table id="myTable" class="table_sort">
+    <script src="/js/sorter.js"></script>
+    <script src="/js/filter.js"></script>
+    <thead>
+    <tr class="header">
+        <th>Player</th>
+        <th>Games</th>
+        <th>SA</th>
+        <th>GA</th>
+        <th>Sv%</th>
+        <th>GAA</th>
+        <th>Assists</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="stat : ${goalieStats}">
+        <td th:text="${stat.getPlayer()}"></td>
+        <td th:text="${stat.getGames()}"></td>
+        <td th:text="${stat.getShotsAgainst()}"></td>
+        <td th:text="${stat.getGoalsAgainst()}"></td>
+        <td th:text="${stat.getSavePercentage()}"></td>
+        <td th:text="${stat.getGAA()}"></td>
+        <td th:text="${stat.getAssists()}"></td>
+    </tr>
+    </tbody>
+</table>
+</html>
