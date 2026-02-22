@@ -10,5 +10,4 @@ import java.util.List;
 public interface GoalieStatsRepository extends JpaRepository<GoalieStats, Long> {
     List<GoalieStats> findGoalieStatsByGamesBetween(int from, int to);
     List<GoalieStats> findAllByOrderBySavePercentageDesc();
-
 }

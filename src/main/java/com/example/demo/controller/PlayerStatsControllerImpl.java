@@ -29,6 +29,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Objects;
+import java.util.HashMap;
 
 @RequiredArgsConstructor
 @Controller
@@ -88,7 +89,8 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
     @PostMapping("/upload")
     public String uploadFile(@ModelAttribute("results") Results results,
                              @RequestParam("playerstat") MultipartFile playerstat,
-                             @RequestParam("teamstat") MultipartFile teamstat, RedirectAttributes attributes) throws IOException {
+                             @RequestParam("teamstat") MultipartFile teamstat,
+                             RedirectAttributes attributes) throws IOException {
 
         if (playerstat.isEmpty() || teamstat.isEmpty()) {
             attributes.addFlashAttribute("message", "Необходимо выбрать и загрузить playerstat и teamstat.");
@@ -158,11 +160,8 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
         headers.add("Pragma", "no-cache");
         headers.add("Expires", "0");
 
-        ResponseEntity<Object>
-                responseEntity = ResponseEntity.ok().headers(headers).contentLength(
+        return ResponseEntity.ok().headers(headers).contentLength(
                 file.length()).contentType(MediaType.parseMediaType("application/txt")).body(resource);
-
-        return responseEntity;
     }
 
     @GetMapping("/downloadT")
@@ -177,11 +176,8 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
         headers.add("Pragma", "no-cache");
         headers.add("Expires", "0");
 
-        ResponseEntity<Object>
-                responseEntity = ResponseEntity.ok().headers(headers).contentLength(
+        return ResponseEntity.ok().headers(headers).contentLength(
                 file.length()).contentType(MediaType.parseMediaType("application/txt")).body(resource);
-
-        return responseEntity;
     }
 
     @GetMapping("/logs")
@@ -196,11 +192,8 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
         headers.add("Pragma", "no-cache");
         headers.add("Expires", "0");
 
-        ResponseEntity<Object>
-                responseEntity = ResponseEntity.ok().headers(headers).contentLength(
+        return ResponseEntity.ok().headers(headers).contentLength(
                 file.length()).contentType(MediaType.parseMediaType("application/txt")).body(resource);
-
-        return responseEntity;
     }
 
     @GetMapping("/downloadCalendar")
@@ -215,10 +208,111 @@ public class PlayerStatsControllerImpl implements PlayerStatsController {
         headers.add("Pragma", "no-cache");
         headers.add("Expires", "0");
 
-        ResponseEntity<Object>
-                responseEntity = ResponseEntity.ok().headers(headers).contentLength(
+        return ResponseEntity.ok().headers(headers).contentLength(
                 file.length()).contentType(MediaType.parseMediaType("application/txt")).body(resource);
+    }
 
-        return responseEntity;
+    @PostMapping("/api/create")
+    @ResponseBody
+    public String createStatsApi() {
+        statsService.createStats();
+        return "Stats created successfully";
+    }
+
+    @GetMapping("/api/stats")
+    @ResponseBody
+    public Object statsApi() {
+        return statsRepository.findAllByOrderByPointsDesc();
+    }
+
+    @GetMapping("/api/goalie")
+    @ResponseBody
+    public Object goalieApi() {
+        return goalieStatsRepository.findAllByOrderBySavePercentageDesc();
+    }
+
+    @GetMapping("/api/defenders")
+    @ResponseBody
+    public Object defendersApi() {
+        return defensemanStatsRepository.findAllByOrderByPointsDesc();
+    }
+
+    @GetMapping("/api/transfers")
+    @ResponseBody
+    public Object transfersApi() {
+        return transfersRepository.findAllByOrderByPlayerAsc();
+    }
+
+    @PostMapping("/api/upload")
+    @ResponseBody
+    public Map<String, Object> uploadFileApi(@RequestParam("playerstat") MultipartFile playerstat,
+                                             @RequestParam("teamstat") MultipartFile teamstat,
+                                             @RequestParam(value = "firstTeam", required = false) String firstTeam,
+                                             @RequestParam(value = "firstGoals", required = false) String firstGoals,
+                                             @RequestParam(value = "total", required = false) String total,
+                                             @RequestParam(value = "secondGoals", required = false) String secondGoals,
+                                             @RequestParam(value = "secondTeam", required = false) String secondTeam) throws IOException {
+
+        Map<String, Object> response = new HashMap<>();
+
+        if (playerstat.isEmpty() || teamstat.isEmpty()) {
+            response.put("success", false);
+            response.put("message", "Необходимо выбрать и загрузить playerstat и teamstat.");
+            return response;
+        }
+
+        if (!playerstat.getOriginalFilename().contains("playerstat") || !teamstat.getOriginalFilename().contains("teamstat")) {
+            response.put("success", false);
+            response.put("message", "Проверьте правильность выбора файлов teamstat и playerstat.");
+            return response;
+        }
+
+        String fileNamePlayerstat = StringUtils.cleanPath(playerstat.getOriginalFilename());
+        String fileNameTeamstat = StringUtils.cleanPath(teamstat.getOriginalFilename());
+
+        InputStream inputStream = teamstat.getInputStream();
+
+        BufferedInputStream bis = new BufferedInputStream(inputStream);
+        ByteArrayOutputStream buf = new ByteArrayOutputStream();
+        int result = bis.read();
+        while (result != -1) {
+            buf.write((byte) result);
+            result = bis.read();
+        }
+
+        if (total != null && !total.equals(" ")) {
+            String resultTeamstat = buf.toString();
+            int start = resultTeamstat.indexOf("Away,") + 4;
+            int to = start + 29;
+            char[] dst = new char[to - start];
+            resultTeamstat.getChars(start, to, dst, 0);
+            resRepository.save(new Res(Arrays.toString(dst)));
+        }
+
+        try {
+            Path pathPl = Paths.get(UPLOADPLAYERSTAT_DIR + fileNamePlayerstat);
+            Path pathT = Paths.get(UPLOADTEAMSTAT_DIR + fileNameTeamstat);
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            logger.warn(authentication.getName() + " " + firstTeam + " " + firstGoals + " " +
+                    total + " " + secondGoals + " " + secondTeam);
+            this.total = total;
+            logger.warn(authentication.getName() + " " + fileNamePlayerstat);
+            logger.warn(authentication.getName() + " " + fileNameTeamstat);
+
+            Files.copy(playerstat.getInputStream(), pathPl, StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(teamstat.getInputStream(), pathT, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+            response.put("success", false);
+            response.put("message", "Ошибка при загрузке файлов: " + e.getMessage());
+            return response;
+        }
+
+        statsService.createStats();
+        standingsService.createStandings();
+
+        response.put("success", true);
+        response.put("message", "Файлы успешно загружены, статистика обновлена!");
+        return response;
     }
 }

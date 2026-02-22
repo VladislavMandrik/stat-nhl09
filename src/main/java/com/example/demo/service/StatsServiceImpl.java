@@ -503,7 +503,8 @@ public class StatsServiceImpl implements StatsService {
 
     private void createTransfers() {
         List<String> list = new ArrayList<>();
-        statsRepository.findAll().forEach(playerStatsNHL -> list.add(playerStatsNHL.getPlayer().substring(0, playerStatsNHL.getPlayer().indexOf('('))));
+        statsRepository.findAll().forEach(playerStatsNHL -> list.add(playerStatsNHL
+                .getPlayer().substring(0, playerStatsNHL.getPlayer().indexOf('('))));
 
         Set<String> duplicates = new HashSet<>();
         for (int i = 0; i < list.size(); i++) {
