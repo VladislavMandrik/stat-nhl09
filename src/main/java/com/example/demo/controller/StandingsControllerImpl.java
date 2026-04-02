@@ -45,7 +45,6 @@ public class StandingsControllerImpl implements StandingsController {
         return response;
     }
 
-    // Метод для Thymeleaf (HTML)
     @GetMapping("/teamstats")
     public String teamstats(Model model) {
         model.addAttribute("teamStats",

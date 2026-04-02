@@ -55,6 +55,7 @@ public class SpringSecurityConfig {
                 .antMatchers(HttpMethod.GET, "/statistic/downloadT").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "/statistic/logs").hasRole("ADMIN")
                 .antMatchers( "/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                .antMatchers("/css/**", "/js/**", "/images/**", "/webjars/**").permitAll()
                 .anyRequest().authenticated()).formLogin().permitAll().and().logout().permitAll();
         return http.build();
     }
